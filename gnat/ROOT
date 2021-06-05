@@ -1,0 +1,5 @@
+session "gnat" = "HOL-SPARK" +
+  options [document = false]
+  theories
+    "quadlets"
+  export_files (in ".") [1] "*:**.prv"

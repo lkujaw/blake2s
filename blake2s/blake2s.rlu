@@ -1,0 +1,2 @@
+rules(1): digest_length_of(C) may_be_replaced_by
+  fld_digest_length(C) if [goal(checktype(C,T))] .

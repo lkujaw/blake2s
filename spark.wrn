@@ -1,0 +1,11 @@
+declare_annotations
+hidden_parts
+pragma assert
+pragma elaborate_all
+pragma elaborate_body
+pragma inline
+pragma pack
+pragma pure
+representation_clauses
+unchecked_conversion
+with_clauses

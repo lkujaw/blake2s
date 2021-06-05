@@ -1,0 +1,5 @@
+Octets            specification is in ../common/octets.ads
+Octet_Arrays      specification is in ../common/octearra.ads
+Interfaces        specification is in interfac.shs
+Quadlets          specification is in quadlets.ads
+Quadlets          body          is in quadlets.adb

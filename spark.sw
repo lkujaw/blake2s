@@ -1,0 +1,13 @@
+-language=83                     -- Select SPARK 83
+-profile=sequential
+-source_extension=.adb
+-index_file=spark.idx
+-warning_file=spark.wrn
+-target_compiler_data=spark.tgt
+-report_file=spark.rep
+-flow_analysis=information
+-dpc                             -- Generate Dead Path Conjectures
+-vcg                             -- Enable Verification Condition Generation
+-casing
+-debug=i                         -- Print default loop invariants
+-fdl_identifiers=reject

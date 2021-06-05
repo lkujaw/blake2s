@@ -1,0 +1,20 @@
+package Interfaces is
+
+   type Unsigned_32 is mod 2 ** 32;
+   for Unsigned_32'Size use 32;
+
+   --  The author unfortunately cannot offer a proof as to the correctness
+   --  of the following functions supplied by GNAT:
+
+   function Shift_Left (Value : in Unsigned_32; Amount : in Natural)
+     return Unsigned_32;
+   --# return (Value * (2 ** Amount)) mod (2 ** 32);
+
+   function Shift_Right (Value : in Unsigned_32; Amount : in Natural)
+     return Unsigned_32;
+   --# return Value / (2 ** Amount);
+
+   function Rotate_Right (Value : in Unsigned_32; Amount : in Natural)
+     return Unsigned_32;
+
+end Interfaces;

@@ -1,0 +1,10 @@
+common/octets.ads
+common/octearra.ads
+generic/quadlets.ads
+generic/quadlets.adb
+common/blake2s.ads
+common/blake2s.adb
+bin/spark_io.ads
+bin/spaiosta.ads
+bin/spaiosta.adb
+bin/b2stest.adb

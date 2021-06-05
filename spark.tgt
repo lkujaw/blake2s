@@ -1,0 +1,4 @@
+integer'first = -2147483648
+integer'last  =  2147483647
+long_integer'first = -9223372036854775808
+long_integer'last = 9223372036854775807

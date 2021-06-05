@@ -1,0 +1,11 @@
+--  Although GNAT correctly warns that "pragma Restrictions" is not
+--  within the ISO Ada 87 standard, these warnings are safely disabled
+--  below due to the fact that all published versions of the compiler are
+--  compliant with the ISO Ada 95 standard or subsequent versions.
+pragma Warnings (Off);
+pragma Restrictions (Max_Asynchronous_Select_Nesting => 0);
+pragma Restrictions (No_Abort_Statements);
+pragma Restrictions (No_Allocators);
+pragma Restrictions (No_Elaboration_Code);
+pragma Restrictions (No_Tasking);
+pragma Warnings (On);
