@@ -1,10 +1,24 @@
+--  NEW RULES  --
+set with_clauses.check_private_with off;
+check positional_associations (all, 0, instantiation);
+
+--  COMMON --
+
 check abnormal_function_return;
+check allocators;
+--  Forbid empty "when others"
+check case_statement (others_span, min 1);
+--  Forbid non-ASCII
 check characters;
+--  Require a unit name comment when there are intervening subprograms
 check comments (unnamed_begin, declaration package);
 check comments (unnamed_begin, program_unit function);
 check comments (unnamed_begin, program_unit procedure);
+--  Forbid access types, child units, exceptions, unsubtyped arrays, tasks
+Exception_Rule: check declarations (exception);
+check declarations (access_type, child_unit, single_array, task);
 check declarations (multiple_names);
-check declarations (single_array);
+check directly_accessed_globals;
 check expressions (universal_range);
 check insufficient_parameters (1, standard.boolean);
 check local_hiding (strict);
@@ -25,10 +39,6 @@ check style (negative_condition);
 check style (no_closing_name);
 Parameter_Rule: check style (parameter_order);
 set tag1 "!";
-
---  NEW RULES  --
-check positional_associations (all, 0, instantiation);
 check unnecessary_use_clause (unused, qualified, operator, nested, movable);
-check with_clauses (multiple_names);
-check with_clauses (reduceable);
-set with_clauses.check_private_with off;
+check unsafe_unchecked_conversion;
+check with_clauses (multiple_names, reduceable);

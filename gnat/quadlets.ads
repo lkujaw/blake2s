@@ -50,12 +50,6 @@ package Quadlets is
                             Amount : in Bit_Count_T) return T;
    pragma Inline_Always (Right_Rotation);
 
-   function Concatenation (Octet_1 : in Octets.T;
-                           Octet_2 : in Octets.T;
-                           Octet_3 : in Octets.T;
-                           Octet_4 : in Octets.T) return T;
-   pragma Inline_Always (Concatenation);
-
    subtype Octet_Index_T is Natural range 0 .. 3;
 
    function Octet (Value : in T;

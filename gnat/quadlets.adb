@@ -100,20 +100,6 @@ package body Quadlets is
                    Amount => Amount));
    end Right_Rotation;
 
-   function Concatenation
-     (Octet_1 : in Octets.T;
-      Octet_2 : in Octets.T;
-      Octet_3 : in Octets.T;
-      Octet_4 : in Octets.T) return T
-   is
-   begin
-      return Exclusive_Disjunction
-        (T (Octet_1), Exclusive_Disjunction
-           (Left_Shift (T (Octet_2), 8), Exclusive_Disjunction
-              (Left_Shift (T (Octet_3), 16),
-               Left_Shift (T (Octet_4), 24))));
-   end Concatenation;
-
    function Octet
      (Value : in T;
       Index : in Octet_Index_T) return Octets.T

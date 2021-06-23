@@ -147,18 +147,18 @@ private
 
    Buffer_Octets : constant := 64;
 
-   subtype Buffer_Index_T is Natural range 0 .. Buffer_Octets - 1;
-   type Buffer_T is array (Buffer_Index_T) of Octets.T;
-   pragma Pack (Buffer_T);
-   for Buffer_T'Size use Buffer_Octets * Octets.Bits;
+   subtype Buffer_Length_T is Natural range 0 .. Buffer_Octets;
+   subtype Buffer_Index_T is Natural range 0 .. 15;
+   type Quadlet_Buffer_T is array (Buffer_Index_T) of Quadlets.T;
+   for Quadlet_Buffer_T'Size use Buffer_Octets * Octets.Bits;
 
    type T is
       record
          Hash_State         : Hash_State_T;
          Input_Octets_Lower : Quadlets.T;
          Input_Octets_Upper : Quadlets.T;
-         Input_Buffer       : Buffer_T;
-         Buffer_Index       : Natural;
+         Input_Buffer       : Quadlet_Buffer_T;
+         Buffer_Index       : Buffer_Length_T;
          Digest_Length      : Digest_Index_T;
          Overflowed         : Boolean;
       end record;

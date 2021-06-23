@@ -279,6 +279,18 @@ proof -
     by (subst RW, subst div_truncate_plus, simp_all)
 qed
 
+lemma mod_div: "x mod (n::int) ~= 0 ==> ~ n dvd x"
+proof -
+  assume "x mod n ~= 0"
+  hence "n dvd x ==> False"
+  proof -
+    assume "n dvd x"
+    hence "x mod n = 0" by simp
+    thus False using `x mod n ~= 0` by auto
+  qed
+  thus ?thesis by auto
+qed
+
 lemma or_plus_nat:
     "2^(n::nat) + ((x::nat) mod 2^n) = (2^n) OR (x mod 2^n)"
   by (subst disjunctive_add [symmetric], auto,

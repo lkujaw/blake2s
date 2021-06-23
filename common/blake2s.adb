@@ -25,18 +25,14 @@ package body BLAKE2S is
      Context : in out T)
    --# derives Context from *,
    --#                      Last_IV;
-   --# post Context.Digest_Length = Context~.Digest_Length;
+   --# post Context.Buffer_Index = Context~.Buffer_Index and
+   --#      Context.Digest_Length = Context~.Digest_Length;
    is
       subtype Sigma_Major_T is Natural range 0 .. 9;
       subtype Quadlet_Octet_Index_T is Octets.T range 0 .. 15;
       type Sigma_T is array (Sigma_Major_T, Quadlet_Octet_Index_T) of
         Quadlet_Octet_Index_T;
       for Sigma_T'Size use 160 * Octets.Bits;
-
-      subtype Quadlet_Buffer_Index_T is Natural range 0 .. 15;
-      type Quadlet_Buffer_T is array (Quadlet_Buffer_Index_T) of Quadlets.T;
-      for Quadlet_Buffer_T'Size use
-        (Quadlet_Buffer_Index_T'Last + 1) * Quadlets.Bits;
 
       Sigma : constant Sigma_T := Sigma_T'(
        0 => (00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15),
@@ -51,13 +47,12 @@ package body BLAKE2S is
        9 => (10, 02, 08, 04, 07, 06, 01, 05, 15, 11, 09, 14, 03, 12, 13, 00));
 
       V : Quadlet_Buffer_T;
-      M : Quadlet_Buffer_T;
 
       procedure Mix
-        (A : in Quadlet_Buffer_Index_T;
-         B : in Quadlet_Buffer_Index_T;
-         C : in Quadlet_Buffer_Index_T;
-         D : in Quadlet_Buffer_Index_T;
+        (A : in Buffer_Index_T;
+         B : in Buffer_Index_T;
+         C : in Buffer_Index_T;
+         D : in Buffer_Index_T;
          X : in Quadlets.T;
          Y : in Quadlets.T)
       --# global in out V;
@@ -71,27 +66,34 @@ package body BLAKE2S is
       is
       begin
          V (A) := Quadlets.Modular_Sum
-                     (V (A), Quadlets.Modular_Sum (V (B), X));
+           (V (A), Quadlets.Modular_Sum (V (B), X));
+         --# assert True;
          V (D) := Quadlets.Right_Rotation
-                    (Quadlets.Exclusive_Disjunction (V (D), V (A)), 16);
+           (Quadlets.Exclusive_Disjunction (V (D), V (A)), 16);
+         --# assert True;
          V (C) := Quadlets.Modular_Sum (V (C), V (D));
+         --# assert True;
          V (B) := Quadlets.Right_Rotation
-                    (Quadlets.Exclusive_Disjunction (V (B), V (C)), 12);
+           (Quadlets.Exclusive_Disjunction (V (B), V (C)), 12);
+         --# assert True;
          V (A) := Quadlets.Modular_Sum
-                    (V (A), Quadlets.Modular_Sum (V (B), Y));
+           (V (A), Quadlets.Modular_Sum (V (B), Y));
+         --# assert True;
          V (D) := Quadlets.Right_Rotation
-                    (Quadlets.Exclusive_Disjunction (V (D), V (A)), 8);
+           (Quadlets.Exclusive_Disjunction (V (D), V (A)), 8);
+         --# assert True;
          V (C) := Quadlets.Modular_Sum (V (C), V (D));
+         --# assert True;
          V (B) := Quadlets.Right_Rotation
-                    (Quadlets.Exclusive_Disjunction (V (B), V (C)), 7);
+           (Quadlets.Exclusive_Disjunction (V (B), V (C)), 7);
       end Mix;
       pragma Inline (Mix);
 
       procedure Round (N : in Sigma_Major_T)
-      --# global in     M;
+      --# global in     Context;
       --#        in out V;
       --# derives V from *,
-      --#                M,
+      --#                Context,
       --#                N;
       is
       begin
@@ -114,29 +116,29 @@ package body BLAKE2S is
          --#     Sigma (I, 14) in Quadlet_Octet_Index_T and
          --#     Sigma (I, 15) in Quadlet_Octet_Index_T);
          Mix (A => 0, B => 4, C =>  8, D => 12,
-              X => M (Natural (Sigma (N,  0))),
-              Y => M (Natural (Sigma (N,  1))));
+              X => Context.Input_Buffer (Natural (Sigma (N,  0))),
+              Y => Context.Input_Buffer (Natural (Sigma (N,  1))));
          Mix (A => 1, B => 5, C =>  9, D => 13,
-              X => M (Natural (Sigma (N,  2))),
-              Y => M (Natural (Sigma (N,  3))));
+              X => Context.Input_Buffer (Natural (Sigma (N,  2))),
+              Y => Context.Input_Buffer (Natural (Sigma (N,  3))));
          Mix (A => 2, B => 6, C => 10, D => 14,
-              X => M (Natural (Sigma (N,  4))),
-              Y => M (Natural (Sigma (N,  5))));
+              X => Context.Input_Buffer (Natural (Sigma (N,  4))),
+              Y => Context.Input_Buffer (Natural (Sigma (N,  5))));
          Mix (A => 3, B => 7, C => 11, D => 15,
-              X => M (Natural (Sigma (N,  6))),
-              Y => M (Natural (Sigma (N,  7))));
+              X => Context.Input_Buffer (Natural (Sigma (N,  6))),
+              Y => Context.Input_Buffer (Natural (Sigma (N,  7))));
          Mix (A => 0, B => 5, C => 10, D => 15,
-              X => M (Natural (Sigma (N,  8))),
-              Y => M (Natural (Sigma (N,  9))));
+              X => Context.Input_Buffer (Natural (Sigma (N,  8))),
+              Y => Context.Input_Buffer (Natural (Sigma (N,  9))));
          Mix (A => 1, B => 6, C => 11, D => 12,
-              X => M (Natural (Sigma (N, 10))),
-              Y => M (Natural (Sigma (N, 11))));
+              X => Context.Input_Buffer (Natural (Sigma (N, 10))),
+              Y => Context.Input_Buffer (Natural (Sigma (N, 11))));
          Mix (A => 2, B => 7, C =>  8, D => 13,
-              X => M (Natural (Sigma (N, 12))),
-              Y => M (Natural (Sigma (N, 13))));
+              X => Context.Input_Buffer (Natural (Sigma (N, 12))),
+              Y => Context.Input_Buffer (Natural (Sigma (N, 13))));
          Mix (A => 3, B => 4, C =>  9, D => 14,
-              X => M (Natural (Sigma (N, 14))),
-              Y => M (Natural (Sigma (N, 15))));
+              X => Context.Input_Buffer (Natural (Sigma (N, 14))),
+              Y => Context.Input_Buffer (Natural (Sigma (N, 15))));
       end Round;
       pragma Inline (Round);
    begin  --  Compress
@@ -159,56 +161,6 @@ package body BLAKE2S is
                                                Context.Input_Octets_Upper),
          14 => Last_IV,
          15 => Initialization_Vectors (7));
-
-      M := Quadlet_Buffer_T'
-        (0 => Quadlets.Concatenation
-           (Context.Input_Buffer (0),  Context.Input_Buffer (1),
-            Context.Input_Buffer (2),  Context.Input_Buffer (3)),
-         1 => Quadlets.Concatenation
-           (Context.Input_Buffer (4),  Context.Input_Buffer (5),
-            Context.Input_Buffer (6),  Context.Input_Buffer (7)),
-         2 => Quadlets.Concatenation
-           (Context.Input_Buffer (8),  Context.Input_Buffer (9),
-            Context.Input_Buffer (10), Context.Input_Buffer (11)),
-         3 => Quadlets.Concatenation
-           (Context.Input_Buffer (12), Context.Input_Buffer (13),
-            Context.Input_Buffer (14), Context.Input_Buffer (15)),
-         4 => Quadlets.Concatenation
-           (Context.Input_Buffer (16), Context.Input_Buffer (17),
-            Context.Input_Buffer (18), Context.Input_Buffer (19)),
-         5 => Quadlets.Concatenation
-           (Context.Input_Buffer (20), Context.Input_Buffer (21),
-            Context.Input_Buffer (22), Context.Input_Buffer (23)),
-         6 => Quadlets.Concatenation
-           (Context.Input_Buffer (24), Context.Input_Buffer (25),
-            Context.Input_Buffer (26), Context.Input_Buffer (27)),
-         7 => Quadlets.Concatenation
-           (Context.Input_Buffer (28), Context.Input_Buffer (29),
-            Context.Input_Buffer (30), Context.Input_Buffer (31)),
-         8 => Quadlets.Concatenation
-           (Context.Input_Buffer (32), Context.Input_Buffer (33),
-            Context.Input_Buffer (34), Context.Input_Buffer (35)),
-         9 => Quadlets.Concatenation
-           (Context.Input_Buffer (36), Context.Input_Buffer (37),
-            Context.Input_Buffer (38), Context.Input_Buffer (39)),
-         10 => Quadlets.Concatenation
-           (Context.Input_Buffer (40), Context.Input_Buffer (41),
-            Context.Input_Buffer (42), Context.Input_Buffer (43)),
-         11 => Quadlets.Concatenation
-           (Context.Input_Buffer (44), Context.Input_Buffer (45),
-            Context.Input_Buffer (46), Context.Input_Buffer (47)),
-         12 => Quadlets.Concatenation
-           (Context.Input_Buffer (48), Context.Input_Buffer (49),
-            Context.Input_Buffer (50), Context.Input_Buffer (51)),
-         13 => Quadlets.Concatenation
-           (Context.Input_Buffer (52), Context.Input_Buffer (53),
-            Context.Input_Buffer (54), Context.Input_Buffer (55)),
-         14 => Quadlets.Concatenation
-           (Context.Input_Buffer (56), Context.Input_Buffer (57),
-            Context.Input_Buffer (58), Context.Input_Buffer (59)),
-         15 => Quadlets.Concatenation
-           (Context.Input_Buffer (60), Context.Input_Buffer (61),
-            Context.Input_Buffer (62), Context.Input_Buffer (63)));
 
       Round (0);
       Round (1);
@@ -256,24 +208,242 @@ package body BLAKE2S is
    --#     Message_Last <= Message'Last;
    --# post Context.Digest_Length = Context~.Digest_Length;
    is
-   begin
-      for I in Positive range Message_First .. Message_Last loop
-         --# assert
-         --#   Context.Digest_Length = Context~.Digest_Length and
-         --#   Message_First in Message'Range and
-         --#   Message_Last <= Message'Last and
-         --#   I >= Message_First and I <= Message_Last;
-         if Context.Buffer_Index > Context.Input_Buffer'Last then
+      subtype Buffer_Position_T is Natural range 0 .. 16;
+      subtype Switch_T is Natural range 0 .. 3;
+      Message_Index : Natural;
+      Position      : Buffer_Position_T;
+      Switch        : Switch_T;
+
+      procedure Read_Quadlet
+        (N : in Buffer_Index_T)
+      --# global in     Message;
+      --#        in out Context;
+      --#        in out Message_Index;
+      --# derives Context       from *,
+      --#                            Message,
+      --#                            Message_Index,
+      --#                            N &
+      --#         Message_Index from *;
+      --# pre Message_Index >= Message'First - 1 and
+      --#     Message_Index <= Message'Last - 4;
+      --# post Context.Buffer_Index = Context~.Buffer_Index and
+      --#      Context.Digest_Length = Context~.Digest_Length and
+      --#      Message_Index = Message_Index~ + 4;
+      is
+      begin
+         Message_Index := Message_Index + 1;
+         Context.Input_Buffer (N) := Quadlets.T (Message (Message_Index));
+         Message_Index := Message_Index + 1;
+         Context.Input_Buffer (N) := Quadlets.Inclusive_Disjunction
+           (Context.Input_Buffer (N),
+            Quadlets.Left_Shift
+              (Quadlets.T (Message (Message_Index)), 8));
+         Message_Index := Message_Index + 1;
+         Context.Input_Buffer (N) := Quadlets.Inclusive_Disjunction
+           (Context.Input_Buffer (N),
+            Quadlets.Left_Shift
+              (Quadlets.T (Message (Message_Index)), 16));
+         Message_Index := Message_Index + 1;
+         Context.Input_Buffer (N) := Quadlets.Inclusive_Disjunction
+           (Context.Input_Buffer (N),
+            Quadlets.Left_Shift
+              (Quadlets.T (Message (Message_Index)), 24));
+      end Read_Quadlet;
+      pragma Inline (Read_Quadlet);
+
+      --  Process a block of input quickly.
+      procedure Process_Block
+      --# global in     Message;
+      --#        in     Message_Last;
+      --#        in out Context;
+      --#        in out Message_Index;
+      --# derives Context       from *,
+      --#                            Message,
+      --#                            Message_Index,
+      --#                            Message_Last &
+      --#         Message_Index from *,
+      --#                            Message_Last;
+      --# pre Message_Index >= Message'First - 1 and
+      --#     Message_Last <= Message'Last;
+      --# post Context.Buffer_Index = Context~.Buffer_Index and
+      --#      Context.Digest_Length = Context~.Digest_Length and
+      --#      (((Message_Last - Message_Index~ <= Buffer_Octets) and
+      --#        (Message_Index = Message_Index~))
+      --#      or
+      --#       ((Message_Last - Message_Index~ > Buffer_Octets) and
+      --#        (Message_Index < Message_Last))) and
+      --#      Message_Index >= Message_Last - Buffer_Octets;
+      is
+      begin
+         --  We need at least one more octet to justify calling Compress.
+         while Message_Last - Message_Index > Buffer_Octets loop
+            --# assert
+            --#   Context.Buffer_Index = Context~.Buffer_Index and
+            --#   Context.Digest_Length = Context~.Digest_Length and
+            --#   Message_Last - Message_Index~ > Buffer_Octets and
+            --#   Message_Last <= Message'Last and
+            --#   Message_Index >= Message_Index~ and
+            --#   Message_Index >= Message'First - 1 and
+            --#   Message_Index < Message_Last - 64 and
+            --#   Message_Index < Message'Last - 64;
+            Read_Quadlet (0);
+            Read_Quadlet (1);
+            Read_Quadlet (2);
+            Read_Quadlet (3);
+            --  These extra cutpoints speed up the SPARK examiner.
+            --# assert
+            --#   Context.Buffer_Index = Context~.Buffer_Index and
+            --#   Context.Digest_Length = Context~.Digest_Length and
+            --#   Message_Last - Message_Index~ > Buffer_Octets and
+            --#   Message_Last <= Message'Last and
+            --#   Message_Index >= Message_Index~ and
+            --#   Message_Index >= Message'First + 15 and
+            --#   Message_Index < Message_Last - 48 and
+            --#   Message_Index < Message'Last - 48;
+            Read_Quadlet (4);
+            Read_Quadlet (5);
+            Read_Quadlet (6);
+            Read_Quadlet (7);
+            --# assert
+            --#   Context.Buffer_Index = Context~.Buffer_Index and
+            --#   Context.Digest_Length = Context~.Digest_Length and
+            --#   Message_Last - Message_Index~ > Buffer_Octets and
+            --#   Message_Last <= Message'Last and
+            --#   Message_Index >= Message_Index~ and
+            --#   Message_Index >= Message'First + 31 and
+            --#   Message_Index < Message_Last - 32 and
+            --#   Message_Index < Message'Last - 32;
+            Read_Quadlet (8);
+            Read_Quadlet (9);
+            Read_Quadlet (10);
+            Read_Quadlet (11);
+            --# assert
+            --#   Context.Buffer_Index = Context~.Buffer_Index and
+            --#   Context.Digest_Length = Context~.Digest_Length and
+            --#   Message_Last - Message_Index~ > Buffer_Octets and
+            --#   Message_Last <= Message'Last and
+            --#   Message_Index >= Message_Index~ and
+            --#   Message_Index >= Message'First + 47 and
+            --#   Message_Index < Message_Last - 16 and
+            --#   Message_Index < Message'Last - 16;
+            Read_Quadlet (12);
+            Read_Quadlet (13);
+            Read_Quadlet (14);
+            Read_Quadlet (15);
+            --# assert
+            --#   Context.Buffer_Index = Context~.Buffer_Index and
+            --#   Context.Digest_Length = Context~.Digest_Length and
+            --#   Message_Last - Message_Index~ > Buffer_Octets and
+            --#   Message_Last <= Message'Last and
+            --#   Message_Index >= Message_Index~ and
+            --#   Message_Index >= Message'First + 63 and
+            --#   Message_Index < Message_Last and
+            --#   Message_Index < Message'Last;
+
             Quadlets.Chained_Modular_Sum
               (Addend       => Buffer_Octets,
                Augend_Lower => Context.Input_Octets_Lower,
                Augend_Upper => Context.Input_Octets_Upper,
                Overflow     => Context.Overflowed);
-            Compress (Initialization_Vectors (6), Context);  --  Not last
+            Compress (Initialization_Vectors (6), Context); --  Not last
+         end loop;
+      end Process_Block;
+   begin  --  Incorporate_Flex
+      Message_Index := Message_First - 1;
+
+      if Context.Buffer_Index = Buffer_Index_T'First then
+         Process_Block;
+      end if;
+
+      Position := Context.Buffer_Index / 4;
+      Switch   := Context.Buffer_Index mod 4;
+
+      while Message_Index < Message_Last loop
+         --# assert
+         --#   Context.Digest_Length = Context~.Digest_Length and
+         --#   Message_First in Message'Range and
+         --#   Message_Last <= Message'Last and
+         --#   Message_Index >= Message_First - 1 and
+         --#   Message_Index < Message_Last and
+         --#   Message_Index < Message'Last and
+         --#   Position = Context.Buffer_Index / 4 and
+         --#   Switch = Context.Buffer_Index mod 4;
+         if Context.Buffer_Index = Buffer_Octets then
+            Quadlets.Chained_Modular_Sum
+              (Addend       => Buffer_Octets,
+               Augend_Lower => Context.Input_Octets_Lower,
+               Augend_Upper => Context.Input_Octets_Upper,
+               Overflow     => Context.Overflowed);
+            Compress (Initialization_Vectors (6), Context); --  Not last
             Context.Buffer_Index := Buffer_Index_T'First;
+            Process_Block;
+            Position := 0;
+            Switch   := 0;
+            --# assert
+            --#   Context.Buffer_Index = Buffer_Index_T'First and
+            --#   Context.Digest_Length = Context~.Digest_Length and
+            --#   Message_First in Message'Range and
+            --#   Message_Last <= Message'Last and
+            --#   Message_Index >= Message_First - 1 and
+            --#   Message_Index < Message_Last and
+            --#   Message_Index < Message'Last and
+            --#   Position = 0 and Switch = 0;
          end if;
-         Context.Input_Buffer (Context.Buffer_Index) := Message (I);
-         Context.Buffer_Index := Context.Buffer_Index + 1;
+         --# assert
+         --#   Context.Buffer_Index < Buffer_Octets and
+         --#   Context.Digest_Length = Context~.Digest_Length and
+         --#   Message_First in Message'Range and
+         --#   Message_Last <= Message'Last and
+         --#   Message_Index >= Message_First - 1 and
+         --#   Message_Index < Message_Last and
+         --#   Message_Index < Message'Last and
+         --#   Message_Index + 1 <= Message'Last and
+         --#   Position = Context.Buffer_Index / 4 and
+         --#   Position in Buffer_Index_T and
+         --#   Switch = Context.Buffer_Index mod 4;
+
+         case Switch is
+            when 0 =>
+               if Message_Last - Message_Index >= 4 then
+                  Read_Quadlet (Position);
+                  Context.Buffer_Index := Context.Buffer_Index + 4;
+                  Position             := Position + 1;
+               else
+                  Message_Index := Message_Index + 1;
+                  Context.Input_Buffer (Position) :=
+                    Quadlets.T (Message (Message_Index));
+                  Context.Buffer_Index := Context.Buffer_Index + 1;
+                  Switch := 1;
+               end if;
+            when 1 =>
+               Message_Index := Message_Index + 1;
+               Context.Input_Buffer (Position) :=
+                 Quadlets.Inclusive_Disjunction
+                 (Context.Input_Buffer (Position),
+                  Quadlets.Left_Shift (Quadlets.T
+                                         (Message (Message_Index)), 8));
+               Context.Buffer_Index := Context.Buffer_Index + 1;
+               Switch := 2;
+            when 2 =>
+               Message_Index := Message_Index + 1;
+               Context.Input_Buffer (Position) :=
+                 Quadlets.Inclusive_Disjunction
+                 (Context.Input_Buffer (Position),
+                  Quadlets.Left_Shift (Quadlets.T
+                                         (Message (Message_Index)), 16));
+               Context.Buffer_Index := Context.Buffer_Index + 1;
+               Switch := 3;
+            when 3 =>
+               Message_Index := Message_Index + 1;
+               Context.Input_Buffer (Position) :=
+                 Quadlets.Inclusive_Disjunction
+                 (Context.Input_Buffer (Position),
+                  Quadlets.Left_Shift (Quadlets.T
+                                         (Message (Message_Index)), 24));
+               Context.Buffer_Index := Context.Buffer_Index + 1;
+               Position := Position + 1;
+               Switch   := 0;
+         end case;
       end loop;
    end Incorporate_Flex;
 
@@ -291,21 +461,24 @@ package body BLAKE2S is
    --# return Context => Context.Digest_Length = Digest_Length and
    --#                   Context.Buffer_Index = 0;
    is
-      Context       : T;
    begin
-      Context := T'(Initialization_Vectors,  --  Hash state
-                    0, 0,  --  Input octets
-                    Buffer_T'(others => 0),
-                    Buffer_Index_T'First,
-                    Digest_Length,
-                    False);  --  Is overflowed
-
-      Context.Hash_State (0) := Quadlets.Exclusive_Disjunction
-        (Quadlets.Exclusive_Disjunction
-           (Context.Hash_State (0), 16#01010000#),
-            Quadlets.T (Digest_Length));
-
-      return Context;
+      return T'(Hash_State_T'
+                  (0 => Quadlets.Exclusive_Disjunction
+                     (Quadlets.Exclusive_Disjunction
+                        (Initialization_Vectors (0), 16#01010000#),
+                      Quadlets.T (Digest_Length)),
+                   1 => Initialization_Vectors (1),
+                   2 => Initialization_Vectors (2),
+                   3 => Initialization_Vectors (3),
+                   4 => Initialization_Vectors (4),
+                   5 => Initialization_Vectors (5),
+                   6 => Initialization_Vectors (6),
+                   7 => Initialization_Vectors (7)),
+                0, 0,  --  Input octets
+                Quadlet_Buffer_T'(others => 0),
+                Buffer_Index_T'First,
+                Digest_Length,
+                False);  --  Is overflowed
    end Initial;
 
    function Initial_Keyed_Flex
@@ -315,8 +488,11 @@ package body BLAKE2S is
    --# pre Key_Length <= Key'Length;
    --# return Context => Context.Digest_Length = Digest_Length;
    is
+      subtype Key_Position_T is Natural range 0 .. Key_Index_T'Last;
       Context       : T;
-      I             : Key_Index_T;
+      Key_Index     : Key_Position_T;
+      Key_Last      : Key_Index_T;
+      Position      : Buffer_Index_T;
    begin
       Context := Initial (Digest_Length);
 
@@ -324,26 +500,99 @@ package body BLAKE2S is
         (Context.Hash_State (0), Quadlets.Left_Shift
            (Quadlets.T (Key_Length), 8));
 
-      I := Key'First;
-      loop
+      Key_Index := Key'First - 1;
+      Key_Last  := Key_Index + Key_Length;
+      Position  := Buffer_Index_T'First;
+
+      while Key_Index <= Key_Last - 4 loop
          --# assert
-         --#  Key_Length <= Key'Length and
-         --#  (Key'First + Key_Length - 1) <= Key'Last and
-         --#  I >= Key'First and I <= (Key'First + Key_Length) - 1 and
-         --#  Context.Buffer_Index = I - Key'First and
-         --#  Context.Digest_Length = Digest_Length;
-         Context.Input_Buffer (Context.Buffer_Index) := Key (I);
-
-         if I = (Key'First + Key_Length) - 1 then
-            --  A for loop is avoided to resolve a dead path when
-            --  Buffer_Index is incremented only to be set herein.
-            Context.Buffer_Index := Buffer_Index_T'Last + 1;
-            exit;
-         end if;
-
-         I := I + 1;
-         Context.Buffer_Index := Context.Buffer_Index + 1;
+         --#   Context.Digest_Length = Digest_Length and
+         --#   Key'Length = (Key'Last - Key'First) + 1 and
+         --#   Key_Length <= Key'Length and
+         --#   Key_Last = (Key'First - 1) + Key_Length and
+         --#   Key_Last <= Key'Last and
+         --#   Key_Index >= Key'First - 1 and
+         --#   Key_Index + 1 >= Key'First and
+         --#   Key_Index <= Key_Last - 4 and
+         --#   Key_Index + 1 <= Key'Last - 3 and
+         --#   Key_Index <= Key'Last - 4 and
+         --#   (Key_Index - (Key'First - 1)) mod 4 = 0 and
+         --#   Position = (Key_Index - (Key'First - 1)) / 4;
+         Key_Index := Key_Index + 1;
+         Context.Input_Buffer (Position) := Quadlets.T (Key (Key_Index));
+         Key_Index := Key_Index + 1;
+         Context.Input_Buffer (Position) :=
+           Quadlets.Inclusive_Disjunction
+           (Context.Input_Buffer (Position),
+            Quadlets.Left_Shift
+              (Quadlets.T (Key (Key_Index)), 8));
+         Key_Index := Key_Index + 1;
+         Context.Input_Buffer (Position) :=
+           Quadlets.Inclusive_Disjunction
+           (Context.Input_Buffer (Position),
+            Quadlets.Left_Shift
+              (Quadlets.T (Key (Key_Index)), 16));
+         Key_Index := Key_Index + 1;
+         Context.Input_Buffer (Position) :=
+           Quadlets.Inclusive_Disjunction
+           (Context.Input_Buffer (Position),
+            Quadlets.Left_Shift
+              (Quadlets.T (Key (Key_Index)), 24));
+         Position := Position + 1;
       end loop;
+      --# assert
+      --#   Context.Digest_Length = Digest_Length and
+      --#   Key'Length = (Key'Last - Key'First) + 1 and
+      --#   Key_Length <= Key'Length and
+      --#   Key_Last = (Key'First - 1) + Key_Length and
+      --#   Key_Last <= Key'Last and
+      --#   Key_Index >= Key'First - 1 and
+      --#   Key_Index > Key_Last - 4 and
+      --#   Key_Index <= Key_Last and
+      --#   (Key_Index - (Key'First - 1)) mod 4 = 0 and
+      --#   Position = (Key_Index - (Key'First - 1)) / 4;
+
+      if Key_Index < Key_Last then
+         Key_Index := Key_Index + 1;
+         --# assert
+         --#   Context.Digest_Length = Digest_Length and
+         --#   Key_Last <= Key'Last and
+         --#   Key_Index >= Key'First and
+         --#   Key_Index <= Key'Last and
+         --#   (Key_Index - (Key'First - 1)) mod 4 = 1 and
+         --#   Position = (Key_Index - (Key'First - 1)) / 4;
+         Context.Input_Buffer (Position) := Quadlets.T (Key (Key_Index));
+         if Key_Index < Key_Last then
+            Key_Index := Key_Index + 1;
+            --# assert
+            --#   Context.Digest_Length = Digest_Length and
+            --#   Key_Last <= Key'Last and
+            --#   Key_Index >= Key'First + 1 and
+            --#   Key_Index <= Key'Last and
+            --#   (Key_Index - (Key'First - 1)) mod 4 = 2 and
+            --#   Position = (Key_Index - (Key'First - 1)) / 4;
+            Context.Input_Buffer (Position) :=
+              Quadlets.Inclusive_Disjunction
+              (Context.Input_Buffer (Position),
+               Quadlets.Left_Shift (Quadlets.T (Key (Key_Index)), 8));
+            if Key_Index < Key_Last then
+               Key_Index := Key_Index + 1;
+               --# assert
+               --#   Context.Digest_Length = Digest_Length and
+               --#   Key_Last <= Key'Last and
+               --#   Key_Index >= Key'First + 2 and
+               --#   Key_Index <= Key'Last and
+               --#   (Key_Index - (Key'First - 1)) mod 4 = 3 and
+               --#   Position = (Key_Index - (Key'First - 1)) / 4;
+               Context.Input_Buffer (Position) :=
+                 Quadlets.Inclusive_Disjunction
+                 (Context.Input_Buffer (Position),
+                  Quadlets.Left_Shift (Quadlets.T (Key (Key_Index)), 16));
+            end if;
+         end if;
+      end if;
+
+      Context.Buffer_Index := Buffer_Octets;
 
       return Context;
    end Initial_Keyed_Flex;
@@ -384,8 +633,8 @@ package body BLAKE2S is
          Augend_Upper => Context.Input_Octets_Upper,
          Overflow     => Context.Overflowed);
 
-      for I in Natural range
-        Context.Buffer_Index .. Context.Input_Buffer'Last
+      for I in Buffer_Index_T range
+        (Context.Buffer_Index + 3) / 4 .. Context.Input_Buffer'Last
       loop
          --# assert
          --#   I in Buffer_Index_T and

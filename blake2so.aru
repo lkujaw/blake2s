@@ -1,10 +1,23 @@
+--  OLD RULES  --
+check style (positional_association, instantiation);
+
+--  COMMON --
+
 check abnormal_function_return;
+check allocators;
+--  Forbid empty "when others"
+check case_statement (others_span, min 1);
+--  Forbid non-ASCII
 check characters;
+--  Require a unit name comment when there are intervening subprograms
 check comments (unnamed_begin, declaration package);
 check comments (unnamed_begin, program_unit function);
 check comments (unnamed_begin, program_unit procedure);
+--  Forbid access types, child units, exceptions, unsubtyped arrays, tasks
+Exception_Rule: check declarations (exception);
+check declarations (access_type, child_unit, single_array, task);
 check declarations (multiple_names);
-check declarations (single_array);
+check directly_accessed_globals;
 check expressions (universal_range);
 check insufficient_parameters (1, standard.boolean);
 check local_hiding (strict);
@@ -12,7 +25,9 @@ check max_line_length (78);
 check naming_convention (type, case_sensitive "_T$", case_sensitive "T");
 check parameter_aliasing (unlikely);
 check simplifiable_expressions;
-check simplifiable_statements;
+check simplifiable_statements
+ (block, dead, handler, if, if_for_case, if_not, loop, loop_for_while,
+  nested_path, null);
 check statements (goto);
 check statements (unnamed_exit);
 check style (casing_keyword, lowercase);
@@ -23,8 +38,6 @@ check style (negative_condition);
 check style (no_closing_name);
 Parameter_Rule: check style (parameter_order);
 set tag1 "!";
-check unnecessary_use_clause;
-check with_clauses (reduceable);
-
---  OLD RULES  --
-check style (positional_association, instantiation);
+check unnecessary_use_clause (unused, qualified, operator, nested, movable);
+check unsafe_unchecked_conversion;
+check with_clauses (multiple_names, reduceable);

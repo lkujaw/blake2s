@@ -42,11 +42,6 @@ package Quadlets is
    function Right_Rotation (Value  : in T;
                             Amount : in Bit_Count_T) return T;
 
-   function Concatenation (Octet_1 : in Octets.T;
-                           Octet_2 : in Octets.T;
-                           Octet_3 : in Octets.T;
-                           Octet_4 : in Octets.T) return T;
-
    subtype Octet_Index_T is Natural range 0 .. 3;
 
    function Octet (Value : in T;
