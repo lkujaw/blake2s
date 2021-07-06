@@ -26,8 +26,7 @@ LIB_DLOC=$(LIB_DDIR)/lib$(LIB_NAME).so
 ifeq ($(SYSNAME), Darwin)
 	LIB_DLOC=$(LIB_DDIR)/lib$(LIB_NAME).dylib
 	LDFLAGS=-dynamiclib -fPIC
-endif
-ifeq ($(SYSNAME), Linux)
+else
 	LDFLAGS=-shared -fPIC
 endif
 
