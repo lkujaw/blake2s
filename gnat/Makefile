@@ -28,6 +28,7 @@ ifeq ($(SYSNAME), Darwin)
 	LDFLAGS=-dynamiclib -fPIC
 else
 	LDFLAGS=-shared -fPIC
+	LDSTRIP=-largs -s	
 endif
 
 GCCFLAGS=-O3
@@ -48,10 +49,10 @@ $(LIB_SDIR) $(LIB_DDIR) $(BIN_SDIR) $(BIN_DDIR):
 
 .SECONDEXPANSION:
 $(BIN_SNMS): %: $(BIN_ADIR)/$$(notdir %).adb $(BIN_SDIR) $(LIB_SLOC)
-	gnatmake $(ADABINFLAGS) $(ADA95) -aI$(TOP_DIR)/gnat $(LIB_ADIR:%=-aI%) -D $(BIN_SDIR) -o $@ $<
+	gnatmake $(ADABINFLAGS) $(ADA95) -aI$(TOP_DIR)/gnat $(LIB_ADIR:%=-aI%) -D $(BIN_SDIR) -o $@ $< $(LDSTRIP)
 
 $(BIN_DLOC): $(BIN_ALOC) $(BIN_DDIR) $(LIB_DLOC)
-	gnatmake $(ADABINFLAGS) $(ADA95) -aI$(TOP_DIR)/gnat $(LDFLAGS) -c $(BIN_ALOC) -D $(BIN_DDIR) $(LIB_ADIR:%=-aI%) $(LIB_DDIR:%=-aO%)
+	gnatmake $(ADABINFLAGS) $(ADA95) -aI$(TOP_DIR)/gnat $(LDFLAGS) -c $(BIN_ALOC) -D $(BIN_DDIR) $(LIB_ADIR:%=-aI%) $(LIB_DDIR:%=-aO%) $(LDSTRIP)
 	cd $(BIN_DDIR) && \
 		gnatbind -shared $(LIB_DDIR:%=-aO%) -x $(BIN_DLOC).ali && \
 		gnatlink $(BIN_DLOC).ali $(GCCFLAGS) $(LIB_NAME:%=-l%) -o $(BIN_DLOC)
