@@ -7,7 +7,7 @@ BIN_DLOC=$(BIN_DDIR)/b2ssum
 BIN_ALOC=$(BIN_ADIR)/b2ssum.adb
 BIN_SNMS=$(addprefix $(BIN_SDIR)/,b2ssum b2stest)
 
-LIB_NAME=ab2s
+LIB_NAME=b2sa
 LIB_SDIR=$(TOP_DIR)/gnat/slib
 LIB_DDIR=$(TOP_DIR)/gnat/dlib
 LIB_ADIR=$(TOP_DIR)/common
@@ -91,7 +91,7 @@ adactl.old:: ../blake2so.aru quadlets.adb
 	-@rm -f *.adt *.ali
 
 clean::
-	-@rm -f dbin/* sbin/* dlib/* slib/*
+	-@rm -f dbin/* sbin/* dlib/* slib/* sobj/*
 	-@rm -f $(TOP_DIR)/tests/*.out
 	-@rm -f quadlets/*.prv
 	-@sparkclean -examiner -simplifier

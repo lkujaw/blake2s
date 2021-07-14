@@ -1,4 +1,4 @@
---  NOTE: Unlike the rest of the Ada-BLAKE2 package, b2ssum is written in
+--  NOTE: Unlike the rest of the BLAKE2s Ada package, b2ssum is written in
 --        full ISO Ada 95 so that streaming I/O may be utilized.
 --! rule off Exception_Rule
 

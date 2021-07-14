@@ -1,9 +1,33 @@
---  Copyright 2021 Lev Kujawski
+------------------------------------------------------------------------------
+--  Copyright (c) 2021, Lev Kujawski.
 --
---  Language: SPARK 83 subset of ISO Ada 87 (ISO/IEC 8652:1987)
---  License: See LICENSE.txt
+--  Permission is hereby granted, free of charge, to any person obtaining a
+--  copy of this software and associated documentation files (the "Software")
+--  to deal in the Software without restriction, including without limitation
+--  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+--  and sell copies of the Software, and to permit persons to whom the
+--  Software is furnished to do so.
 --
---  Based upon the RFC7693 by Saarinen and Aumasson (November, 2015).
+--  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+--  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+--  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+--  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+--  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+--  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+--  DEALINGS IN THE SOFTWARE.
+--
+--  File:           blake2s.ads (Specification)
+--  Language:       SPARK83 [1] subset of ISO Ada 87 [2]
+--  Author:         Lev Kujawski
+--  Description:    Implementation of the BLAKE2s hash function [3]
+--
+--  References:
+--  [1] SPARK Team, SPARK83 - The SPADE Ada83 Kernel, Altran Praxis, 17 Oct.
+--      2011.
+--  [2] Programming languages - Ada, ISO/IEC 8652:1987, 15 Jun. 1987.
+--  [3] M-J. Saarinen and J-P Aumasson, "The BLAKE2 Cryptographic Hash and
+--      Message Authentication Code (MAC)," RFC 7693, Nov. 2015.
+------------------------------------------------------------------------------
 
 with Octets;
 with Octet_Arrays;

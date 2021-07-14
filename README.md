@@ -1,4 +1,4 @@
-# ada-blake2 #
+# BLAKE2s for Ada #
 
 This is a SPARK83 implementation of the [BLAKE2s](https://www.blake2.net/) hash function. As SPARK83 is a strict subset of Ada 87 (ISO-8652:1987), this package should be usable with any standard-compliant Ada compiler.
 

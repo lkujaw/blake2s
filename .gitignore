@@ -1,0 +1,7 @@
+gnat/dbin/
+gnat/dlib/
+gnat/sbin/
+gnat/slib/
+gnat/sobj/
+alire/
+alire.lock
