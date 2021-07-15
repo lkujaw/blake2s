@@ -25,7 +25,7 @@
 --  [1] SPARK Team, SPARK83 - The SPADE Ada83 Kernel, Altran Praxis, 17 Oct.
 --      2011.
 --  [2] Programming languages - Ada, ISO/IEC 8652:1987, 15 Jun. 1987.
---  [3] M-J. Saarinen and J-P Aumasson, "The BLAKE2 Cryptographic Hash and
+--  [3] M-J. Saarinen and J-P. Aumasson, "The BLAKE2 Cryptographic Hash and
 --      Message Authentication Code (MAC)," RFC 7693, Nov. 2015.
 ------------------------------------------------------------------------------
 

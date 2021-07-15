@@ -49,7 +49,7 @@ project BLAKE2S is
    case Style_Checks is
       when "enabled" =>
          Style_Checks_Switches :=
-           ("-gnaty3abcdefhiklM78nprtux");
+           ("-gnaty3abcefhiklM78nprtux");
       when others => null;
    end case;
 

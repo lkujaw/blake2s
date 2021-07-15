@@ -28,11 +28,11 @@ ifeq ($(SYSNAME), Darwin)
 	LDFLAGS=-dynamiclib -fPIC
 else
 	LDFLAGS=-shared -fPIC
-	LDSTRIP=-largs -s	
+	LDSTRIP=-largs -s
 endif
 
 GCCFLAGS=-O3
-ADAFLAGS=-gnatN -gnata -gnatk8 -gnatwadl -gnaty3abcdefhiklM78nprtux -q $(GCCFLAGS)
+ADAFLAGS=-gnatN -gnata -gnatk8 -gnatwadl -gnaty3abcefhiklM78nprtux -q $(GCCFLAGS)
 ADABINFLAGS=-gnatec=$(TOP_DIR)/gnat/bin.adc $(ADAFLAGS)
 ADALIBFLAGS=-gnatec=$(TOP_DIR)/gnat/lib.adc $(ADAFLAGS)
 ADA83=$(shell gnatmake 2>&1|grep -q -- '-gnat83' && echo "-gnat83")

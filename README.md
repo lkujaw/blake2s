@@ -2,6 +2,10 @@
 
 This is a SPARK83 implementation of the [BLAKE2s](https://www.blake2.net/) hash function. As SPARK83 is a strict subset of Ada 87 (ISO-8652:1987), this package should be usable with any standard-compliant Ada compiler.
 
+## BLAKE2s advantages ##
+
+Like SHA-256, BLAKE2s operates on 32-bit words, but is not susceptible to the length extension attacks of the former. Although the FIPS hash functions SHA-512/256 and SHA-3 mitigate the length extension vulnerability of SHA-256, they require 64-bit words for decent performance. Thus, BLAKE2s fills a niche for resource-constrained platforms. It also enjoys a high security margin, as each of the ten BLAKE2s rounds is the equivalent of two ChaCha rounds.
+
 ## Build instructions for GNAT ##
 
 To compile the ada-blake2 library and executables, you will need a copy of GCC within your path that includes the GNAT Ada front-end.
