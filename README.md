@@ -1,3 +1,5 @@
+[![Alire](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/blake2s.json)](https://alire.ada.dev/crates/blake2s.html)
+
 # BLAKE2s for Ada #
 
 This is a SPARK83 implementation of the [BLAKE2s](https://www.blake2.net/) hash function. As SPARK83 is a strict subset of Ada 87 (ISO-8652:1987), this package should be usable with any standard-compliant Ada compiler.
@@ -8,7 +10,7 @@ Like SHA-256, BLAKE2s operates on 32-bit words, but is not susceptible to the le
 
 ## Build instructions for GNAT ##
 
-To compile the ada-blake2 library and executables, you will need a copy of GCC within your path that includes the GNAT Ada front-end.
+To compile the blake2s library and executables, you will need a copy of GCC within your path that includes the GNAT Ada front-end.
 
 To use the included Makefile, run "cd gnat && make" .
 
@@ -17,6 +19,8 @@ To use the included Makefile, run "cd gnat && make" .
 This project uses a combination of the original, annotation-based SPARK tool set (search [AdaCore Libre](https://libre.adacore.com/) for the 2012 GPL release) and the HOL-SPARK library bundled within [Isabelle](https://isabelle.in.tum.de/) 2021 to prove the absence of runtime errors.
 
 To verify the proofs, check the Makefile within the project root first to ensure that you have the necessary programs (including the 'isabelle' command) installed within your path.
+
+If everything is functioning as it should, there should be no undischarged verification conditions.
 
 ## Ada 87 compatibility note ##
 
