@@ -16,10 +16,12 @@
 --  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 --  DEALINGS IN THE SOFTWARE.
 --
---  File:           quadlets.ads (Specification)
---  Language:       SPARK83 [1] subset of ISO Ada 87 [2]
---  Author:         Lev Kujawski
---  Description:    Specification of the Quadlets type and related subprograms
+--  SPDX-License-Identifier: MIT-0
+--
+--  File:          quadlets.ads (Ada Package Specification)
+--  Language:      SPARK83 [1] subset of Ada (1987) [2]
+--  Author:        Lev Kujawski
+--  Description:   Specification of the Quadlets type and related subprograms
 --
 --  References:
 --  [1] SPARK Team, SPARK83 - The SPADE Ada83 Kernel, Altran Praxis, 17 Oct.

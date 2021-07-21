@@ -1,5 +1,36 @@
---  NOTE: Unlike the rest of the BLAKE2s Ada package, b2ssum is written in
---        full ISO Ada 95 so that streaming I/O may be utilized.
+------------------------------------------------------------------------------
+--  Copyright (c) 2021, Lev Kujawski.
+--
+--  Permission is hereby granted, free of charge, to any person obtaining a
+--  copy of this software and associated documentation files (the "Software")
+--  to deal in the Software without restriction, including without limitation
+--  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+--  and sell copies of the Software, and to permit persons to whom the
+--  Software is furnished to do so.
+--
+--  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+--  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+--  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+--  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+--  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+--  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+--  DEALINGS IN THE SOFTWARE.
+--
+--  SPDX-License-Identifier: MIT-0
+--
+--  File:          b2ssum.adb (Ada Subprogram Body)
+--  Language:      Ada (1995) [1]
+--  Author:        Lev Kujawski
+--  Description:   BLAKE2s [2] file hashing utility
+--
+--  References:
+--  [1] Information technology - Programming languages - Ada,
+--      ISO/IEC 8652:1995(E), 15 Feb. 1995.
+--  [3] M-J. Saarinen and J-P. Aumasson, "The BLAKE2 Cryptographic Hash and
+--      Message Authentication Code (MAC)," RFC 7693, Nov. 2015.
+------------------------------------------------------------------------------
+--  NOTE: Unlike the rest of the BLAKE2s for Ada package, b2ssum is written
+--        in non-SPARK Ada (1995) so that streaming I/O may be utilized.
 --! rule off Exception_Rule
 
 with Ada.Characters.Handling;

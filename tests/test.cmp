@@ -1,4 +1,4 @@
-==== Ada BLAKE2S Tests ====
+==== BLAKE2s for Ada Tests ====
 NOTE: Expect 257 tests to pass for a conformant build.
 
 Self-test: PASS
@@ -259,6 +259,6 @@ Self-test: PASS
  Test 255: PASS
  Test 256: PASS
 
-==== Ada BLAKE2S Summary ====
+==== BLAKE2s for Ada Summary ====
 Tests passed: 257
 Tests failed:   0
