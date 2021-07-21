@@ -1,6 +1,6 @@
 name = "blake2s"
 description = "SPARK83 implementation of the BLAKE2s hash function"
-version = "0.1.0"
+version = "0.1.1"
 
 authors = ["Lev Kujawski"]
 maintainers = ["Lev Kujawski <int21h@mailbox.org>"]
