@@ -7,6 +7,41 @@ package body SPARK_IO is
 
    package Integer_IO is new Text_IO.Integer_IO (Num => Integer);
 
+   function Is_Input_File
+     (File : in File_T) return Boolean
+   is
+   begin
+      return File.Kind = Input_Stream or else
+        (File.Kind = Regular_File and then
+           Text_IO.Mode (File.Actual) = Text_IO.In_File);
+   exception
+      when others =>
+         return False;
+   end Is_Input_File;
+
+   function Is_Output_File
+     (File : in File_T) return Boolean
+   is
+   begin
+      return File.Kind = Output_Stream or else
+        (File.Kind = Regular_File and then
+           Text_IO.Mode (File.Actual) = Text_IO.Out_File);
+   exception
+      when others =>
+         return False;
+   end Is_Output_File;
+
+   function End_Of_File
+     (File : in File_T) return Boolean
+   is
+   begin
+      return not Is_Input_File (File) or else
+        Text_IO.End_Of_File (File.Actual);
+   exception
+      when others =>
+         return True;
+   end End_Of_File;
+
    procedure Standard_Input
      (File : out File_T)
    is
@@ -100,24 +135,6 @@ package body SPARK_IO is
          Status := Standard_Program_Error;
    end Close;
 
-   function Is_Input_File
-     (File : in File_T) return Boolean
-   is
-   begin
-      return File.Kind = Input_Stream or else
-        (File.Kind = Regular_File and then
-           Text_IO.Mode (File.Actual) = Text_IO.In_File);
-   end Is_Input_File;
-
-   function Is_Output_File
-     (File : in File_T) return Boolean
-   is
-   begin
-      return File.Kind = Output_Stream or else
-        (File.Kind = Regular_File and then
-           Text_IO.Mode (File.Actual) = Text_IO.Out_File);
-   end Is_Output_File;
-
    procedure New_Line
      (File    : in File_T;
       Spacing : in Positive)
@@ -141,14 +158,6 @@ package body SPARK_IO is
       when others =>
          null;
    end New_Line;
-
-   function End_Of_File
-     (File : in File_T) return Boolean
-   is
-   begin
-      return not Is_Input_File (File) or else
-        Text_IO.End_Of_File (File.Actual);
-   end End_Of_File;
 
    procedure Put
      (File : in File_T;

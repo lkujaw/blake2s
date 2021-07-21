@@ -27,6 +27,9 @@ is
 
    subtype Number_Base_T is Positive range 2 .. 16;
 
+   function End_Of_File (File : in File_T) return Boolean;
+   --# global Inputs;
+
    procedure Standard_Input (File : out File_T);
    --# global in out State;
    --# derives File,
@@ -66,9 +69,6 @@ is
    --# derives Outputs from *,
    --#                      File,
    --#                      Spacing;
-
-   function End_Of_File (File : in File_T) return Boolean;
-   --# global Inputs;
 
    procedure Put_String (File : in File_T;
                          Item : in String;
