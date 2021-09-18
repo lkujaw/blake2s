@@ -45,6 +45,11 @@ with Ada.Text_IO.Text_Streams;
 with Ada.Strings.Unbounded;
 
 with BLAKE2S;
+use type BLAKE2S.Digest_T;
+--  Quash false positive from AdaControl:
+--! rule off Use_Rule
+use type BLAKE2S.Status_T;
+--! rule on Use_Rule
 
 with Octets;
 use type Octets.T;
@@ -52,13 +57,6 @@ use type Octets.T;
 with Octet_Arrays;
 
 procedure B2SSum is
-   function "=" (Left  : in BLAKE2S.Digest_T;
-                 Right : in BLAKE2S.Digest_T) return Boolean
-     renames BLAKE2S."=";
-
-   function "=" (Left  : in BLAKE2S.Status_T;
-                 Right : in BLAKE2S.Status_T) return Boolean
-     renames BLAKE2S."=";
 
    package ACH renames Ada.Characters.Handling;
    package ACL renames Ada.Command_Line;

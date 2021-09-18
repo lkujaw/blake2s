@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 2021, Lev Kujawski.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software")
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ *
+ * SPDX-License-Identifier: MIT-0
+ */
+
+PKGROOT = .
+include $(PKGROOT)/blake2s.nmk
+
+.CLOBBER. += b2stest quadlets \
+	$(PWD:L=*.(adt|ali|dpc|fdl|lst|o|rep|rls|sdp|siv|slg|sli|vcg|zlg|stderr|stdout)) \
+	$("blake2s":L<=!(blake2s.rlu):D=blake2s:B:S)
+
+blake2s.sum : .FORCE spark.smf
+	spark @$(*)
+	sparksimp
+	isabelle build -D . -e
+	pogs
+
+adactl : .VIRTUAL .FORCE $(PKGROOT)/blake2sn.aru
+	$(RM) -f *.a *.ali *.o
+	for i in bin/*.adb; do
+		gnatmake -I$(PKGROOT)/common -I$(PKGROOT)/generic -gnat95 -gnatk8 -gnatct -q ${i}
+		adactl -e -x -f $(*) -r \
+			$$(echo ${i} | sed -e 's:.*/::' -e 's:.ad[bs]:.adt:')
+	done
+	$(RM) -f *.adt *.ali
+
+adactl.old : .VIRTUAL .FORCE $(PKGROOT)/blake2so.aru
+	$(RM) -f *.a *.ali *.o
+	for i in bin/*.adb; do
+		gnatmake -I$(PKGROOT)/common -I$(PKGROOT)/generic -gnat95 -gnatk8 -gnatct -q ${i}
+		adactl -e -x -f $(*) -r \
+			$$(echo ${i} | sed -e 's:.*/::' -e 's:.ad[bs]:.adt:')
+	done
+	$(RM) -f *.adt *.ali
+
+clean : .VIRTUAL .FORCE
+	$(RM) -f blake2s/*.prv
+	sparkclean -examiner -simplifier

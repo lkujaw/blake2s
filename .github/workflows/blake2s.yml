@@ -1,0 +1,44 @@
+name: BLAKE2S CI
+
+on:
+  push:
+    branches: [ trunk ]
+  pull_request:
+    branches: [ trunk ]
+
+jobs:
+  ubuntu:
+
+    runs-on: ubuntu-20.04
+
+    env:
+      TZ: UTC
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: >
+        sudo apt-get update &&
+        sudo apt-get install adacontrol gnat libdb5.3-dev
+
+    - name: Build AST NMAKE
+      run: >
+        git clone https://github.com/lkujaw/ast.git &&
+        cd ast && ./bin/package flat make
+
+    - name: Report (AdaControl)
+      run: |
+        export PATH="${PWD}/ast/bin:$PATH"
+        nmake adactl
+        cd gnat && nmake adactl && nmake clobber
+
+    - name: Build
+      run: |
+        export PATH="${PWD}/ast/bin:$PATH"
+        cd gnat && nmake
+
+    - name: Test
+      run: |
+        export PATH="${PWD}/ast/bin:$PATH"
+        cd gnat && nmake test

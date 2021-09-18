@@ -1,9 +1,36 @@
---  NEW RULES  --
+------------------------------------------------------------------------------
+--  Copyright (c) 2021, Lev Kujawski.
+--
+--  Permission is hereby granted, free of charge, to any person obtaining a
+--  copy of this software and associated documentation files (the "Software")
+--  to deal in the Software without restriction, including without limitation
+--  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+--  and sell copies of the Software, and to permit persons to whom the
+--  Software is furnished to do so.
+--
+--  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+--  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+--  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+--  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+--  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+--  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+--  DEALINGS IN THE SOFTWARE.
+--
+--  SPDX-License-Identifier: MIT-0
+--
+--  File:          blake2sn.aru
+--  Language:      AdaControl
+--  Author:        Lev Kujawski
+--  Description:   AdaControl rules for post-1.15 versions
+------------------------------------------------------------------------------
+
+--  NEW RULES  ---------------------------------------------------------------
+--  The following rules are specific to newer releases of AdaControl:
 set with_clauses.check_private_with off;
 check positional_associations (all, 0, instantiation);
 
---  COMMON --
-
+--  COMMON  ------------------------------------------------------------------
+--  The following rules are shared are common between releases of AdaControl:
 check abnormal_function_return;
 check allocators;
 --  Forbid empty "when others"
@@ -39,6 +66,6 @@ check style (negative_condition);
 check style (no_closing_name);
 Parameter_Rule: check style (parameter_order);
 set tag1 "!";
-check unnecessary_use_clause (unused, qualified, operator, nested, movable);
+Use_Rule: check unnecessary_use_clause (unused, qualified, operator, nested, movable);
 check unsafe_unchecked_conversion;
 check with_clauses (multiple_names, reduceable);
