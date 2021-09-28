@@ -1,44 +1,50 @@
-------------------------------------------------------------------------------
---  Copyright (c) 2021, Lev Kujawski.
---
---  Permission is hereby granted, free of charge, to any person obtaining a
---  copy of this software and associated documentation files (the "Software")
---  to deal in the Software without restriction, including without limitation
---  the rights to use, copy, modify, merge, publish, distribute, sublicense,
---  and sell copies of the Software, and to permit persons to whom the
---  Software is furnished to do so.
---
---  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
---  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
---  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
---  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
---  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
---  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
---  DEALINGS IN THE SOFTWARE.
---
---  SPDX-License-Identifier: MIT-0
---
---  File:          blake2s.adb (Ada Package Body)
---  Language:      SPARK83 [1] subset of Ada (1987) [2]
---  Author:        Lev Kujawski
---  Description:   Implementation of the BLAKE2s hash function [3]
---
---  References:
---  [1] SPARK Team, SPARK83 - The SPADE Ada83 Kernel, Altran Praxis, 17 Oct.
---      2011.
---  [2] Programming languages - Ada, ISO/IEC 8652:1987, 15 Jun. 1987.
---  [3] M-J. Saarinen and J-P. Aumasson, "The BLAKE2 Cryptographic Hash and
---      Message Authentication Code (MAC)," RFC 7693, Nov. 2015.
-------------------------------------------------------------------------------
+-----------------------------------------------------------------------
+--  Copyright 2021 Lev Kujawski                                      --
+--                                                                   --
+--   Permission is hereby granted, free of charge, to any person     --
+--  obtaining a copy of this software and associated documentation   --
+--      files (the "Software") to deal in the Software without       --
+--   restriction, including without limitation the rights to use,    --
+--  copy, modify, merge, publish, distribute, sublicense, and sell   --
+--    copies of the Software, and to permit persons to whom the      --
+--                 Software is furnished to do so.                   --
+--                                                                   --
+--  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,  --
+--  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES  --
+--     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND      --
+--   NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT    --
+--   HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,    --
+--   WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING    --
+--  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR    --
+--                 OTHER DEALINGS IN THE SOFTWARE.                   --
+--                                                                   --
+--  SPDX-License-Identifier: MIT-0                                   --
+--                                                                   --
+--  File:          blake2s.adb (Ada Package Body)                    --
+--  Language:      SPARK83 [1] subset of Ada (1987) [2]              --
+--  Author:        Lev Kujawski                                      --
+--  Description:   Implementation of the BLAKE2s hash function [3]   --
+--                                                                   --
+--  References:                                                      --
+--  [1] SPARK Team, SPARK83 - The SPADE Ada83 Kernel,                --
+--      Altran Praxis, 17 Oct. 2011.                                 --
+--  [2] Programming languages - Ada, ISO/IEC 8652:1987,              --
+--      15 Jun. 1987.                                                --
+--  [3] M-J. Saarinen and J-P. Aumasson, "The BLAKE2 Cryptographic   --
+--      Hash and Message Authentication Code (MAC)", RFC 7693,       --
+--      Nov. 2015.                                                   --
+-----------------------------------------------------------------------
 
 package body BLAKE2S is
 
    Initialization_Vectors : constant Hash_State_T :=
-     Hash_State_T'(16#6A09E667#, 16#BB67AE85#, 16#3C6EF372#, 16#A54FF53A#,
-                   16#510E527F#, 16#9B05688C#, 16#1F83D9AB#, 16#5BE0CD19#);
+     Hash_State_T'
+       (16#6A09_E667#, 16#BB67_AE85#, 16#3C6E_F372#, 16#A54F_F53A#,
+        16#510E_527F#, 16#9B05_688C#, 16#1F83_D9AB#, 16#5BE0_CD19#);
 
    function Is_Overflowed
-     (Context : in T) return Boolean
+     (Context : in T)
+      return Boolean
    --# return Context.Overflowed;
    is
    begin
@@ -46,7 +52,8 @@ package body BLAKE2S is
    end Is_Overflowed;
 
    function Digest_Length_Of
-     (Context : in T) return Digest_Index_T
+     (Context : in T)
+      return Digest_Index_T
    --# return Context.Digest_Length;
    is
    begin
@@ -54,8 +61,8 @@ package body BLAKE2S is
    end Digest_Length_Of;
 
    procedure Compress
-    (Last_IV : in     Quadlets.T;
-     Context : in out T)
+     (Last_IV : in     Quadlets.T;
+      Context : in out T)
    --# derives Context from *,
    --#                      Last_IV;
    --# post Context.Buffer_Index = Context~.Buffer_Index and
@@ -63,21 +70,23 @@ package body BLAKE2S is
    is
       subtype Sigma_Major_T is Natural range 0 .. 9;
       subtype Quadlet_Octet_Index_T is Octets.T range 0 .. 15;
-      type Sigma_T is array (Sigma_Major_T, Quadlet_Octet_Index_T) of
-        Quadlet_Octet_Index_T;
+      type Sigma_T is
+        array
+          (Sigma_Major_T,
+           Quadlet_Octet_Index_T) of Quadlet_Octet_Index_T;
       for Sigma_T'Size use 160 * Octets.Bits;
 
       Sigma : constant Sigma_T := Sigma_T'(
-       0 => (00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15),
-       1 => (14, 10, 04, 08, 09, 15, 13, 06, 01, 12, 00, 02, 11, 07, 05, 03),
-       2 => (11, 08, 12, 00, 05, 02, 15, 13, 10, 14, 03, 06, 07, 01, 09, 04),
-       3 => (07, 09, 03, 01, 13, 12, 11, 14, 02, 06, 05, 10, 04, 00, 15, 08),
-       4 => (09, 00, 05, 07, 02, 04, 10, 15, 14, 01, 11, 12, 06, 08, 03, 13),
-       5 => (02, 12, 06, 10, 00, 11, 08, 03, 04, 13, 07, 05, 15, 14, 01, 09),
-       6 => (12, 05, 01, 15, 14, 13, 04, 10, 00, 07, 06, 03, 09, 02, 08, 11),
-       7 => (13, 11, 07, 14, 12, 01, 03, 09, 05, 00, 15, 04, 08, 06, 02, 10),
-       8 => (06, 15, 14, 09, 11, 03, 00, 08, 12, 02, 13, 07, 01, 04, 10, 05),
-       9 => (10, 02, 08, 04, 07, 06, 01, 05, 15, 11, 09, 14, 03, 12, 13, 00));
+0 => (00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15),
+1 => (14, 10, 04, 08, 09, 15, 13, 06, 01, 12, 00, 02, 11, 07, 05, 03),
+2 => (11, 08, 12, 00, 05, 02, 15, 13, 10, 14, 03, 06, 07, 01, 09, 04),
+3 => (07, 09, 03, 01, 13, 12, 11, 14, 02, 06, 05, 10, 04, 00, 15, 08),
+4 => (09, 00, 05, 07, 02, 04, 10, 15, 14, 01, 11, 12, 06, 08, 03, 13),
+5 => (02, 12, 06, 10, 00, 11, 08, 03, 04, 13, 07, 05, 15, 14, 01, 09),
+6 => (12, 05, 01, 15, 14, 13, 04, 10, 00, 07, 06, 03, 09, 02, 08, 11),
+7 => (13, 11, 07, 14, 12, 01, 03, 09, 05, 00, 15, 04, 08, 06, 02, 10),
+8 => (06, 15, 14, 09, 11, 03, 00, 08, 12, 02, 13, 07, 01, 04, 10, 05),
+9 => (10, 02, 08, 04, 07, 06, 01, 05, 15, 11, 09, 14, 03, 12, 13, 00));
 
       V : Quadlet_Buffer_T;
 
@@ -122,7 +131,8 @@ package body BLAKE2S is
       end Mix;
       pragma Inline (Mix);
 
-      procedure Round (N : in Sigma_Major_T)
+      procedure Round
+        (N : in Sigma_Major_T)
       --# global in     Context;
       --#        in out V;
       --# derives V from *,
@@ -175,25 +185,23 @@ package body BLAKE2S is
       end Round;
       pragma Inline (Round);
    begin  --  Compress
-      V := Quadlet_Buffer_T'
-         (0 => Context.Hash_State (0),
-          1 => Context.Hash_State (1),
-          2 => Context.Hash_State (2),
-          3 => Context.Hash_State (3),
-          4 => Context.Hash_State (4),
-          5 => Context.Hash_State (5),
-          6 => Context.Hash_State (6),
-          7 => Context.Hash_State (7),
-          8 => Initialization_Vectors (0),
-          9 => Initialization_Vectors (1),
-         10 => Initialization_Vectors (2),
-         11 => Initialization_Vectors (3),
-         12 => Quadlets.Exclusive_Disjunction (Initialization_Vectors (4),
-                                               Context.Input_Octets_Lower),
-         13 => Quadlets.Exclusive_Disjunction (Initialization_Vectors (5),
-                                               Context.Input_Octets_Upper),
-         14 => Last_IV,
-         15 => Initialization_Vectors (7));
+      V :=
+        Quadlet_Buffer_T'
+          (0  => Context.Hash_State (0), 1 => Context.Hash_State (1),
+           2  => Context.Hash_State (2), 3 => Context.Hash_State (3),
+           4  => Context.Hash_State (4), 5 => Context.Hash_State (5),
+           6  => Context.Hash_State (6), 7 => Context.Hash_State (7),
+           8  => Initialization_Vectors (0),
+           9  => Initialization_Vectors (1),
+           10 => Initialization_Vectors (2),
+           11 => Initialization_Vectors (3),
+           12 => Quadlets.Exclusive_Disjunction
+                    (Initialization_Vectors (4),
+                     Context.Input_Octets_Lower),
+           13 => Quadlets.Exclusive_Disjunction
+                    (Initialization_Vectors (5),
+                     Context.Input_Octets_Upper),
+           14 => Last_IV, 15 => Initialization_Vectors (7));
 
       Round (0);
       Round (1);
@@ -264,23 +272,27 @@ package body BLAKE2S is
       --#      Message_Index = Message_Index~ + 4;
       is
       begin
-         Message_Index := Message_Index + 1;
-         Context.Input_Buffer (N) := Quadlets.T (Message (Message_Index));
-         Message_Index := Message_Index + 1;
-         Context.Input_Buffer (N) := Quadlets.Inclusive_Disjunction
-           (Context.Input_Buffer (N),
-            Quadlets.Left_Shift
-              (Quadlets.T (Message (Message_Index)), 8));
-         Message_Index := Message_Index + 1;
-         Context.Input_Buffer (N) := Quadlets.Inclusive_Disjunction
-           (Context.Input_Buffer (N),
-            Quadlets.Left_Shift
-              (Quadlets.T (Message (Message_Index)), 16));
-         Message_Index := Message_Index + 1;
-         Context.Input_Buffer (N) := Quadlets.Inclusive_Disjunction
-           (Context.Input_Buffer (N),
-            Quadlets.Left_Shift
-              (Quadlets.T (Message (Message_Index)), 24));
+         Message_Index            := Message_Index + 1;
+         Context.Input_Buffer (N) :=
+           Quadlets.T (Message (Message_Index));
+         Message_Index            := Message_Index + 1;
+         Context.Input_Buffer (N) :=
+           Quadlets.Inclusive_Disjunction
+             (Context.Input_Buffer (N),
+              Quadlets.Left_Shift
+                (Quadlets.T (Message (Message_Index)), 8));
+         Message_Index            := Message_Index + 1;
+         Context.Input_Buffer (N) :=
+           Quadlets.Inclusive_Disjunction
+             (Context.Input_Buffer (N),
+              Quadlets.Left_Shift
+                (Quadlets.T (Message (Message_Index)), 16));
+         Message_Index            := Message_Index + 1;
+         Context.Input_Buffer (N) :=
+           Quadlets.Inclusive_Disjunction
+             (Context.Input_Buffer (N),
+              Quadlets.Left_Shift
+                (Quadlets.T (Message (Message_Index)), 24));
       end Read_Quadlet;
       pragma Inline (Read_Quadlet);
 
@@ -308,7 +320,8 @@ package body BLAKE2S is
       --#      Message_Index >= Message_Last - Buffer_Octets;
       is
       begin
-         --  We need at least one more octet to justify calling Compress.
+         --  At least one more octet is needed to justify calling
+         --  Compress.
          while Message_Last - Message_Index > Buffer_Octets loop
             --# assert
             --#   Context.Buffer_Index = Context~.Buffer_Index and
@@ -378,7 +391,8 @@ package body BLAKE2S is
                Augend_Lower => Context.Input_Octets_Lower,
                Augend_Upper => Context.Input_Octets_Upper,
                Overflow     => Context.Overflowed);
-            Compress (Initialization_Vectors (6), Context); --  Not last
+            --  Not last
+            Compress (Initialization_Vectors (6), Context);
          end loop;
       end Process_Block;
    begin  --  Incorporate_Flex
@@ -407,7 +421,8 @@ package body BLAKE2S is
                Augend_Lower => Context.Input_Octets_Lower,
                Augend_Upper => Context.Input_Octets_Upper,
                Overflow     => Context.Overflowed);
-            Compress (Initialization_Vectors (6), Context); --  Not last
+            --  Not last
+            Compress (Initialization_Vectors (6), Context);
             Context.Buffer_Index := Buffer_Index_T'First;
             Process_Block;
             Position := 0;
@@ -446,36 +461,36 @@ package body BLAKE2S is
                   Context.Input_Buffer (Position) :=
                     Quadlets.T (Message (Message_Index));
                   Context.Buffer_Index := Context.Buffer_Index + 1;
-                  Switch := 1;
+                  Switch               := 1;
                end if;
             when 1 =>
                Message_Index := Message_Index + 1;
                Context.Input_Buffer (Position) :=
                  Quadlets.Inclusive_Disjunction
-                 (Context.Input_Buffer (Position),
-                  Quadlets.Left_Shift (Quadlets.T
-                                         (Message (Message_Index)), 8));
+                   (Context.Input_Buffer (Position),
+                    Quadlets.Left_Shift
+                      (Quadlets.T (Message (Message_Index)), 8));
                Context.Buffer_Index := Context.Buffer_Index + 1;
-               Switch := 2;
+               Switch               := 2;
             when 2 =>
                Message_Index := Message_Index + 1;
                Context.Input_Buffer (Position) :=
                  Quadlets.Inclusive_Disjunction
-                 (Context.Input_Buffer (Position),
-                  Quadlets.Left_Shift (Quadlets.T
-                                         (Message (Message_Index)), 16));
+                   (Context.Input_Buffer (Position),
+                    Quadlets.Left_Shift
+                      (Quadlets.T (Message (Message_Index)), 16));
                Context.Buffer_Index := Context.Buffer_Index + 1;
-               Switch := 3;
+               Switch               := 3;
             when 3 =>
                Message_Index := Message_Index + 1;
                Context.Input_Buffer (Position) :=
                  Quadlets.Inclusive_Disjunction
-                 (Context.Input_Buffer (Position),
-                  Quadlets.Left_Shift (Quadlets.T
-                                         (Message (Message_Index)), 24));
+                   (Context.Input_Buffer (Position),
+                    Quadlets.Left_Shift
+                      (Quadlets.T (Message (Message_Index)), 24));
                Context.Buffer_Index := Context.Buffer_Index + 1;
-               Position := Position + 1;
-               Switch   := 0;
+               Position             := Position + 1;
+               Switch               := 0;
          end case;
       end loop;
    end Incorporate_Flex;
@@ -490,7 +505,8 @@ package body BLAKE2S is
    end Incorporate;
 
    function Initial
-     (Digest_Length : in Digest_Index_T) return T
+     (Digest_Length : in Digest_Index_T)
+      return T
    --# return Context => Context.Digest_Length = Digest_Length and
    --#                   Context.Buffer_Index = 0;
    is
@@ -517,15 +533,16 @@ package body BLAKE2S is
    function Initial_Keyed_Flex
      (Digest_Length : in Digest_Index_T;
       Key           : in Key_T;
-      Key_Length    : in Key_Index_T) return T
+      Key_Length    : in Key_Index_T)
+      return T
    --# pre Key_Length <= Key'Length;
    --# return Context => Context.Digest_Length = Digest_Length;
    is
       subtype Key_Position_T is Natural range 0 .. Key_Index_T'Last;
-      Context       : T;
-      Key_Index     : Key_Position_T;
-      Key_Last      : Key_Index_T;
-      Position      : Buffer_Index_T;
+      Context   : T;
+      Key_Index : Key_Position_T;
+      Key_Last  : Key_Index_T;
+      Position  : Buffer_Index_T;
    begin
       Context := Initial (Digest_Length);
 
@@ -551,26 +568,24 @@ package body BLAKE2S is
          --#   Key_Index <= Key'Last - 4 and
          --#   (Key_Index - (Key'First - 1)) mod 4 = 0 and
          --#   Position = (Key_Index - (Key'First - 1)) / 4;
-         Key_Index := Key_Index + 1;
-         Context.Input_Buffer (Position) := Quadlets.T (Key (Key_Index));
-         Key_Index := Key_Index + 1;
+         Key_Index                       := Key_Index + 1;
+         Context.Input_Buffer (Position) :=
+           Quadlets.T (Key (Key_Index));
+         Key_Index                       := Key_Index + 1;
          Context.Input_Buffer (Position) :=
            Quadlets.Inclusive_Disjunction
-           (Context.Input_Buffer (Position),
-            Quadlets.Left_Shift
-              (Quadlets.T (Key (Key_Index)), 8));
-         Key_Index := Key_Index + 1;
+             (Context.Input_Buffer (Position),
+              Quadlets.Left_Shift (Quadlets.T (Key (Key_Index)), 8));
+         Key_Index                       := Key_Index + 1;
          Context.Input_Buffer (Position) :=
            Quadlets.Inclusive_Disjunction
-           (Context.Input_Buffer (Position),
-            Quadlets.Left_Shift
-              (Quadlets.T (Key (Key_Index)), 16));
-         Key_Index := Key_Index + 1;
+             (Context.Input_Buffer (Position),
+              Quadlets.Left_Shift (Quadlets.T (Key (Key_Index)), 16));
+         Key_Index                       := Key_Index + 1;
          Context.Input_Buffer (Position) :=
            Quadlets.Inclusive_Disjunction
-           (Context.Input_Buffer (Position),
-            Quadlets.Left_Shift
-              (Quadlets.T (Key (Key_Index)), 24));
+             (Context.Input_Buffer (Position),
+              Quadlets.Left_Shift (Quadlets.T (Key (Key_Index)), 24));
          Position := Position + 1;
       end loop;
       --# assert
@@ -594,7 +609,8 @@ package body BLAKE2S is
          --#   Key_Index <= Key'Last and
          --#   (Key_Index - (Key'First - 1)) mod 4 = 1 and
          --#   Position = (Key_Index - (Key'First - 1)) / 4;
-         Context.Input_Buffer (Position) := Quadlets.T (Key (Key_Index));
+         Context.Input_Buffer (Position) :=
+           Quadlets.T (Key (Key_Index));
          if Key_Index < Key_Last then
             Key_Index := Key_Index + 1;
             --# assert
@@ -606,8 +622,9 @@ package body BLAKE2S is
             --#   Position = (Key_Index - (Key'First - 1)) / 4;
             Context.Input_Buffer (Position) :=
               Quadlets.Inclusive_Disjunction
-              (Context.Input_Buffer (Position),
-               Quadlets.Left_Shift (Quadlets.T (Key (Key_Index)), 8));
+                (Context.Input_Buffer (Position),
+                 Quadlets.Left_Shift
+                   (Quadlets.T (Key (Key_Index)), 8));
             if Key_Index < Key_Last then
                Key_Index := Key_Index + 1;
                --# assert
@@ -619,8 +636,9 @@ package body BLAKE2S is
                --#   Position = (Key_Index - (Key'First - 1)) / 4;
                Context.Input_Buffer (Position) :=
                  Quadlets.Inclusive_Disjunction
-                 (Context.Input_Buffer (Position),
-                  Quadlets.Left_Shift (Quadlets.T (Key (Key_Index)), 16));
+                   (Context.Input_Buffer (Position),
+                    Quadlets.Left_Shift
+                      (Quadlets.T (Key (Key_Index)), 16));
             end if;
          end if;
       end if;
@@ -632,10 +650,12 @@ package body BLAKE2S is
 
    function Initial_Keyed
      (Digest_Length : in Digest_Index_T;
-      Key           : in Key_T) return T
+      Key           : in Key_T)
+      return T
    --# pre Key'Length >= 1;
    --# return Context =>
-   --#   Context = Initial_Keyed_Flex (Digest_Length, Key, Key'Length) and
+   --#   Context = Initial_Keyed_Flex (Digest_Length, Key, Key'Length)
+   --#      and
    --#   Digest_Length_Of (Context) = Digest_Length;
    is
    begin
@@ -648,16 +668,16 @@ package body BLAKE2S is
    end Initial_Keyed;
 
    procedure Finalize
-     (Context      : in out T;
-      Digest       :    out Digest_T)
+     (Context : in out T;
+      Digest  :    out Digest_T)
    --# pre Digest'First = Digest_Index_T'First and
    --#     Digest'Length >= Context.Digest_Length;
    --# post Context.Digest_Length = Context~.Digest_Length;
    is
-      Digest_Index : Digest_Index_T         := Digest_Index_T'First;
-      K            : Hash_State_Index_T     := Hash_State_Index_T'First;
-      L            : Quadlets.Octet_Index_T := Quadlets.Octet_Index_T'First;
-      Temp         : Quadlets.T;  --  Forestall a SPARK aliasing warning.
+      Digest_Index : Digest_Index_T   := Digest_Index_T'First;
+      K    : Hash_State_Index_T     := Hash_State_Index_T'First;
+      L    : Quadlets.Octet_Index_T := Quadlets.Octet_Index_T'First;
+      Temp : Quadlets.T;  --  Forestall a SPARK aliasing warning.
    begin
       Temp := Quadlets.T (Context.Buffer_Index);
       Quadlets.Chained_Modular_Sum
@@ -680,30 +700,31 @@ package body BLAKE2S is
          Context.Input_Buffer (I) := 0;
       end loop;
 
-      Compress (Quadlets.Negation (Initialization_Vectors (6)), Context);
+      Compress
+        (Quadlets.Negation (Initialization_Vectors (6)), Context);
       Digest := (others => 0);
 
       loop
          Digest (Digest_Index) :=
            Quadlets.Octet (Context.Hash_State (K), L);
          exit when Digest_Index = Context.Digest_Length;
-         Digest_Index := Digest_Index + 1;
-         L := L + 1;
+         Digest_Index          := Digest_Index + 1;
+         L                     := L + 1;
+         Digest (Digest_Index) :=
+           Quadlets.Octet (Context.Hash_State (K), L);
+         exit when Digest_Index = Context.Digest_Length;
+         Digest_Index          := Digest_Index + 1;
+         L                     := L + 1;
+         Digest (Digest_Index) :=
+           Quadlets.Octet (Context.Hash_State (K), L);
+         exit when Digest_Index = Context.Digest_Length;
+         Digest_Index          := Digest_Index + 1;
+         L                     := L + 1;
          Digest (Digest_Index) :=
            Quadlets.Octet (Context.Hash_State (K), L);
          exit when Digest_Index = Context.Digest_Length;
          Digest_Index := Digest_Index + 1;
-         L := L + 1;
-         Digest (Digest_Index) :=
-           Quadlets.Octet (Context.Hash_State (K), L);
-         exit when Digest_Index = Context.Digest_Length;
-         Digest_Index := Digest_Index + 1;
-         L := L + 1;
-         Digest (Digest_Index) :=
-           Quadlets.Octet (Context.Hash_State (K), L);
-         exit when Digest_Index = Context.Digest_Length;
-         Digest_Index := Digest_Index + 1;
-         L := Quadlets.Octet_Index_T'First;
+         L            := Quadlets.Octet_Index_T'First;
 
          K := K + 1;
          --# assert
@@ -726,7 +747,7 @@ package body BLAKE2S is
       Digest_Length : in     Digest_Index_T;
       Digest        :    out Digest_T)
    is
-      Context       : T;
+      Context : T;
    begin
       Context := Initial (Digest_Length);
       Incorporate_Flex (Context, Message, Message_First, Message_Last);
@@ -743,11 +764,12 @@ package body BLAKE2S is
       Digest        :    out Digest_T)
    is
    begin
-      Hash_Flex (Message       => Message,
-                 Message_First => Message'First,
-                 Message_Last  => Message'Last,
-                 Digest_Length => Digest_Length,
-                 Digest        => Digest);
+      Hash_Flex
+        (Message       => Message,
+         Message_First => Message'First,
+         Message_Last  => Message'Last,
+         Digest_Length => Digest_Length,
+         Digest        => Digest);
    end Hash;
 
    procedure Hash_Keyed_Flex
@@ -759,7 +781,7 @@ package body BLAKE2S is
       Digest_Length : in     Digest_Index_T;
       Digest        :    out Digest_T)
    is
-      Context       : T;
+      Context : T;
    begin
       Context := Initial_Keyed_Flex (Digest_Length, Key, Key_Length);
       --# check Context.Digest_Length = Digest_Length;
@@ -778,16 +800,18 @@ package body BLAKE2S is
       Digest        :    out Digest_T)
    is
    begin
-      Hash_Keyed_Flex (Digest        => Digest,
-                       Digest_Length => Digest_Length,
-                       Key           => Key,
-                       Key_Length    => Key'Length,
-                       Message       => Message,
-                       Message_First => Message'First,
-                       Message_Last  => Message'Last);
+      Hash_Keyed_Flex
+        (Digest        => Digest,
+         Digest_Length => Digest_Length,
+         Key           => Key,
+         Key_Length    => Key'Length,
+         Message       => Message,
+         Message_First => Message'First,
+         Message_Last  => Message'Last);
    end Hash_Keyed;
 
-   function Self_Test return Status_T
+   function Self_Test
+      return Status_T
    is
       subtype Test_Buffer_Length_T is Natural range 0 .. 1024;
 
@@ -803,17 +827,20 @@ package body BLAKE2S is
       Test_Input_Length : constant Test_Input_Length_T :=
         Test_Input_Length_T'(0, 3, 64, 65, 255, 1024);
 
-      subtype Test_Buffer_Index_T is Test_Buffer_Length_T range 1 .. 1024;
+      subtype Test_Buffer_Index_T is
+        Test_Buffer_Length_T range 1 .. 1024;
       subtype Test_Buffer_T is Octet_Arrays.T (Test_Buffer_Index_T);
 
       subtype Key_Octet_Array_T is Octet_Arrays.T (Key_Index_T);
       subtype Digest_Octet_Array_T is Octet_Arrays.T (Digest_Index_T);
 
-      Test_Result : constant Digest_Default_T := Digest_Default_T'
-        (16#6A#, 16#41#, 16#1F#, 16#08#, 16#CE#, 16#25#, 16#AD#, 16#CD#,
-         16#FB#, 16#02#, 16#AB#, 16#A6#, 16#41#, 16#45#, 16#1C#, 16#EC#,
-         16#53#, 16#C5#, 16#98#, 16#B2#, 16#4F#, 16#4F#, 16#C7#, 16#87#,
-         16#FB#, 16#DC#, 16#88#, 16#79#, 16#7F#, 16#4C#, 16#1D#, 16#FE#);
+      Test_Result : constant Digest_Default_T :=
+        Digest_Default_T'
+          (16#6A#, 16#41#, 16#1F#, 16#08#, 16#CE#, 16#25#, 16#AD#,
+           16#CD#, 16#FB#, 16#02#, 16#AB#, 16#A6#, 16#41#, 16#45#,
+           16#1C#, 16#EC#, 16#53#, 16#C5#, 16#98#, 16#B2#, 16#4F#,
+           16#4F#, 16#C7#, 16#87#, 16#FB#, 16#DC#, 16#88#, 16#79#,
+           16#7F#, 16#4C#, 16#1D#, 16#FE#);
 
       Test_Buffer : Test_Buffer_T;
       Test_Digest : Digest_Default_T;
@@ -829,20 +856,21 @@ package body BLAKE2S is
       --#                      Seed;
       --# pre Message_Last <= Message'Last;
       is
-         X            : Quadlets.T;
-         Y            : Quadlets.T := 1;
+         X : Quadlets.T;
+         Y : Quadlets.T := 1;
       begin  --  Self_Test_Sequences
-         X := Quadlets.Modular_Product (16#DEAD4BAD#, Seed);
+         X := Quadlets.Modular_Product (16#DEAD_4BAD#, Seed);
 
          Message := (others => 0);
 
          for I in Positive range Message'First .. Message_Last loop
             --# assert I >= Message'First and I <= Message'Last;
-            Y := Quadlets.Modular_Sum (X, Y);
-            X := Quadlets.Modular_Difference (Y, X);
-            Message (I) := Quadlets.Octet
-              (Quadlets.Right_Shift (Y, 24),
-               Quadlets.Octet_Index_T'First);
+            Y           := Quadlets.Modular_Sum (X, Y);
+            X           := Quadlets.Modular_Difference (Y, X);
+            Message (I) :=
+              Quadlets.Octet
+                (Quadlets.Right_Shift (Y, 24),
+                 Quadlets.Octet_Index_T'First);
          end loop;
       end Self_Test_Sequences;
    begin  --  Self_Test
@@ -894,8 +922,8 @@ package body BLAKE2S is
       --# end accept;
 
       --  Although SPARK is correct to question why one would expect
-      --  the result of a pure function that takes no arguments to change,
-      --  the self-test is designed to flag instances, such as
+      --  the result of a pure function that takes no arguments to
+      --  change, the self-test is designed to flag instances, such as
       --  miscompilation or faulty memory, that could violate such
       --  assumptions.
 

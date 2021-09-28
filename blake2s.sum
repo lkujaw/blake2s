@@ -38,52 +38,52 @@ Summary Dead Path files (.sdp)
 in the directory:
 /home/lev/share/blake2s
 
-Summary produced: 23-JUN-2021 17:43:59.65
+Summary produced: 28-SEP-2021 16:37:50.50
 
 File /home/lev/share/blake2s/b2stest.vcg
-procedure B2STest
+procedure B2STEST
 
-VCs generated 23-JUN-2021 17:29:40
+VCs generated 28-SEP-2021 16:28:19
 
-VCs simplified 23-JUN-2021 17:38:25
+VCs simplified 28-SEP-2021 16:35:17
 
 File /home/lev/share/blake2s/b2stest.dpc
-DPCs generated 23-JUN-2021 17:29:40
+DPCs generated 28-SEP-2021 16:28:19
 
-DPC ZombieScoped 23-JUN-2021  17:38:1
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for procedure_b2stest :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 375     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 377     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 380     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 383     | Inference          | Unchecked |   IU   |
-| 5   | start | rtc check @ 394     | Inference          | Unchecked |   IU   |
-| 6   | start | rtc check @ 394     | Inference          | Unchecked |   IU   |
-| 7   | start | rtc check @ 394     | Inference          | Unchecked |   IU   |
-| 8   | start | rtc check @ 394     | Inference          | Unchecked |   IU   |
-| 9   | start | rtc check @ 400     | Inference          | Unchecked |   IU   |
-| 10  | start | rtc check @ 400     | Inference          | Unchecked |   IU   |
-| 11  | start | rtc check @ 401     | Inference          | Unchecked |   IU   |
-| 12  | start | rtc check @ 401     | Inference          | Unchecked |   IU   |
-| 13  | start | rtc check @ 403     | Inference          | Unchecked |   IU   |
-| 14  | start | rtc check @ 403     | Inference          | Unchecked |   IU   |
-| 15  | start | rtc check @ 404     | Inference          | Unchecked |   IU   |
-| 16  | start | rtc check @ 404     | Inference          | Unchecked |   IU   |
-| 17  | start | rtc check @ 408     | Inference          | Unchecked |   IU   |
-| 18  | start | rtc check @ 408     | Inference          | Unchecked |   IU   |
-| 19  | start | rtc check @ 409     | Inference          | Unchecked |   IU   |
-| 20  | start | rtc check @ 409     | Inference          | Unchecked |   IU   |
-| 21  | start | rtc check @ 410     | Inference          | Unchecked |   IU   |
-| 22  | start | rtc check @ 410     | Inference          | Unchecked |   IU   |
-| 23  | start | rtc check @ 414     | Inference          | Unchecked |   IU   |
-| 24  | start | rtc check @ 414     | Inference          | Unchecked |   IU   |
-| 25  | start | rtc check @ 416     | Inference          | Unchecked |   IU   |
-| 26  | start | rtc check @ 416     | Inference          | Unchecked |   IU   |
-| 27  | start | rtc check @ 421     | Inference          | Unchecked |   IU   |
-| 28  | start | rtc check @ 421     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 425     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 427     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 430     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 433     | Inference          | Unchecked |   IU   |
+| 5   | start | rtc check @ 444     | Inference          | Unchecked |   IU   |
+| 6   | start | rtc check @ 444     | Inference          | Unchecked |   IU   |
+| 7   | start | rtc check @ 444     | Inference          | Unchecked |   IU   |
+| 8   | start | rtc check @ 444     | Inference          | Unchecked |   IU   |
+| 9   | start | rtc check @ 450     | Inference          | Unchecked |   IU   |
+| 10  | start | rtc check @ 450     | Inference          | Unchecked |   IU   |
+| 11  | start | rtc check @ 451     | Inference          | Unchecked |   IU   |
+| 12  | start | rtc check @ 451     | Inference          | Unchecked |   IU   |
+| 13  | start | rtc check @ 454     | Inference          | Unchecked |   IU   |
+| 14  | start | rtc check @ 454     | Inference          | Unchecked |   IU   |
+| 15  | start | rtc check @ 456     | Inference          | Unchecked |   IU   |
+| 16  | start | rtc check @ 456     | Inference          | Unchecked |   IU   |
+| 17  | start | rtc check @ 461     | Inference          | Unchecked |   IU   |
+| 18  | start | rtc check @ 461     | Inference          | Unchecked |   IU   |
+| 19  | start | rtc check @ 462     | Inference          | Unchecked |   IU   |
+| 20  | start | rtc check @ 462     | Inference          | Unchecked |   IU   |
+| 21  | start | rtc check @ 464     | Inference          | Unchecked |   IU   |
+| 22  | start | rtc check @ 464     | Inference          | Unchecked |   IU   |
+| 23  | start | rtc check @ 469     | Inference          | Unchecked |   IU   |
+| 24  | start | rtc check @ 469     | Inference          | Unchecked |   IU   |
+| 25  | start | rtc check @ 471     | Inference          | Unchecked |   IU   |
+| 26  | start | rtc check @ 471     | Inference          | Unchecked |   IU   |
+| 27  | start | rtc check @ 476     | Inference          | Unchecked |   IU   |
+| 28  | start | rtc check @ 476     | Inference          | Unchecked |   IU   |
 | 29  | start |    assert @ finish  | Examiner           | Live      |   EL   |
 | 30  | start |    assert @ finish  | Examiner           | Live      |   EL   |
 | 31  | start |    assert @ finish  | Examiner           | Live      |   EL   |
@@ -94,207 +94,207 @@ VCs for procedure_b2stest :
 
 
 File /home/lev/share/blake2s/b2stest/fail.vcg
-procedure B2STest.Fail
+procedure B2STEST.Fail
 
-VCs generated 23-JUN-2021 17:29:39
+VCs generated 28-SEP-2021 16:28:18
 
-VCs simplified 23-JUN-2021 17:29:41
+VCs simplified 28-SEP-2021 16:28:20
 
 File /home/lev/share/blake2s/b2stest/fail.dpc
-DPCs generated 23-JUN-2021 17:29:39
+DPCs generated 28-SEP-2021 16:28:18
 
-DPC ZombieScoped 23-JUN-2021  17:29:4
+DPC ZombieScoped 28-SEP-2021  16:28:2
 
 VCs for procedure_fail :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 80      | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 82      | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 82      | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 121     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 123     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 123     | Inference          | Unchecked |   IU   |
 | 4   | start |    assert @ finish  | Examiner           | Live      |   EL   |
 | 5   | start |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/b2stest/parse_file.vcg
-procedure B2STest.Parse_File
+procedure B2STEST.Parse_File
 
-VCs generated 23-JUN-2021 17:29:40
+VCs generated 28-SEP-2021 16:28:19
 
-VCs simplified 23-JUN-2021 17:29:41
+VCs simplified 28-SEP-2021 16:28:21
 
 File /home/lev/share/blake2s/b2stest/parse_file.dpc
-DPCs generated 23-JUN-2021 17:29:40
+DPCs generated 28-SEP-2021 16:28:19
 
-DPC ZombieScoped 23-JUN-2021  17:29:4
+DPC ZombieScoped 28-SEP-2021  16:28:2
 
 VCs for procedure_parse_file :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start |    assert @ 366     | Inference          | Live      |   IL   |
-| 2   | 366   |    assert @ 366     | Inference          | Live      |   IL   |
-| 3   | 366   | rtc check @ 367     | Inference          | Unchecked |   IU   |
-| 4   | 366   | pre check @ 368     | Inference          | Unchecked |   IU   |
+| 1   | start |    assert @ 416     | Inference          | Live      |   IL   |
+| 2   | 416   |    assert @ 416     | Inference          | Live      |   IL   |
+| 3   | 416   | rtc check @ 417     | Inference          | Unchecked |   IU   |
+| 4   | 416   | pre check @ 418     | Inference          | Unchecked |   IU   |
 | 5   | start |    assert @ finish  | Examiner           | Live      |   EL   |
-| 6   | 366   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 7   | 366   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 6   | 416   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 7   | 416   |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/b2stest/parse_file/is_prefix.vcg
-function B2STest.Parse_File.Is_Prefix
+function B2STEST.Parse_File.Is_Prefix
 
-VCs generated 23-JUN-2021 17:29:40
+VCs generated 28-SEP-2021 16:28:19
 
-VCs simplified 23-JUN-2021 17:29:48
+VCs simplified 28-SEP-2021 16:28:25
 
 File /home/lev/share/blake2s/b2stest/parse_file/is_prefix.dpc
-DPCs generated 23-JUN-2021 17:29:40
+DPCs generated 28-SEP-2021 16:28:19
 
-DPC ZombieScoped 23-JUN-2021  17:29:4
+DPC ZombieScoped 28-SEP-2021  16:28:2
 
 VCs for function_is_prefix :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 232     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 232     | Inference          | Unchecked |   IU   |
-| 3   | start |    assert @ 233     | Inference          | Live      |   IL   |
-| 4   | 233   |    assert @ 233     | Inference          | Live      |   IL   |
-| 5   | 233   | rtc check @ 234     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 278     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 278     | Inference          | Unchecked |   IU   |
+| 3   | start |    assert @ 279     | Inference          | Live      |   IL   |
+| 4   | 279   |    assert @ 279     | Inference          | Live      |   IL   |
+| 5   | 279   | rtc check @ 280     | Inference          | Unchecked |   IU   |
 | 6   | start |    assert @ finish  | Examiner           | Live      |   EL   |
-| 7   | 233   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 8   | 233   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 7   | 279   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 8   | 279   |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/b2stest/parse_file/parse_line.vcg
-procedure B2STest.Parse_File.Parse_Line
+procedure B2STEST.Parse_File.Parse_Line
 
-VCs generated 23-JUN-2021 17:29:40
+VCs generated 28-SEP-2021 16:28:19
 
-VCs simplified 23-JUN-2021 17:29:51
+VCs simplified 28-SEP-2021 16:28:28
 
 File /home/lev/share/blake2s/b2stest/parse_file/parse_line.dpc
-DPCs generated 23-JUN-2021 17:29:40
+DPCs generated 28-SEP-2021 16:28:19
 
-DPC ZombieScoped 23-JUN-2021  17:29:4
+DPC ZombieScoped 28-SEP-2021  16:28:2
 
 VCs for procedure_parse_line :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start |    assert @ 288     | Inference          | Live      |   IL   |
-| 2   | 288   | pre check @ 292     | Inference          | Unchecked |   IU   |
-| 3   | 288   | pre check @ 293     | Inference          | Unchecked |   IU   |
-| 4   | 288   | rtc check @ 293     | Inference          | Unchecked |   IU   |
-| 5   | 288   | rtc check @ 295     | Inference          | Unchecked |   IU   |
-| 6   | 288   | pre check @ 298     | Inference          | Unchecked |   IU   |
-| 7   | 288   | pre check @ 299     | Inference          | Unchecked |   IU   |
-| 8   | 288   | rtc check @ 299     | Inference          | Unchecked |   IU   |
-| 9   | 288   | pre check @ 303     | Inference          | Unchecked |   IU   |
-| 10  | 288   | pre check @ 304     | Inference          | Unchecked |   IU   |
-| 11  | 288   | rtc check @ 304     | Inference          | Unchecked |   IU   |
-| 12  | 288   | rtc check @ 307     | Inference          | Unchecked |   IU   |
-| 13  | 288   | rtc check @ 309     | Inference          | Unchecked |   IU   |
-| 14  | 288   | pre check @ 313     | Inference          | Unchecked |   IU   |
-| 15  | 288   | pre check @ 325     | Inference          | Unchecked |   IU   |
-| 16  | 288   | pre check @ 329     | Inference          | Unchecked |   IU   |
-| 17  | 288   | pre check @ 337     | Inference          | Unchecked |   IU   |
-| 18  | 288   | rtc check @ 354     | Inference          | Unchecked |   IU   |
-| 19  | 288   | rtc check @ 354     | Inference          | Unchecked |   IU   |
-| 20  | 288   | rtc check @ 354     | Inference          | Unchecked |   IU   |
-| 21  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 22  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 23  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 24  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 25  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 26  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 27  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 28  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 29  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 30  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 31  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 32  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
-| 33  | 288   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 1   | start |    assert @ 334     | Inference          | Live      |   IL   |
+| 2   | 334   | pre check @ 338     | Inference          | Unchecked |   IU   |
+| 3   | 334   | pre check @ 339     | Inference          | Unchecked |   IU   |
+| 4   | 334   | rtc check @ 339     | Inference          | Unchecked |   IU   |
+| 5   | 334   | rtc check @ 342     | Inference          | Unchecked |   IU   |
+| 6   | 334   | pre check @ 345     | Inference          | Unchecked |   IU   |
+| 7   | 334   | pre check @ 346     | Inference          | Unchecked |   IU   |
+| 8   | 334   | rtc check @ 346     | Inference          | Unchecked |   IU   |
+| 9   | 334   | pre check @ 350     | Inference          | Unchecked |   IU   |
+| 10  | 334   | pre check @ 351     | Inference          | Unchecked |   IU   |
+| 11  | 334   | rtc check @ 351     | Inference          | Unchecked |   IU   |
+| 12  | 334   | rtc check @ 355     | Inference          | Unchecked |   IU   |
+| 13  | 334   | rtc check @ 357     | Inference          | Unchecked |   IU   |
+| 14  | 334   | pre check @ 362     | Inference          | Unchecked |   IU   |
+| 15  | 334   | pre check @ 374     | Inference          | Unchecked |   IU   |
+| 16  | 334   | pre check @ 379     | Inference          | Unchecked |   IU   |
+| 17  | 334   | pre check @ 387     | Inference          | Unchecked |   IU   |
+| 18  | 334   | rtc check @ 404     | Inference          | Unchecked |   IU   |
+| 19  | 334   | rtc check @ 404     | Inference          | Unchecked |   IU   |
+| 20  | 334   | rtc check @ 404     | Inference          | Unchecked |   IU   |
+| 21  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 22  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 23  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 24  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 25  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 26  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 27  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 28  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 29  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 30  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 31  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 32  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 33  | 334   |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/b2stest/parse_file/read_hex.vcg
-procedure B2STest.Parse_File.Read_Hex
+procedure B2STEST.Parse_File.Read_Hex
 
-VCs generated 23-JUN-2021 17:29:40
+VCs generated 28-SEP-2021 16:28:18
 
-VCs simplified 23-JUN-2021 17:29:48
+VCs simplified 28-SEP-2021 16:28:25
 
 File /home/lev/share/blake2s/b2stest/parse_file/read_hex.dpc
-DPCs generated 23-JUN-2021 17:29:40
+DPCs generated 28-SEP-2021 16:28:18
 
-DPC ZombieScoped 23-JUN-2021  17:29:4
+DPC ZombieScoped 28-SEP-2021  16:28:2
 
 VCs for procedure_read_hex :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 190     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 191     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 192     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 194     | Inference          | Unchecked |   IU   |
-| 5   | start |    assert @ 200     | Inference          | Live      |   IL   |
-| 6   | 200   |    assert @ 200     | Review             | Live      |   RL   |
-| 7   | 200   | rtc check @ 208     | Inference          | Unchecked |   IU   |
-| 8   | 200   | rtc check @ 208     | Inference          | Unchecked |   IU   |
-| 9   | 200   | rtc check @ 210     | Inference          | Unchecked |   IU   |
-| 10  | 200   | rtc check @ 212     | Inference          | Unchecked |   IU   |
-| 11  | 200   | rtc check @ 212     | Inference          | Unchecked |   IU   |
-| 12  | 200   | rtc check @ 214     | Inference          | Unchecked |   IU   |
-| 13  | 200   | rtc check @ 216     | Review             | Unchecked |   RU   |
-| 14  | 200   | rtc check @ 217     | Inference          | Unchecked |   IU   |
-| 15  | start |    assert @ 220     | Inference          | Live      |   IL   |
-| 16  | start |    assert @ 220     | Inference          | Live      |   IL   |
-| 17  | 200   |    assert @ 220     | Review             | Live      |   RL   |
-| 18  | 200   |    assert @ 220     | Review             | Live      |   RL   |
-| 19  | 200   |    assert @ 220     | Inference          | Live      |   IL   |
-| 20  | 220   | rtc check @ 222     | Inference          | Unchecked |   IU   |
-| 21  | 220   |    assert @ finish  | Inference          | Live      |   IL   |
+| 1   | start | rtc check @ 233     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 234     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 235     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 237     | Inference          | Unchecked |   IU   |
+| 5   | start |    assert @ 244     | Inference          | Live      |   IL   |
+| 6   | 244   |    assert @ 244     | Review             | Live      |   RL   |
+| 7   | 244   | rtc check @ 253     | Inference          | Unchecked |   IU   |
+| 8   | 244   | rtc check @ 253     | Inference          | Unchecked |   IU   |
+| 9   | 244   | rtc check @ 255     | Inference          | Unchecked |   IU   |
+| 10  | 244   | rtc check @ 257     | Inference          | Unchecked |   IU   |
+| 11  | 244   | rtc check @ 257     | Inference          | Unchecked |   IU   |
+| 12  | 244   | rtc check @ 259     | Inference          | Unchecked |   IU   |
+| 13  | 244   | rtc check @ 261     | Review             | Unchecked |   RU   |
+| 14  | 244   | rtc check @ 262     | Inference          | Unchecked |   IU   |
+| 15  | start |    assert @ 265     | Inference          | Live      |   IL   |
+| 16  | start |    assert @ 265     | Inference          | Live      |   IL   |
+| 17  | 244   |    assert @ 265     | Review             | Live      |   RL   |
+| 18  | 244   |    assert @ 265     | Review             | Live      |   RL   |
+| 19  | 244   |    assert @ 265     | Inference          | Live      |   IL   |
+| 20  | 265   | rtc check @ 267     | Inference          | Unchecked |   IU   |
+| 21  | 265   |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/b2stest/parse_file/read_hex/hex_digit.vcg
-function B2STest.Parse_File.Read_Hex.Hex_Digit
+function B2STEST.Parse_File.Read_Hex.Hex_Digit
 
-VCs generated 23-JUN-2021 17:29:40
+VCs generated 28-SEP-2021 16:28:18
 
-VCs simplified 23-JUN-2021 17:29:42
+VCs simplified 28-SEP-2021 16:28:21
 
 File /home/lev/share/blake2s/b2stest/parse_file/read_hex/hex_digit.dpc
-DPCs generated 23-JUN-2021 17:29:40
+DPCs generated 28-SEP-2021 16:28:18
 
-DPC ZombieScoped 23-JUN-2021  17:29:4
+DPC ZombieScoped 28-SEP-2021  16:28:2
 
 VCs for function_hex_digit :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 152     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 154     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 156     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 158     | Inference          | Unchecked |   IU   |
-| 5   | start | rtc check @ 160     | Inference          | Unchecked |   IU   |
-| 6   | start | rtc check @ 162     | Inference          | Unchecked |   IU   |
-| 7   | start | rtc check @ 164     | Inference          | Unchecked |   IU   |
-| 8   | start | rtc check @ 166     | Inference          | Unchecked |   IU   |
-| 9   | start | rtc check @ 168     | Inference          | Unchecked |   IU   |
-| 10  | start | rtc check @ 170     | Inference          | Unchecked |   IU   |
-| 11  | start | rtc check @ 172     | Inference          | Unchecked |   IU   |
-| 12  | start | rtc check @ 174     | Inference          | Unchecked |   IU   |
-| 13  | start | rtc check @ 176     | Inference          | Unchecked |   IU   |
-| 14  | start | rtc check @ 178     | Inference          | Unchecked |   IU   |
-| 15  | start | rtc check @ 180     | Inference          | Unchecked |   IU   |
-| 16  | start | rtc check @ 182     | Inference          | Unchecked |   IU   |
-| 17  | start | rtc check @ 184     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 195     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 197     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 199     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 201     | Inference          | Unchecked |   IU   |
+| 5   | start | rtc check @ 203     | Inference          | Unchecked |   IU   |
+| 6   | start | rtc check @ 205     | Inference          | Unchecked |   IU   |
+| 7   | start | rtc check @ 207     | Inference          | Unchecked |   IU   |
+| 8   | start | rtc check @ 209     | Inference          | Unchecked |   IU   |
+| 9   | start | rtc check @ 211     | Inference          | Unchecked |   IU   |
+| 10  | start | rtc check @ 213     | Inference          | Unchecked |   IU   |
+| 11  | start | rtc check @ 215     | Inference          | Unchecked |   IU   |
+| 12  | start | rtc check @ 217     | Inference          | Unchecked |   IU   |
+| 13  | start | rtc check @ 219     | Inference          | Unchecked |   IU   |
+| 14  | start | rtc check @ 221     | Inference          | Unchecked |   IU   |
+| 15  | start | rtc check @ 223     | Inference          | Unchecked |   IU   |
+| 16  | start | rtc check @ 225     | Inference          | Unchecked |   IU   |
+| 17  | start | rtc check @ 227     | Inference          | Unchecked |   IU   |
 | 18  | start |    assert @ finish  | Inference          | Live      |   IL   |
 | 19  | start |    assert @ finish  | Inference          | Live      |   IL   |
 | 20  | start |    assert @ finish  | Inference          | Live      |   IL   |
@@ -316,24 +316,24 @@ VCs for function_hex_digit :
 
 
 File /home/lev/share/blake2s/b2stest/pass.vcg
-procedure B2STest.Pass
+procedure B2STEST.Pass
 
-VCs generated 23-JUN-2021 17:29:39
+VCs generated 28-SEP-2021 16:28:18
 
-VCs simplified 23-JUN-2021 17:29:41
+VCs simplified 28-SEP-2021 16:28:20
 
 File /home/lev/share/blake2s/b2stest/pass.dpc
-DPCs generated 23-JUN-2021 17:29:39
+DPCs generated 28-SEP-2021 16:28:18
 
-DPC ZombieScoped 23-JUN-2021  17:29:4
+DPC ZombieScoped 28-SEP-2021  16:28:2
 
 VCs for procedure_pass :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 65      | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 67      | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 67      | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 106     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 108     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 108     | Inference          | Unchecked |   IU   |
 | 4   | start |    assert @ finish  | Examiner           | Live      |   EL   |
 | 5   | start |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
@@ -342,56 +342,56 @@ VCs for procedure_pass :
 File /home/lev/share/blake2s/blake2s/compress.vcg
 procedure BLAKE2S.Compress
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:38:01
+VCs simplified 28-SEP-2021 16:34:54
 
 File /home/lev/share/blake2s/blake2s/compress.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:37:1
+DPC ZombieScoped 28-SEP-2021  16:34:1
 
 VCs for procedure_compress :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 145     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 145     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 145     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 165     | Inference          | Unchecked |   IU   |
-| 5   | start | rtc check @ 166     | Inference          | Unchecked |   IU   |
-| 6   | start | rtc check @ 167     | Inference          | Unchecked |   IU   |
-| 7   | start | rtc check @ 168     | Inference          | Unchecked |   IU   |
-| 8   | start | rtc check @ 169     | Inference          | Unchecked |   IU   |
-| 9   | start | rtc check @ 170     | Inference          | Unchecked |   IU   |
-| 10  | start | rtc check @ 171     | Inference          | Unchecked |   IU   |
-| 11  | start | rtc check @ 172     | Inference          | Unchecked |   IU   |
-| 12  | start | rtc check @ 173     | Inference          | Unchecked |   IU   |
-| 13  | start | rtc check @ 174     | Inference          | Unchecked |   IU   |
-| 14  | start | rtc check @ 176     | Inference          | Unchecked |   IU   |
-| 15  | start | rtc check @ 176     | Inference          | Unchecked |   IU   |
-| 16  | start | rtc check @ 176     | Inference          | Unchecked |   IU   |
-| 17  | start | rtc check @ 179     | Inference          | Unchecked |   IU   |
-| 18  | start | rtc check @ 179     | Inference          | Unchecked |   IU   |
-| 19  | start | rtc check @ 179     | Inference          | Unchecked |   IU   |
-| 20  | start | rtc check @ 182     | Inference          | Unchecked |   IU   |
-| 21  | start | rtc check @ 182     | Inference          | Unchecked |   IU   |
-| 22  | start | rtc check @ 182     | Inference          | Unchecked |   IU   |
-| 23  | start | rtc check @ 185     | Inference          | Unchecked |   IU   |
-| 24  | start | rtc check @ 185     | Inference          | Unchecked |   IU   |
-| 25  | start | rtc check @ 185     | Inference          | Unchecked |   IU   |
-| 26  | start | rtc check @ 188     | Inference          | Unchecked |   IU   |
-| 27  | start | rtc check @ 188     | Inference          | Unchecked |   IU   |
-| 28  | start | rtc check @ 188     | Inference          | Unchecked |   IU   |
-| 29  | start | rtc check @ 191     | Inference          | Unchecked |   IU   |
-| 30  | start | rtc check @ 191     | Inference          | Unchecked |   IU   |
-| 31  | start | rtc check @ 191     | Inference          | Unchecked |   IU   |
-| 32  | start | rtc check @ 194     | Inference          | Unchecked |   IU   |
-| 33  | start | rtc check @ 194     | Inference          | Unchecked |   IU   |
-| 34  | start | rtc check @ 194     | Inference          | Unchecked |   IU   |
-| 35  | start | rtc check @ 197     | Inference          | Unchecked |   IU   |
-| 36  | start | rtc check @ 197     | Inference          | Unchecked |   IU   |
-| 37  | start | rtc check @ 197     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 188     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 188     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 188     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 206     | Inference          | Unchecked |   IU   |
+| 5   | start | rtc check @ 207     | Inference          | Unchecked |   IU   |
+| 6   | start | rtc check @ 208     | Inference          | Unchecked |   IU   |
+| 7   | start | rtc check @ 209     | Inference          | Unchecked |   IU   |
+| 8   | start | rtc check @ 210     | Inference          | Unchecked |   IU   |
+| 9   | start | rtc check @ 211     | Inference          | Unchecked |   IU   |
+| 10  | start | rtc check @ 212     | Inference          | Unchecked |   IU   |
+| 11  | start | rtc check @ 213     | Inference          | Unchecked |   IU   |
+| 12  | start | rtc check @ 214     | Inference          | Unchecked |   IU   |
+| 13  | start | rtc check @ 215     | Inference          | Unchecked |   IU   |
+| 14  | start | rtc check @ 217     | Inference          | Unchecked |   IU   |
+| 15  | start | rtc check @ 217     | Inference          | Unchecked |   IU   |
+| 16  | start | rtc check @ 217     | Inference          | Unchecked |   IU   |
+| 17  | start | rtc check @ 220     | Inference          | Unchecked |   IU   |
+| 18  | start | rtc check @ 220     | Inference          | Unchecked |   IU   |
+| 19  | start | rtc check @ 220     | Inference          | Unchecked |   IU   |
+| 20  | start | rtc check @ 223     | Inference          | Unchecked |   IU   |
+| 21  | start | rtc check @ 223     | Inference          | Unchecked |   IU   |
+| 22  | start | rtc check @ 223     | Inference          | Unchecked |   IU   |
+| 23  | start | rtc check @ 226     | Inference          | Unchecked |   IU   |
+| 24  | start | rtc check @ 226     | Inference          | Unchecked |   IU   |
+| 25  | start | rtc check @ 226     | Inference          | Unchecked |   IU   |
+| 26  | start | rtc check @ 229     | Inference          | Unchecked |   IU   |
+| 27  | start | rtc check @ 229     | Inference          | Unchecked |   IU   |
+| 28  | start | rtc check @ 229     | Inference          | Unchecked |   IU   |
+| 29  | start | rtc check @ 232     | Inference          | Unchecked |   IU   |
+| 30  | start | rtc check @ 232     | Inference          | Unchecked |   IU   |
+| 31  | start | rtc check @ 232     | Inference          | Unchecked |   IU   |
+| 32  | start | rtc check @ 235     | Inference          | Unchecked |   IU   |
+| 33  | start | rtc check @ 235     | Inference          | Unchecked |   IU   |
+| 34  | start | rtc check @ 235     | Inference          | Unchecked |   IU   |
+| 35  | start | rtc check @ 238     | Inference          | Unchecked |   IU   |
+| 36  | start | rtc check @ 238     | Inference          | Unchecked |   IU   |
+| 37  | start | rtc check @ 238     | Inference          | Unchecked |   IU   |
 | 38  | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
@@ -399,87 +399,87 @@ VCs for procedure_compress :
 File /home/lev/share/blake2s/blake2s/compress/mix.vcg
 procedure BLAKE2S.Compress.Mix
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:31:00
+VCs simplified 28-SEP-2021 16:29:15
 
 File /home/lev/share/blake2s/blake2s/compress/mix.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:30:5
+DPC ZombieScoped 28-SEP-2021  16:29:1
 
 VCs for procedure_mix :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 68      | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 68      | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 68      | Inference          | Unchecked |   IU   |
-| 4   | start |    assert @ 70      | Inference          | Live      |   IL   |
-| 5   | 70    | rtc check @ 71      | Inference          | Unchecked |   IU   |
-| 6   | 70    | rtc check @ 71      | Inference          | Unchecked |   IU   |
-| 7   | 70    | rtc check @ 71      | Inference          | Unchecked |   IU   |
-| 8   | 70    |    assert @ 73      | Inference          | Live      |   IL   |
-| 9   | 73    | rtc check @ 74      | Inference          | Unchecked |   IU   |
-| 10  | 73    | rtc check @ 74      | Inference          | Unchecked |   IU   |
-| 11  | 73    |    assert @ 75      | Inference          | Live      |   IL   |
-| 12  | 75    | rtc check @ 76      | Inference          | Unchecked |   IU   |
-| 13  | 75    | rtc check @ 76      | Inference          | Unchecked |   IU   |
-| 14  | 75    | rtc check @ 76      | Inference          | Unchecked |   IU   |
-| 15  | 75    |    assert @ 78      | Inference          | Live      |   IL   |
-| 16  | 78    | rtc check @ 79      | Inference          | Unchecked |   IU   |
-| 17  | 78    | rtc check @ 79      | Inference          | Unchecked |   IU   |
-| 18  | 78    | rtc check @ 79      | Inference          | Unchecked |   IU   |
-| 19  | 78    |    assert @ 81      | Inference          | Live      |   IL   |
-| 20  | 81    | rtc check @ 82      | Inference          | Unchecked |   IU   |
-| 21  | 81    | rtc check @ 82      | Inference          | Unchecked |   IU   |
-| 22  | 81    | rtc check @ 82      | Inference          | Unchecked |   IU   |
-| 23  | 81    |    assert @ 84      | Inference          | Live      |   IL   |
-| 24  | 84    | rtc check @ 85      | Inference          | Unchecked |   IU   |
-| 25  | 84    | rtc check @ 85      | Inference          | Unchecked |   IU   |
-| 26  | 84    |    assert @ 86      | Inference          | Live      |   IL   |
-| 27  | 86    | rtc check @ 87      | Inference          | Unchecked |   IU   |
-| 28  | 86    | rtc check @ 87      | Inference          | Unchecked |   IU   |
-| 29  | 86    | rtc check @ 87      | Inference          | Unchecked |   IU   |
-| 30  | 86    |    assert @ finish  | Examiner           | Live      |   EL   |
+| 1   | start | rtc check @ 110     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 110     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 110     | Inference          | Unchecked |   IU   |
+| 4   | start |    assert @ 112     | Inference          | Live      |   IL   |
+| 5   | 112   | rtc check @ 113     | Inference          | Unchecked |   IU   |
+| 6   | 112   | rtc check @ 113     | Inference          | Unchecked |   IU   |
+| 7   | 112   | rtc check @ 113     | Inference          | Unchecked |   IU   |
+| 8   | 112   |    assert @ 115     | Inference          | Live      |   IL   |
+| 9   | 115   | rtc check @ 116     | Inference          | Unchecked |   IU   |
+| 10  | 115   | rtc check @ 116     | Inference          | Unchecked |   IU   |
+| 11  | 115   |    assert @ 117     | Inference          | Live      |   IL   |
+| 12  | 117   | rtc check @ 118     | Inference          | Unchecked |   IU   |
+| 13  | 117   | rtc check @ 118     | Inference          | Unchecked |   IU   |
+| 14  | 117   | rtc check @ 118     | Inference          | Unchecked |   IU   |
+| 15  | 117   |    assert @ 120     | Inference          | Live      |   IL   |
+| 16  | 120   | rtc check @ 121     | Inference          | Unchecked |   IU   |
+| 17  | 120   | rtc check @ 121     | Inference          | Unchecked |   IU   |
+| 18  | 120   | rtc check @ 121     | Inference          | Unchecked |   IU   |
+| 19  | 120   |    assert @ 123     | Inference          | Live      |   IL   |
+| 20  | 123   | rtc check @ 124     | Inference          | Unchecked |   IU   |
+| 21  | 123   | rtc check @ 124     | Inference          | Unchecked |   IU   |
+| 22  | 123   | rtc check @ 124     | Inference          | Unchecked |   IU   |
+| 23  | 123   |    assert @ 126     | Inference          | Live      |   IL   |
+| 24  | 126   | rtc check @ 127     | Inference          | Unchecked |   IU   |
+| 25  | 126   | rtc check @ 127     | Inference          | Unchecked |   IU   |
+| 26  | 126   |    assert @ 128     | Inference          | Live      |   IL   |
+| 27  | 128   | rtc check @ 129     | Inference          | Unchecked |   IU   |
+| 28  | 128   | rtc check @ 129     | Inference          | Unchecked |   IU   |
+| 29  | 128   | rtc check @ 129     | Inference          | Unchecked |   IU   |
+| 30  | 128   |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/blake2s/compress/round.vcg
 procedure BLAKE2S.Compress.Round
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:30:56
+VCs simplified 28-SEP-2021 16:29:12
 
 File /home/lev/share/blake2s/blake2s/compress/round.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:30:5
+DPC ZombieScoped 28-SEP-2021  16:29:1
 
 VCs for procedure_round :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start |    assert @ 101     | Inference          | Live      |   IL   |
-| 2   | 101   | rtc check @ 118     | Inference          | Unchecked |   IU   |
-| 3   | 101   | rtc check @ 121     | Inference          | Unchecked |   IU   |
-| 4   | 101   | rtc check @ 124     | Inference          | Unchecked |   IU   |
-| 5   | 101   | rtc check @ 127     | Inference          | Unchecked |   IU   |
-| 6   | 101   | rtc check @ 130     | Inference          | Unchecked |   IU   |
-| 7   | 101   | rtc check @ 133     | Inference          | Unchecked |   IU   |
-| 8   | 101   | rtc check @ 136     | Inference          | Unchecked |   IU   |
-| 9   | 101   | rtc check @ 139     | Inference          | Unchecked |   IU   |
-| 10  | 101   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 1   | start |    assert @ 144     | Inference          | Live      |   IL   |
+| 2   | 144   | rtc check @ 161     | Inference          | Unchecked |   IU   |
+| 3   | 144   | rtc check @ 164     | Inference          | Unchecked |   IU   |
+| 4   | 144   | rtc check @ 167     | Inference          | Unchecked |   IU   |
+| 5   | 144   | rtc check @ 170     | Inference          | Unchecked |   IU   |
+| 6   | 144   | rtc check @ 173     | Inference          | Unchecked |   IU   |
+| 7   | 144   | rtc check @ 176     | Inference          | Unchecked |   IU   |
+| 8   | 144   | rtc check @ 179     | Inference          | Unchecked |   IU   |
+| 9   | 144   | rtc check @ 182     | Inference          | Unchecked |   IU   |
+| 10  | 144   |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/blake2s/digest_length_of.vcg
 function BLAKE2S.Digest_Length_Of
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:37:15
+VCs simplified 28-SEP-2021 16:34:13
 
 The following user rules were used:
 from /home/lev/share/blake2s/blake2s/blake2s.rlu
@@ -487,9 +487,9 @@ from /home/lev/share/blake2s/blake2s/blake2s.rlu
       3.
 
 File /home/lev/share/blake2s/blake2s/digest_length_of.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:38:1
+DPC ZombieScoped 28-SEP-2021  16:35:0
 
 VCs for function_digest_length_of :
  -----------------------------------------------------------------------------
@@ -504,9 +504,9 @@ VCs for function_digest_length_of :
 File /home/lev/share/blake2s/blake2s/finalize.vcg
 procedure BLAKE2S.Finalize
 
-VCs generated 23-JUN-2021 17:29:38
+VCs generated 28-SEP-2021 16:28:17
 
-VCs simplified 23-JUN-2021 17:35:57
+VCs simplified 28-SEP-2021 16:33:16
 
 The following user rules were used:
 from /home/lev/share/blake2s/blake2s/blake2s.rlu
@@ -514,94 +514,94 @@ from /home/lev/share/blake2s/blake2s/blake2s.rlu
       81.
 
 File /home/lev/share/blake2s/blake2s/finalize.dpc
-DPCs generated 23-JUN-2021 17:29:38
+DPCs generated 28-SEP-2021 16:28:17
 
-DPC ZombieScoped 23-JUN-2021  17:37:3
+DPC ZombieScoped 28-SEP-2021  16:34:3
 
 VCs for procedure_finalize :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 629     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 630     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 630     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 636     | Inference          | Unchecked |   IU   |
-| 5   | start | rtc check @ 636     | Inference          | Unchecked |   IU   |
-| 6   | start |    assert @ 640     | Inference          | Live      |   IL   |
-| 7   | 640   |    assert @ 640     | Inference          | Live      |   IL   |
-| 8   | 640   | rtc check @ 647     | Inference          | Unchecked |   IU   |
-| 9   | start | rtc check @ 650     | Inference          | Unchecked |   IU   |
-| 10  | 640   | rtc check @ 650     | Inference          | Unchecked |   IU   |
-| 11  | start | rtc check @ 650     | Inference          | Unchecked |   IU   |
-| 12  | 640   | rtc check @ 650     | Inference          | Unchecked |   IU   |
-| 13  | start | rtc check @ 651     | Inference          | Unchecked |   IU   |
-| 14  | 640   | rtc check @ 651     | Inference          | Unchecked |   IU   |
-| 15  | start | rtc check @ 654     | Inference          | Unchecked |   IU   |
-| 16  | 640   | rtc check @ 654     | Inference          | Unchecked |   IU   |
-| 17  | 677   | rtc check @ 654     | Inference          | Unchecked |   IU   |
-| 18  | start | rtc check @ 654     | Inference          | Unchecked |   IU   |
-| 19  | 640   | rtc check @ 654     | Inference          | Unchecked |   IU   |
-| 20  | 677   | rtc check @ 654     | Inference          | Unchecked |   IU   |
-| 21  | start | rtc check @ 657     | Inference          | Unchecked |   IU   |
-| 22  | 640   | rtc check @ 657     | Inference          | Unchecked |   IU   |
-| 23  | 677   | rtc check @ 657     | Inference          | Unchecked |   IU   |
-| 24  | start | rtc check @ 658     | Inference          | Unchecked |   IU   |
-| 25  | 640   | rtc check @ 658     | Inference          | Unchecked |   IU   |
-| 26  | 677   | rtc check @ 658     | Inference          | Unchecked |   IU   |
-| 27  | start | rtc check @ 659     | Review             | Unchecked |   RU   |
-| 28  | 640   | rtc check @ 659     | Review             | Unchecked |   RU   |
-| 29  | 677   | rtc check @ 659     | Review             | Unchecked |   RU   |
-| 30  | start | rtc check @ 659     | Inference          | Unchecked |   IU   |
-| 31  | 640   | rtc check @ 659     | Inference          | Unchecked |   IU   |
-| 32  | 677   | rtc check @ 659     | Inference          | Unchecked |   IU   |
-| 33  | start | rtc check @ 662     | Inference          | Unchecked |   IU   |
-| 34  | 640   | rtc check @ 662     | Inference          | Unchecked |   IU   |
-| 35  | 677   | rtc check @ 662     | Review             | Unchecked |   RU   |
-| 36  | start | rtc check @ 663     | Inference          | Unchecked |   IU   |
-| 37  | 640   | rtc check @ 663     | Inference          | Unchecked |   IU   |
-| 38  | 677   | rtc check @ 663     | Inference          | Unchecked |   IU   |
-| 39  | start | rtc check @ 664     | Review             | Unchecked |   RU   |
-| 40  | 640   | rtc check @ 664     | Review             | Unchecked |   RU   |
-| 41  | 677   | rtc check @ 664     | Review             | Unchecked |   RU   |
-| 42  | start | rtc check @ 664     | Inference          | Unchecked |   IU   |
-| 43  | 640   | rtc check @ 664     | Inference          | Unchecked |   IU   |
-| 44  | 677   | rtc check @ 664     | Inference          | Unchecked |   IU   |
-| 45  | start | rtc check @ 667     | Inference          | Unchecked |   IU   |
-| 46  | 640   | rtc check @ 667     | Inference          | Unchecked |   IU   |
-| 47  | 677   | rtc check @ 667     | Review             | Unchecked |   RU   |
-| 48  | start | rtc check @ 668     | Inference          | Unchecked |   IU   |
-| 49  | 640   | rtc check @ 668     | Inference          | Unchecked |   IU   |
-| 50  | 677   | rtc check @ 668     | Inference          | Unchecked |   IU   |
-| 51  | start | rtc check @ 669     | Review             | Unchecked |   RU   |
-| 52  | 640   | rtc check @ 669     | Review             | Unchecked |   RU   |
-| 53  | 677   | rtc check @ 669     | Review             | Unchecked |   RU   |
-| 54  | start | rtc check @ 669     | Inference          | Unchecked |   IU   |
-| 55  | 640   | rtc check @ 669     | Inference          | Unchecked |   IU   |
-| 56  | 677   | rtc check @ 669     | Inference          | Unchecked |   IU   |
-| 57  | start | rtc check @ 672     | Inference          | Unchecked |   IU   |
-| 58  | 640   | rtc check @ 672     | Inference          | Unchecked |   IU   |
-| 59  | 677   | rtc check @ 672     | Review             | Unchecked |   RU   |
-| 60  | start | rtc check @ 673     | Inference          | Unchecked |   IU   |
-| 61  | 640   | rtc check @ 673     | Inference          | Unchecked |   IU   |
-| 62  | 677   | rtc check @ 673     | Inference          | Unchecked |   IU   |
-| 63  | start | rtc check @ 675     | Inference          | Unchecked |   IU   |
-| 64  | 640   | rtc check @ 675     | Inference          | Unchecked |   IU   |
-| 65  | 677   | rtc check @ 675     | Inference          | Unchecked |   IU   |
-| 66  | start |    assert @ 677     | Review             | Live      |   RL   |
-| 67  | 640   |    assert @ 677     | Review             | Live      |   RL   |
-| 68  | 677   |    assert @ 677     | Review             | Live      |   RL   |
+| 1   | start | rtc check @ 682     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 683     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 683     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 689     | Inference          | Unchecked |   IU   |
+| 5   | start | rtc check @ 689     | Inference          | Unchecked |   IU   |
+| 6   | start |    assert @ 693     | Inference          | Live      |   IL   |
+| 7   | 693   |    assert @ 693     | Inference          | Live      |   IL   |
+| 8   | 693   | rtc check @ 700     | Inference          | Unchecked |   IU   |
+| 9   | start | rtc check @ 703     | Inference          | Unchecked |   IU   |
+| 10  | 693   | rtc check @ 703     | Inference          | Unchecked |   IU   |
+| 11  | start | rtc check @ 703     | Inference          | Unchecked |   IU   |
+| 12  | 693   | rtc check @ 703     | Inference          | Unchecked |   IU   |
+| 13  | start | rtc check @ 705     | Inference          | Unchecked |   IU   |
+| 14  | 693   | rtc check @ 705     | Inference          | Unchecked |   IU   |
+| 15  | start | rtc check @ 708     | Inference          | Unchecked |   IU   |
+| 16  | 693   | rtc check @ 708     | Inference          | Unchecked |   IU   |
+| 17  | 731   | rtc check @ 708     | Inference          | Unchecked |   IU   |
+| 18  | start | rtc check @ 708     | Inference          | Unchecked |   IU   |
+| 19  | 693   | rtc check @ 708     | Inference          | Unchecked |   IU   |
+| 20  | 731   | rtc check @ 708     | Inference          | Unchecked |   IU   |
+| 21  | start | rtc check @ 711     | Inference          | Unchecked |   IU   |
+| 22  | 693   | rtc check @ 711     | Inference          | Unchecked |   IU   |
+| 23  | 731   | rtc check @ 711     | Inference          | Unchecked |   IU   |
+| 24  | start | rtc check @ 712     | Inference          | Unchecked |   IU   |
+| 25  | 693   | rtc check @ 712     | Inference          | Unchecked |   IU   |
+| 26  | 731   | rtc check @ 712     | Inference          | Unchecked |   IU   |
+| 27  | start | rtc check @ 713     | Review             | Unchecked |   RU   |
+| 28  | 693   | rtc check @ 713     | Review             | Unchecked |   RU   |
+| 29  | 731   | rtc check @ 713     | Review             | Unchecked |   RU   |
+| 30  | start | rtc check @ 713     | Inference          | Unchecked |   IU   |
+| 31  | 693   | rtc check @ 713     | Inference          | Unchecked |   IU   |
+| 32  | 731   | rtc check @ 713     | Inference          | Unchecked |   IU   |
+| 33  | start | rtc check @ 716     | Inference          | Unchecked |   IU   |
+| 34  | 693   | rtc check @ 716     | Inference          | Unchecked |   IU   |
+| 35  | 731   | rtc check @ 716     | Review             | Unchecked |   RU   |
+| 36  | start | rtc check @ 717     | Inference          | Unchecked |   IU   |
+| 37  | 693   | rtc check @ 717     | Inference          | Unchecked |   IU   |
+| 38  | 731   | rtc check @ 717     | Inference          | Unchecked |   IU   |
+| 39  | start | rtc check @ 718     | Review             | Unchecked |   RU   |
+| 40  | 693   | rtc check @ 718     | Review             | Unchecked |   RU   |
+| 41  | 731   | rtc check @ 718     | Review             | Unchecked |   RU   |
+| 42  | start | rtc check @ 718     | Inference          | Unchecked |   IU   |
+| 43  | 693   | rtc check @ 718     | Inference          | Unchecked |   IU   |
+| 44  | 731   | rtc check @ 718     | Inference          | Unchecked |   IU   |
+| 45  | start | rtc check @ 721     | Inference          | Unchecked |   IU   |
+| 46  | 693   | rtc check @ 721     | Inference          | Unchecked |   IU   |
+| 47  | 731   | rtc check @ 721     | Review             | Unchecked |   RU   |
+| 48  | start | rtc check @ 722     | Inference          | Unchecked |   IU   |
+| 49  | 693   | rtc check @ 722     | Inference          | Unchecked |   IU   |
+| 50  | 731   | rtc check @ 722     | Inference          | Unchecked |   IU   |
+| 51  | start | rtc check @ 723     | Review             | Unchecked |   RU   |
+| 52  | 693   | rtc check @ 723     | Review             | Unchecked |   RU   |
+| 53  | 731   | rtc check @ 723     | Review             | Unchecked |   RU   |
+| 54  | start | rtc check @ 723     | Inference          | Unchecked |   IU   |
+| 55  | 693   | rtc check @ 723     | Inference          | Unchecked |   IU   |
+| 56  | 731   | rtc check @ 723     | Inference          | Unchecked |   IU   |
+| 57  | start | rtc check @ 726     | Inference          | Unchecked |   IU   |
+| 58  | 693   | rtc check @ 726     | Inference          | Unchecked |   IU   |
+| 59  | 731   | rtc check @ 726     | Review             | Unchecked |   RU   |
+| 60  | start | rtc check @ 727     | Inference          | Unchecked |   IU   |
+| 61  | 693   | rtc check @ 727     | Inference          | Unchecked |   IU   |
+| 62  | 731   | rtc check @ 727     | Inference          | Unchecked |   IU   |
+| 63  | start | rtc check @ 729     | Inference          | Unchecked |   IU   |
+| 64  | 693   | rtc check @ 729     | Inference          | Unchecked |   IU   |
+| 65  | 731   | rtc check @ 729     | Inference          | Unchecked |   IU   |
+| 66  | start |    assert @ 731     | Review             | Live      |   RL   |
+| 67  | 693   |    assert @ 731     | Review             | Live      |   RL   |
+| 68  | 731   |    assert @ 731     | Review             | Live      |   RL   |
 | 69  | start |    assert @ finish  | Inference          | Live      |   IL   |
 | 70  | start |    assert @ finish  | Inference          | Live      |   IL   |
 | 71  | start |    assert @ finish  | Inference          | Live      |   IL   |
 | 72  | start |    assert @ finish  | Inference          | Live      |   IL   |
-| 73  | 640   |    assert @ finish  | Inference          | Live      |   IL   |
-| 74  | 640   |    assert @ finish  | Inference          | Live      |   IL   |
-| 75  | 640   |    assert @ finish  | Inference          | Live      |   IL   |
-| 76  | 640   |    assert @ finish  | Inference          | Live      |   IL   |
-| 77  | 677   |    assert @ finish  | Inference          | Live      |   IL   |
-| 78  | 677   |    assert @ finish  | Inference          | Live      |   IL   |
-| 79  | 677   |    assert @ finish  | Inference          | Live      |   IL   |
-| 80  | 677   |    assert @ finish  | Inference          | Live      |   IL   |
+| 73  | 693   |    assert @ finish  | Inference          | Live      |   IL   |
+| 74  | 693   |    assert @ finish  | Inference          | Live      |   IL   |
+| 75  | 693   |    assert @ finish  | Inference          | Live      |   IL   |
+| 76  | 693   |    assert @ finish  | Inference          | Live      |   IL   |
+| 77  | 731   |    assert @ finish  | Inference          | Live      |   IL   |
+| 78  | 731   |    assert @ finish  | Inference          | Live      |   IL   |
+| 79  | 731   |    assert @ finish  | Inference          | Live      |   IL   |
+| 80  | 731   |    assert @ finish  | Inference          | Live      |   IL   |
 | 81  |       | refinement          | User Rules         | No DPC    |   P-   |
 | 82  |       | refinement          | Examiner           | No DPC    |   E-   |
  -----------------------------------------------------------------------------
@@ -610,20 +610,20 @@ VCs for procedure_finalize :
 File /home/lev/share/blake2s/blake2s/hash.vcg
 procedure BLAKE2S.Hash
 
-VCs generated 23-JUN-2021 17:29:39
+VCs generated 28-SEP-2021 16:28:18
 
-VCs simplified 23-JUN-2021 17:38:18
+VCs simplified 28-SEP-2021 16:35:10
 
 File /home/lev/share/blake2s/blake2s/hash.dpc
-DPCs generated 23-JUN-2021 17:29:39
+DPCs generated 28-SEP-2021 16:28:18
 
-DPC ZombieScoped 23-JUN-2021  17:35:4
+DPC ZombieScoped 28-SEP-2021  16:33:0
 
 VCs for procedure_hash :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | pre check @ 713     | Inference          | Unchecked |   IU   |
+| 1   | start | pre check @ 767     | Inference          | Unchecked |   IU   |
 | 2   | start |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
 
@@ -631,22 +631,22 @@ VCs for procedure_hash :
 File /home/lev/share/blake2s/blake2s/hash_flex.vcg
 procedure BLAKE2S.Hash_Flex
 
-VCs generated 23-JUN-2021 17:29:39
+VCs generated 28-SEP-2021 16:28:18
 
-VCs simplified 23-JUN-2021 17:35:42
+VCs simplified 28-SEP-2021 16:33:04
 
 File /home/lev/share/blake2s/blake2s/hash_flex.dpc
-DPCs generated 23-JUN-2021 17:29:39
+DPCs generated 28-SEP-2021 16:28:18
 
-DPC ZombieScoped 23-JUN-2021  17:31:0
+DPC ZombieScoped 28-SEP-2021  16:29:1
 
 VCs for procedure_hash_flex :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 698     | Inference          | Unchecked |   IU   |
-| 2   | start | pre check @ 699     | Inference          | Unchecked |   IU   |
-| 3   | start | pre check @ 703     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 752     | Inference          | Unchecked |   IU   |
+| 2   | start | pre check @ 753     | Inference          | Unchecked |   IU   |
+| 3   | start | pre check @ 757     | Inference          | Unchecked |   IU   |
 | 4   | start |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
 
@@ -654,20 +654,20 @@ VCs for procedure_hash_flex :
 File /home/lev/share/blake2s/blake2s/hash_keyed.vcg
 procedure BLAKE2S.Hash_Keyed
 
-VCs generated 23-JUN-2021 17:29:39
+VCs generated 28-SEP-2021 16:28:18
 
-VCs simplified 23-JUN-2021 17:38:17
+VCs simplified 28-SEP-2021 16:35:09
 
 File /home/lev/share/blake2s/blake2s/hash_keyed.dpc
-DPCs generated 23-JUN-2021 17:29:39
+DPCs generated 28-SEP-2021 16:28:18
 
-DPC ZombieScoped 23-JUN-2021  17:35:4
+DPC ZombieScoped 28-SEP-2021  16:33:0
 
 VCs for procedure_hash_keyed :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | pre check @ 748     | Inference          | Unchecked |   IU   |
+| 1   | start | pre check @ 803     | Inference          | Unchecked |   IU   |
 | 2   | start |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
 
@@ -675,23 +675,23 @@ VCs for procedure_hash_keyed :
 File /home/lev/share/blake2s/blake2s/hash_keyed_flex.vcg
 procedure BLAKE2S.Hash_Keyed_Flex
 
-VCs generated 23-JUN-2021 17:29:39
+VCs generated 28-SEP-2021 16:28:18
 
-VCs simplified 23-JUN-2021 17:38:17
+VCs simplified 28-SEP-2021 16:35:10
 
 File /home/lev/share/blake2s/blake2s/hash_keyed_flex.dpc
-DPCs generated 23-JUN-2021 17:29:39
+DPCs generated 28-SEP-2021 16:28:18
 
-DPC ZombieScoped 23-JUN-2021  17:35:4
+DPC ZombieScoped 28-SEP-2021  16:33:0
 
 VCs for procedure_hash_keyed_flex :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | pre check @ 731     | Inference          | Unchecked |   IU   |
-| 2   | start | check stm @ 732     | Inference          | Unchecked |   IU   |
-| 3   | start | pre check @ 733     | Inference          | Unchecked |   IU   |
-| 4   | start | pre check @ 737     | Inference          | Unchecked |   IU   |
+| 1   | start | pre check @ 786     | Inference          | Unchecked |   IU   |
+| 2   | start | check stm @ 787     | Inference          | Unchecked |   IU   |
+| 3   | start | pre check @ 788     | Inference          | Unchecked |   IU   |
+| 4   | start | pre check @ 792     | Inference          | Unchecked |   IU   |
 | 5   | start |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
 
@@ -699,20 +699,20 @@ VCs for procedure_hash_keyed_flex :
 File /home/lev/share/blake2s/blake2s/incorporate.vcg
 procedure BLAKE2S.Incorporate
 
-VCs generated 23-JUN-2021 17:29:37
+VCs generated 28-SEP-2021 16:28:16
 
-VCs simplified 23-JUN-2021 17:31:01
+VCs simplified 28-SEP-2021 16:29:16
 
 File /home/lev/share/blake2s/blake2s/incorporate.dpc
-DPCs generated 23-JUN-2021 17:29:37
+DPCs generated 28-SEP-2021 16:28:16
 
-DPC ZombieScoped 23-JUN-2021  17:34:4
+DPC ZombieScoped 28-SEP-2021  16:32:1
 
 VCs for procedure_incorporate :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | pre check @ 456     | Inference          | Unchecked |   IU   |
+| 1   | start | pre check @ 504     | Inference          | Unchecked |   IU   |
 | 2   | start |    assert @ finish  | Inference          | Live      |   IL   |
 | 3   |       | refinement          | Examiner           | No DPC    |   E-   |
 | 4   |       | refinement          | Examiner           | No DPC    |   E-   |
@@ -722,76 +722,76 @@ VCs for procedure_incorporate :
 File /home/lev/share/blake2s/blake2s/incorporate_flex.vcg
 procedure BLAKE2S.Incorporate_Flex
 
-VCs generated 23-JUN-2021 17:29:36
+VCs generated 28-SEP-2021 16:28:16
 
-VCs simplified 23-JUN-2021 17:37:19
+VCs simplified 28-SEP-2021 16:34:17
 
 File /home/lev/share/blake2s/blake2s/incorporate_flex.dpc
-DPCs generated 23-JUN-2021 17:29:36
+DPCs generated 28-SEP-2021 16:28:16
 
-DPC ZombieScoped 23-JUN-2021  17:35:4
+DPC ZombieScoped 28-SEP-2021  16:33:0
 
 VCs for procedure_incorporate_flex :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 352     | Inference          | Unchecked |   IU   |
-| 2   | start | pre check @ 355     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 358     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 358     | Inference          | Unchecked |   IU   |
-| 5   | start | rtc check @ 359     | Inference          | Unchecked |   IU   |
-| 6   | start | rtc check @ 359     | Inference          | Unchecked |   IU   |
-| 7   | start |    assert @ 363     | Review             | Live      |   RL   |
-| 8   | start |    assert @ 363     | Inference          | Live      |   IL   |
-| 9   | 393   |    assert @ 363     | Review             | Live      |   RL   |
-| 10  | 393   |    assert @ 363     | Review             | Live      |   RL   |
-| 11  | 393   |    assert @ 363     | Review             | Live      |   RL   |
-| 12  | 393   |    assert @ 363     | Review             | Live      |   RL   |
-| 13  | 393   |    assert @ 363     | Review             | Live      |   RL   |
-| 14  | 363   | rtc check @ 372     | Inference          | Unchecked |   IU   |
-| 15  | 363   | rtc check @ 372     | Inference          | Unchecked |   IU   |
-| 16  | 363   | rtc check @ 377     | Inference          | Unchecked |   IU   |
-| 17  | 363   | rtc check @ 378     | Inference          | Unchecked |   IU   |
-| 18  | 363   | pre check @ 379     | Inference          | Unchecked |   IU   |
-| 19  | 363   | rtc check @ 380     | Inference          | Unchecked |   IU   |
-| 20  | 363   | rtc check @ 381     | Inference          | Unchecked |   IU   |
-| 21  | 363   |    assert @ 383     | Review             | Live      |   RL   |
-| 22  | 363   |    assert @ 393     | Inference          | Live      |   IL   |
-| 23  | 383   |    assert @ 393     | Review             | Live      |   RL   |
-| 24  | 393   | rtc check @ 407     | Inference          | Unchecked |   IU   |
-| 25  | 393   | pre check @ 408     | Inference          | Unchecked |   IU   |
-| 26  | 393   | rtc check @ 409     | Review             | Unchecked |   RU   |
-| 27  | 393   | rtc check @ 410     | Inference          | Unchecked |   IU   |
-| 28  | 393   | rtc check @ 412     | Inference          | Unchecked |   IU   |
-| 29  | 393   | rtc check @ 413     | Inference          | Unchecked |   IU   |
-| 30  | 393   | rtc check @ 415     | Inference          | Unchecked |   IU   |
-| 31  | 393   | rtc check @ 416     | Inference          | Unchecked |   IU   |
-| 32  | 393   | rtc check @ 419     | Inference          | Unchecked |   IU   |
-| 33  | 393   | rtc check @ 420     | Inference          | Unchecked |   IU   |
-| 34  | 393   | rtc check @ 420     | Inference          | Unchecked |   IU   |
-| 35  | 393   | rtc check @ 420     | Inference          | Unchecked |   IU   |
-| 36  | 393   | rtc check @ 425     | Inference          | Unchecked |   IU   |
-| 37  | 393   | rtc check @ 426     | Inference          | Unchecked |   IU   |
-| 38  | 393   | rtc check @ 428     | Inference          | Unchecked |   IU   |
-| 39  | 393   | rtc check @ 429     | Inference          | Unchecked |   IU   |
-| 40  | 393   | rtc check @ 429     | Inference          | Unchecked |   IU   |
-| 41  | 393   | rtc check @ 429     | Inference          | Unchecked |   IU   |
-| 42  | 393   | rtc check @ 434     | Inference          | Unchecked |   IU   |
-| 43  | 393   | rtc check @ 435     | Inference          | Unchecked |   IU   |
-| 44  | 393   | rtc check @ 437     | Inference          | Unchecked |   IU   |
-| 45  | 393   | rtc check @ 438     | Inference          | Unchecked |   IU   |
-| 46  | 393   | rtc check @ 438     | Inference          | Unchecked |   IU   |
-| 47  | 393   | rtc check @ 438     | Inference          | Unchecked |   IU   |
-| 48  | 393   | rtc check @ 443     | Inference          | Unchecked |   IU   |
-| 49  | 393   | rtc check @ 444     | Inference          | Unchecked |   IU   |
-| 50  | 393   | rtc check @ 445     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 399     | Inference          | Unchecked |   IU   |
+| 2   | start | pre check @ 402     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 405     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 405     | Inference          | Unchecked |   IU   |
+| 5   | start | rtc check @ 406     | Inference          | Unchecked |   IU   |
+| 6   | start | rtc check @ 406     | Inference          | Unchecked |   IU   |
+| 7   | start |    assert @ 410     | Review             | Live      |   RL   |
+| 8   | start |    assert @ 410     | Inference          | Live      |   IL   |
+| 9   | 441   |    assert @ 410     | Review             | Live      |   RL   |
+| 10  | 441   |    assert @ 410     | Review             | Live      |   RL   |
+| 11  | 441   |    assert @ 410     | Review             | Live      |   RL   |
+| 12  | 441   |    assert @ 410     | Review             | Live      |   RL   |
+| 13  | 441   |    assert @ 410     | Review             | Live      |   RL   |
+| 14  | 410   | rtc check @ 419     | Inference          | Unchecked |   IU   |
+| 15  | 410   | rtc check @ 419     | Inference          | Unchecked |   IU   |
+| 16  | 410   | rtc check @ 425     | Inference          | Unchecked |   IU   |
+| 17  | 410   | rtc check @ 426     | Inference          | Unchecked |   IU   |
+| 18  | 410   | pre check @ 427     | Inference          | Unchecked |   IU   |
+| 19  | 410   | rtc check @ 428     | Inference          | Unchecked |   IU   |
+| 20  | 410   | rtc check @ 429     | Inference          | Unchecked |   IU   |
+| 21  | 410   |    assert @ 431     | Review             | Live      |   RL   |
+| 22  | 410   |    assert @ 441     | Inference          | Live      |   IL   |
+| 23  | 431   |    assert @ 441     | Review             | Live      |   RL   |
+| 24  | 441   | rtc check @ 455     | Inference          | Unchecked |   IU   |
+| 25  | 441   | pre check @ 456     | Inference          | Unchecked |   IU   |
+| 26  | 441   | rtc check @ 457     | Review             | Unchecked |   RU   |
+| 27  | 441   | rtc check @ 458     | Inference          | Unchecked |   IU   |
+| 28  | 441   | rtc check @ 460     | Inference          | Unchecked |   IU   |
+| 29  | 441   | rtc check @ 461     | Inference          | Unchecked |   IU   |
+| 30  | 441   | rtc check @ 463     | Inference          | Unchecked |   IU   |
+| 31  | 441   | rtc check @ 464     | Inference          | Unchecked |   IU   |
+| 32  | 441   | rtc check @ 467     | Inference          | Unchecked |   IU   |
+| 33  | 441   | rtc check @ 468     | Inference          | Unchecked |   IU   |
+| 34  | 441   | rtc check @ 468     | Inference          | Unchecked |   IU   |
+| 35  | 441   | rtc check @ 468     | Inference          | Unchecked |   IU   |
+| 36  | 441   | rtc check @ 473     | Inference          | Unchecked |   IU   |
+| 37  | 441   | rtc check @ 474     | Inference          | Unchecked |   IU   |
+| 38  | 441   | rtc check @ 476     | Inference          | Unchecked |   IU   |
+| 39  | 441   | rtc check @ 477     | Inference          | Unchecked |   IU   |
+| 40  | 441   | rtc check @ 477     | Inference          | Unchecked |   IU   |
+| 41  | 441   | rtc check @ 477     | Inference          | Unchecked |   IU   |
+| 42  | 441   | rtc check @ 482     | Inference          | Unchecked |   IU   |
+| 43  | 441   | rtc check @ 483     | Inference          | Unchecked |   IU   |
+| 44  | 441   | rtc check @ 485     | Inference          | Unchecked |   IU   |
+| 45  | 441   | rtc check @ 486     | Inference          | Unchecked |   IU   |
+| 46  | 441   | rtc check @ 486     | Inference          | Unchecked |   IU   |
+| 47  | 441   | rtc check @ 486     | Inference          | Unchecked |   IU   |
+| 48  | 441   | rtc check @ 491     | Inference          | Unchecked |   IU   |
+| 49  | 441   | rtc check @ 492     | Inference          | Unchecked |   IU   |
+| 50  | 441   | rtc check @ 493     | Inference          | Unchecked |   IU   |
 | 51  | start |    assert @ finish  | Inference          | Live      |   IL   |
 | 52  | start |    assert @ finish  | Inference          | Live      |   IL   |
-| 53  | 393   |    assert @ finish  | Inference          | Live      |   IL   |
-| 54  | 393   |    assert @ finish  | Inference          | Live      |   IL   |
-| 55  | 393   |    assert @ finish  | Inference          | Live      |   IL   |
-| 56  | 393   |    assert @ finish  | Inference          | Live      |   IL   |
-| 57  | 393   |    assert @ finish  | Inference          | Live      |   IL   |
+| 53  | 441   |    assert @ finish  | Inference          | Live      |   IL   |
+| 54  | 441   |    assert @ finish  | Inference          | Live      |   IL   |
+| 55  | 441   |    assert @ finish  | Inference          | Live      |   IL   |
+| 56  | 441   |    assert @ finish  | Inference          | Live      |   IL   |
+| 57  | 441   |    assert @ finish  | Inference          | Live      |   IL   |
 | 58  |       | refinement          | Inference          | No DPC    |   I-   |
 | 59  |       | refinement          | Examiner           | No DPC    |   E-   |
  -----------------------------------------------------------------------------
@@ -800,81 +800,81 @@ VCs for procedure_incorporate_flex :
 File /home/lev/share/blake2s/blake2s/incorporate_flex/process_block.vcg
 procedure BLAKE2S.Incorporate_Flex.Process_Block
 
-VCs generated 23-JUN-2021 17:29:36
+VCs generated 28-SEP-2021 16:28:16
 
-VCs simplified 23-JUN-2021 17:29:52
+VCs simplified 28-SEP-2021 16:28:28
 
 File /home/lev/share/blake2s/blake2s/incorporate_flex/process_block.dpc
-DPCs generated 23-JUN-2021 17:29:36
+DPCs generated 28-SEP-2021 16:28:16
 
-DPC ZombieScoped 23-JUN-2021  17:30:3
+DPC ZombieScoped 28-SEP-2021  16:29:0
 
 VCs for procedure_process_block :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 279     | Inference          | Unchecked |   IU   |
-| 2   | 334   | rtc check @ 279     | Inference          | Unchecked |   IU   |
-| 3   | start |    assert @ 281     | Inference          | Live      |   IL   |
-| 4   | 334   |    assert @ 281     | Inference          | Live      |   IL   |
-| 5   | 281   | pre check @ 289     | Inference          | Unchecked |   IU   |
-| 6   | 281   | pre check @ 290     | Inference          | Unchecked |   IU   |
-| 7   | 281   | pre check @ 291     | Inference          | Unchecked |   IU   |
-| 8   | 281   | pre check @ 292     | Inference          | Unchecked |   IU   |
-| 9   | 281   |    assert @ 295     | Inference          | Live      |   IL   |
-| 10  | 295   | pre check @ 303     | Inference          | Unchecked |   IU   |
-| 11  | 295   | pre check @ 304     | Inference          | Unchecked |   IU   |
-| 12  | 295   | pre check @ 305     | Inference          | Unchecked |   IU   |
-| 13  | 295   | pre check @ 306     | Inference          | Unchecked |   IU   |
-| 14  | 295   |    assert @ 308     | Inference          | Live      |   IL   |
-| 15  | 308   | pre check @ 316     | Inference          | Unchecked |   IU   |
-| 16  | 308   | pre check @ 317     | Inference          | Unchecked |   IU   |
-| 17  | 308   | pre check @ 318     | Inference          | Unchecked |   IU   |
-| 18  | 308   | pre check @ 319     | Inference          | Unchecked |   IU   |
-| 19  | 308   |    assert @ 321     | Inference          | Live      |   IL   |
-| 20  | 321   | pre check @ 329     | Inference          | Unchecked |   IU   |
-| 21  | 321   | pre check @ 330     | Inference          | Unchecked |   IU   |
-| 22  | 321   | pre check @ 331     | Inference          | Unchecked |   IU   |
-| 23  | 321   | pre check @ 332     | Inference          | Unchecked |   IU   |
-| 24  | 321   |    assert @ 334     | Inference          | Live      |   IL   |
-| 25  | 334   | rtc check @ 343     | Inference          | Unchecked |   IU   |
-| 26  | 334   | rtc check @ 343     | Inference          | Unchecked |   IU   |
-| 27  | 334   | rtc check @ 348     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 325     | Inference          | Unchecked |   IU   |
+| 2   | 380   | rtc check @ 325     | Inference          | Unchecked |   IU   |
+| 3   | start |    assert @ 327     | Inference          | Live      |   IL   |
+| 4   | 380   |    assert @ 327     | Inference          | Live      |   IL   |
+| 5   | 327   | pre check @ 335     | Inference          | Unchecked |   IU   |
+| 6   | 327   | pre check @ 336     | Inference          | Unchecked |   IU   |
+| 7   | 327   | pre check @ 337     | Inference          | Unchecked |   IU   |
+| 8   | 327   | pre check @ 338     | Inference          | Unchecked |   IU   |
+| 9   | 327   |    assert @ 341     | Inference          | Live      |   IL   |
+| 10  | 341   | pre check @ 349     | Inference          | Unchecked |   IU   |
+| 11  | 341   | pre check @ 350     | Inference          | Unchecked |   IU   |
+| 12  | 341   | pre check @ 351     | Inference          | Unchecked |   IU   |
+| 13  | 341   | pre check @ 352     | Inference          | Unchecked |   IU   |
+| 14  | 341   |    assert @ 354     | Inference          | Live      |   IL   |
+| 15  | 354   | pre check @ 362     | Inference          | Unchecked |   IU   |
+| 16  | 354   | pre check @ 363     | Inference          | Unchecked |   IU   |
+| 17  | 354   | pre check @ 364     | Inference          | Unchecked |   IU   |
+| 18  | 354   | pre check @ 365     | Inference          | Unchecked |   IU   |
+| 19  | 354   |    assert @ 367     | Inference          | Live      |   IL   |
+| 20  | 367   | pre check @ 375     | Inference          | Unchecked |   IU   |
+| 21  | 367   | pre check @ 376     | Inference          | Unchecked |   IU   |
+| 22  | 367   | pre check @ 377     | Inference          | Unchecked |   IU   |
+| 23  | 367   | pre check @ 378     | Inference          | Unchecked |   IU   |
+| 24  | 367   |    assert @ 380     | Inference          | Live      |   IL   |
+| 25  | 380   | rtc check @ 389     | Inference          | Unchecked |   IU   |
+| 26  | 380   | rtc check @ 389     | Inference          | Unchecked |   IU   |
+| 27  | 380   | rtc check @ 395     | Inference          | Unchecked |   IU   |
 | 28  | start |    assert @ finish  | Inference          | Live      |   IL   |
-| 29  | 334   |    assert @ finish  | Inference          | Live      |   IL   |
+| 29  | 380   |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/blake2s/incorporate_flex/read_quadlet.vcg
 procedure BLAKE2S.Incorporate_Flex.Read_Quadlet
 
-VCs generated 23-JUN-2021 17:29:36
+VCs generated 28-SEP-2021 16:28:16
 
-VCs simplified 23-JUN-2021 17:30:52
+VCs simplified 28-SEP-2021 16:29:10
 
 File /home/lev/share/blake2s/blake2s/incorporate_flex/read_quadlet.dpc
-DPCs generated 23-JUN-2021 17:29:36
+DPCs generated 28-SEP-2021 16:28:16
 
-DPC ZombieScoped 23-JUN-2021  17:30:3
+DPC ZombieScoped 28-SEP-2021  16:28:5
 
 VCs for procedure_read_quadlet :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 234     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 235     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 236     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 237     | Inference          | Unchecked |   IU   |
-| 5   | start | rtc check @ 237     | Inference          | Unchecked |   IU   |
-| 6   | start | rtc check @ 237     | Inference          | Unchecked |   IU   |
-| 7   | start | rtc check @ 241     | Inference          | Unchecked |   IU   |
-| 8   | start | rtc check @ 242     | Inference          | Unchecked |   IU   |
-| 9   | start | rtc check @ 242     | Inference          | Unchecked |   IU   |
-| 10  | start | rtc check @ 242     | Inference          | Unchecked |   IU   |
-| 11  | start | rtc check @ 246     | Inference          | Unchecked |   IU   |
-| 12  | start | rtc check @ 247     | Inference          | Unchecked |   IU   |
-| 13  | start | rtc check @ 247     | Inference          | Unchecked |   IU   |
-| 14  | start | rtc check @ 247     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 275     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 276     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 278     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 279     | Inference          | Unchecked |   IU   |
+| 5   | start | rtc check @ 279     | Inference          | Unchecked |   IU   |
+| 6   | start | rtc check @ 279     | Inference          | Unchecked |   IU   |
+| 7   | start | rtc check @ 284     | Inference          | Unchecked |   IU   |
+| 8   | start | rtc check @ 285     | Inference          | Unchecked |   IU   |
+| 9   | start | rtc check @ 285     | Inference          | Unchecked |   IU   |
+| 10  | start | rtc check @ 285     | Inference          | Unchecked |   IU   |
+| 11  | start | rtc check @ 290     | Inference          | Unchecked |   IU   |
+| 12  | start | rtc check @ 291     | Inference          | Unchecked |   IU   |
+| 13  | start | rtc check @ 291     | Inference          | Unchecked |   IU   |
+| 14  | start | rtc check @ 291     | Inference          | Unchecked |   IU   |
 | 15  | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
@@ -882,9 +882,9 @@ VCs for procedure_read_quadlet :
 File /home/lev/share/blake2s/blake2s/initial.vcg
 function BLAKE2S.Initial
 
-VCs generated 23-JUN-2021 17:29:37
+VCs generated 28-SEP-2021 16:28:16
 
-VCs simplified 23-JUN-2021 17:35:44
+VCs simplified 28-SEP-2021 16:33:07
 
 The following user rules were used:
 from /home/lev/share/blake2s/blake2s/blake2s.rlu
@@ -892,17 +892,17 @@ from /home/lev/share/blake2s/blake2s/blake2s.rlu
       6.
 
 File /home/lev/share/blake2s/blake2s/initial.dpc
-DPCs generated 23-JUN-2021 17:29:37
+DPCs generated 28-SEP-2021 16:28:16
 
-DPC ZombieScoped 23-JUN-2021  17:38:1
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_initial :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 465     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 465     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 465     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 514     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 514     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 514     | Inference          | Unchecked |   IU   |
 | 4   | start |    assert @ finish  | Inference          | Live      |   IL   |
 | 5   |       | refinement          | Examiner           | No DPC    |   E-   |
 | 6   |       | refinement          | User Rules         | No DPC    |   P-   |
@@ -912,20 +912,20 @@ VCs for function_initial :
 File /home/lev/share/blake2s/blake2s/initial_keyed.vcg
 function BLAKE2S.Initial_Keyed
 
-VCs generated 23-JUN-2021 17:29:38
+VCs generated 28-SEP-2021 16:28:17
 
-VCs simplified 23-JUN-2021 17:31:01
+VCs simplified 28-SEP-2021 16:29:15
 
 File /home/lev/share/blake2s/blake2s/initial_keyed.dpc
-DPCs generated 23-JUN-2021 17:29:38
+DPCs generated 28-SEP-2021 16:28:17
 
-DPC ZombieScoped 23-JUN-2021  17:35:4
+DPC ZombieScoped 28-SEP-2021  16:33:0
 
 VCs for function_initial_keyed :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | pre check @ 614     | Inference          | Unchecked |   IU   |
+| 1   | start | pre check @ 667     | Inference          | Unchecked |   IU   |
 | 2   | start |    assert @ finish  | Inference          | Live      |   IL   |
 | 3   |       | refinement          | Inference          | No DPC    |   I-   |
 | 4   |       | refinement          | Inference          | No DPC    |   I-   |
@@ -935,9 +935,9 @@ VCs for function_initial_keyed :
 File /home/lev/share/blake2s/blake2s/initial_keyed_flex.vcg
 function BLAKE2S.Initial_Keyed_Flex
 
-VCs generated 23-JUN-2021 17:29:37
+VCs generated 28-SEP-2021 16:28:17
 
-VCs simplified 23-JUN-2021 17:31:03
+VCs simplified 28-SEP-2021 16:29:17
 
 The following user rules were used:
 from /home/lev/share/blake2s/blake2s/blake2s.rlu
@@ -945,63 +945,63 @@ from /home/lev/share/blake2s/blake2s/blake2s.rlu
       51.
 
 File /home/lev/share/blake2s/blake2s/initial_keyed_flex.dpc
-DPCs generated 23-JUN-2021 17:29:37
+DPCs generated 28-SEP-2021 16:28:17
 
-DPC ZombieScoped 23-JUN-2021  17:34:4
+DPC ZombieScoped 28-SEP-2021  16:32:1
 
 VCs for function_initial_keyed_flex :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 497     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 499     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 499     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 499     | Inference          | Unchecked |   IU   |
-| 5   | start | rtc check @ 503     | Inference          | Unchecked |   IU   |
-| 6   | start | rtc check @ 504     | Review             | Unchecked |   RU   |
-| 7   | start | rtc check @ 505     | Inference          | Unchecked |   IU   |
-| 8   | start | rtc check @ 507     | Inference          | Unchecked |   IU   |
-| 9   | 509   | rtc check @ 507     | Inference          | Unchecked |   IU   |
-| 10  | start |    assert @ 509     | Inference          | Live      |   IL   |
-| 11  | 509   |    assert @ 509     | Review             | Live      |   RL   |
-| 12  | 509   | rtc check @ 521     | Inference          | Unchecked |   IU   |
-| 13  | 509   | rtc check @ 522     | Inference          | Unchecked |   IU   |
-| 14  | 509   | rtc check @ 523     | Inference          | Unchecked |   IU   |
-| 15  | 509   | rtc check @ 524     | Inference          | Unchecked |   IU   |
-| 16  | 509   | rtc check @ 524     | Inference          | Unchecked |   IU   |
-| 17  | 509   | rtc check @ 524     | Inference          | Unchecked |   IU   |
-| 18  | 509   | rtc check @ 529     | Inference          | Unchecked |   IU   |
-| 19  | 509   | rtc check @ 530     | Inference          | Unchecked |   IU   |
-| 20  | 509   | rtc check @ 530     | Inference          | Unchecked |   IU   |
-| 21  | 509   | rtc check @ 530     | Inference          | Unchecked |   IU   |
-| 22  | 509   | rtc check @ 535     | Inference          | Unchecked |   IU   |
-| 23  | 509   | rtc check @ 536     | Inference          | Unchecked |   IU   |
-| 24  | 509   | rtc check @ 536     | Inference          | Unchecked |   IU   |
-| 25  | 509   | rtc check @ 536     | Inference          | Unchecked |   IU   |
-| 26  | 509   | rtc check @ 541     | Inference          | Unchecked |   IU   |
-| 27  | start |    assert @ 544     | Inference          | Live      |   IL   |
-| 28  | 509   |    assert @ 544     | Review             | Live      |   RL   |
-| 29  | 544   | rtc check @ 556     | Inference          | Unchecked |   IU   |
-| 30  | 544   |    assert @ 558     | Review             | Live      |   RL   |
-| 31  | 558   | rtc check @ 564     | Inference          | Unchecked |   IU   |
-| 32  | 558   | rtc check @ 566     | Inference          | Unchecked |   IU   |
-| 33  | 558   |    assert @ 568     | Review             | Live      |   RL   |
-| 34  | 568   | rtc check @ 574     | Inference          | Unchecked |   IU   |
-| 35  | 568   | rtc check @ 574     | Inference          | Unchecked |   IU   |
-| 36  | 568   | rtc check @ 574     | Inference          | Unchecked |   IU   |
-| 37  | 568   | rtc check @ 579     | Inference          | Unchecked |   IU   |
-| 38  | 568   |    assert @ 581     | Review             | Live      |   RL   |
-| 39  | 581   | rtc check @ 587     | Inference          | Unchecked |   IU   |
-| 40  | 581   | rtc check @ 587     | Inference          | Unchecked |   IU   |
-| 41  | 581   | rtc check @ 587     | Inference          | Unchecked |   IU   |
-| 42  | 544   | rtc check @ 595     | Inference          | Unchecked |   IU   |
-| 43  | 558   | rtc check @ 595     | Inference          | Unchecked |   IU   |
-| 44  | 568   | rtc check @ 595     | Inference          | Unchecked |   IU   |
-| 45  | 581   | rtc check @ 595     | Inference          | Unchecked |   IU   |
-| 46  | 544   |    assert @ finish  | Inference          | Live      |   IL   |
-| 47  | 558   |    assert @ finish  | Inference          | Live      |   IL   |
-| 48  | 568   |    assert @ finish  | Inference          | Live      |   IL   |
-| 49  | 581   |    assert @ finish  | Inference          | Live      |   IL   |
+| 1   | start | rtc check @ 547     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 549     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 549     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 549     | Inference          | Unchecked |   IU   |
+| 5   | start | rtc check @ 553     | Inference          | Unchecked |   IU   |
+| 6   | start | rtc check @ 554     | Review             | Unchecked |   RU   |
+| 7   | start | rtc check @ 555     | Inference          | Unchecked |   IU   |
+| 8   | start | rtc check @ 557     | Inference          | Unchecked |   IU   |
+| 9   | 559   | rtc check @ 557     | Inference          | Unchecked |   IU   |
+| 10  | start |    assert @ 559     | Inference          | Live      |   IL   |
+| 11  | 559   |    assert @ 559     | Review             | Live      |   RL   |
+| 12  | 559   | rtc check @ 571     | Inference          | Unchecked |   IU   |
+| 13  | 559   | rtc check @ 572     | Inference          | Unchecked |   IU   |
+| 14  | 559   | rtc check @ 574     | Inference          | Unchecked |   IU   |
+| 15  | 559   | rtc check @ 575     | Inference          | Unchecked |   IU   |
+| 16  | 559   | rtc check @ 575     | Inference          | Unchecked |   IU   |
+| 17  | 559   | rtc check @ 575     | Inference          | Unchecked |   IU   |
+| 18  | 559   | rtc check @ 579     | Inference          | Unchecked |   IU   |
+| 19  | 559   | rtc check @ 580     | Inference          | Unchecked |   IU   |
+| 20  | 559   | rtc check @ 580     | Inference          | Unchecked |   IU   |
+| 21  | 559   | rtc check @ 580     | Inference          | Unchecked |   IU   |
+| 22  | 559   | rtc check @ 584     | Inference          | Unchecked |   IU   |
+| 23  | 559   | rtc check @ 585     | Inference          | Unchecked |   IU   |
+| 24  | 559   | rtc check @ 585     | Inference          | Unchecked |   IU   |
+| 25  | 559   | rtc check @ 585     | Inference          | Unchecked |   IU   |
+| 26  | 559   | rtc check @ 589     | Inference          | Unchecked |   IU   |
+| 27  | start |    assert @ 592     | Inference          | Live      |   IL   |
+| 28  | 559   |    assert @ 592     | Review             | Live      |   RL   |
+| 29  | 592   | rtc check @ 604     | Inference          | Unchecked |   IU   |
+| 30  | 592   |    assert @ 606     | Review             | Live      |   RL   |
+| 31  | 606   | rtc check @ 612     | Inference          | Unchecked |   IU   |
+| 32  | 606   | rtc check @ 615     | Inference          | Unchecked |   IU   |
+| 33  | 606   |    assert @ 617     | Review             | Live      |   RL   |
+| 34  | 617   | rtc check @ 623     | Inference          | Unchecked |   IU   |
+| 35  | 617   | rtc check @ 623     | Inference          | Unchecked |   IU   |
+| 36  | 617   | rtc check @ 623     | Inference          | Unchecked |   IU   |
+| 37  | 617   | rtc check @ 629     | Inference          | Unchecked |   IU   |
+| 38  | 617   |    assert @ 631     | Review             | Live      |   RL   |
+| 39  | 631   | rtc check @ 637     | Inference          | Unchecked |   IU   |
+| 40  | 631   | rtc check @ 637     | Inference          | Unchecked |   IU   |
+| 41  | 631   | rtc check @ 637     | Inference          | Unchecked |   IU   |
+| 42  | 592   | rtc check @ 646     | Inference          | Unchecked |   IU   |
+| 43  | 606   | rtc check @ 646     | Inference          | Unchecked |   IU   |
+| 44  | 617   | rtc check @ 646     | Inference          | Unchecked |   IU   |
+| 45  | 631   | rtc check @ 646     | Inference          | Unchecked |   IU   |
+| 46  | 592   |    assert @ finish  | Inference          | Live      |   IL   |
+| 47  | 606   |    assert @ finish  | Inference          | Live      |   IL   |
+| 48  | 617   |    assert @ finish  | Inference          | Live      |   IL   |
+| 49  | 631   |    assert @ finish  | Inference          | Live      |   IL   |
 | 50  |       | refinement          | Inference          | No DPC    |   I-   |
 | 51  |       | refinement          | User Rules         | No DPC    |   P-   |
  -----------------------------------------------------------------------------
@@ -1010,14 +1010,14 @@ VCs for function_initial_keyed_flex :
 File /home/lev/share/blake2s/blake2s/is_overflowed.vcg
 function BLAKE2S.Is_Overflowed
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:34:47
+VCs simplified 28-SEP-2021 16:32:14
 
 File /home/lev/share/blake2s/blake2s/is_overflowed.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:31:0
+DPC ZombieScoped 28-SEP-2021  16:29:1
 
 VCs for function_is_overflowed :
  -----------------------------------------------------------------------------
@@ -1032,96 +1032,96 @@ VCs for function_is_overflowed :
 File /home/lev/share/blake2s/blake2s/self_test.vcg
 function BLAKE2S.Self_Test
 
-VCs generated 23-JUN-2021 17:29:39
+VCs generated 28-SEP-2021 16:28:18
 
-VCs simplified 23-JUN-2021 17:31:02
+VCs simplified 28-SEP-2021 16:29:16
 
 File /home/lev/share/blake2s/blake2s/self_test.dpc
-DPCs generated 23-JUN-2021 17:29:39
+DPCs generated 28-SEP-2021 16:28:18
 
-DPC ZombieScoped 23-JUN-2021  17:35:3
+DPC ZombieScoped 28-SEP-2021  16:33:0
 
 VCs for function_self_test :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 816     | Inference          | Unchecked |   IU   |
-| 2   | start | check stm @ 817     | Inference          | Unchecked |   IU   |
-| 3   | start |    assert @ 820     | Inference          | Live      |   IL   |
-| 4   | 823   |    assert @ 820     | Inference          | Live      |   IL   |
-| 5   | 820   |    assert @ 823     | Inference          | Live      |   IL   |
-| 6   | 823   |    assert @ 823     | Inference          | Live      |   IL   |
-| 7   | 823   | pre check @ 826     | Inference          | Unchecked |   IU   |
-| 8   | 823   | pre check @ 830     | Inference          | Unchecked |   IU   |
-| 9   | 823   | pre check @ 836     | Inference          | Unchecked |   IU   |
-| 10  | 823   | pre check @ 840     | Inference          | Unchecked |   IU   |
-| 11  | 823   | pre check @ 844     | Inference          | Unchecked |   IU   |
-| 12  | 823   | pre check @ 852     | Inference          | Unchecked |   IU   |
-| 13  | 823   | pre check @ 860     | Inference          | Unchecked |   IU   |
-| 14  | 823   | rtc check @ 873     | Inference          | Unchecked |   IU   |
-| 15  | 823   | rtc check @ 875     | Inference          | Unchecked |   IU   |
-| 16  | 823   |    assert @ finish  | Inference          | Live      |   IL   |
-| 17  | 823   |    assert @ finish  | Inference          | Live      |   IL   |
+| 1   | start | rtc check @ 877     | Inference          | Unchecked |   IU   |
+| 2   | start | check stm @ 878     | Inference          | Unchecked |   IU   |
+| 3   | start |    assert @ 881     | Inference          | Live      |   IL   |
+| 4   | 884   |    assert @ 881     | Inference          | Live      |   IL   |
+| 5   | 881   |    assert @ 884     | Inference          | Live      |   IL   |
+| 6   | 884   |    assert @ 884     | Inference          | Live      |   IL   |
+| 7   | 884   | pre check @ 887     | Inference          | Unchecked |   IU   |
+| 8   | 884   | pre check @ 891     | Inference          | Unchecked |   IU   |
+| 9   | 884   | pre check @ 897     | Inference          | Unchecked |   IU   |
+| 10  | 884   | pre check @ 901     | Inference          | Unchecked |   IU   |
+| 11  | 884   | pre check @ 905     | Inference          | Unchecked |   IU   |
+| 12  | 884   | pre check @ 913     | Inference          | Unchecked |   IU   |
+| 13  | 884   | pre check @ 921     | Inference          | Unchecked |   IU   |
+| 14  | 884   | rtc check @ 934     | Inference          | Unchecked |   IU   |
+| 15  | 884   | rtc check @ 936     | Inference          | Unchecked |   IU   |
+| 16  | 884   |    assert @ finish  | Inference          | Live      |   IL   |
+| 17  | 884   |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/blake2s/self_test/self_test_sequences.vcg
 procedure BLAKE2S.Self_Test.Self_Test_Sequences
 
-VCs generated 23-JUN-2021 17:29:39
+VCs generated 28-SEP-2021 16:28:18
 
-VCs simplified 23-JUN-2021 17:35:42
+VCs simplified 28-SEP-2021 16:33:05
 
 File /home/lev/share/blake2s/blake2s/self_test/self_test_sequences.dpc
-DPCs generated 23-JUN-2021 17:29:39
+DPCs generated 28-SEP-2021 16:28:18
 
-DPC ZombieScoped 23-JUN-2021  17:35:4
+DPC ZombieScoped 28-SEP-2021  16:33:0
 
 VCs for procedure_self_test_sequences :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 802     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 802     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 804     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 806     | Inference          | Unchecked |   IU   |
-| 5   | start | rtc check @ 806     | Inference          | Unchecked |   IU   |
-| 6   | start |    assert @ 807     | Inference          | Live      |   IL   |
-| 7   | 807   |    assert @ 807     | Inference          | Live      |   IL   |
-| 8   | 807   | rtc check @ 808     | Inference          | Unchecked |   IU   |
-| 9   | 807   | rtc check @ 808     | Inference          | Unchecked |   IU   |
-| 10  | 807   | rtc check @ 809     | Inference          | Unchecked |   IU   |
-| 11  | 807   | rtc check @ 809     | Inference          | Unchecked |   IU   |
-| 12  | 807   | rtc check @ 810     | Inference          | Unchecked |   IU   |
-| 13  | 807   | rtc check @ 810     | Inference          | Unchecked |   IU   |
-| 14  | 807   | rtc check @ 810     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 862     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 862     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 864     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 866     | Inference          | Unchecked |   IU   |
+| 5   | start | rtc check @ 866     | Inference          | Unchecked |   IU   |
+| 6   | start |    assert @ 867     | Inference          | Live      |   IL   |
+| 7   | 867   |    assert @ 867     | Inference          | Live      |   IL   |
+| 8   | 867   | rtc check @ 868     | Inference          | Unchecked |   IU   |
+| 9   | 867   | rtc check @ 868     | Inference          | Unchecked |   IU   |
+| 10  | 867   | rtc check @ 869     | Inference          | Unchecked |   IU   |
+| 11  | 867   | rtc check @ 869     | Inference          | Unchecked |   IU   |
+| 12  | 867   | rtc check @ 870     | Inference          | Unchecked |   IU   |
+| 13  | 867   | rtc check @ 870     | Inference          | Unchecked |   IU   |
+| 14  | 867   | rtc check @ 870     | Inference          | Unchecked |   IU   |
 | 15  | start |    assert @ finish  | Examiner           | Live      |   EL   |
-| 16  | 807   |    assert @ finish  | Examiner           | Live      |   EL   |
+| 16  | 867   |    assert @ finish  | Examiner           | Live      |   EL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/quadlets/chained_modular_sum.vcg
 procedure Quadlets.Chained_Modular_Sum
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:38:19
+VCs simplified 28-SEP-2021 16:35:12
 
 File /home/lev/share/blake2s/quadlets/chained_modular_sum.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:38:1
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for procedure_chained_modular_sum :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 155     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 155     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 158     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 160     | Inference          | Unchecked |   IU   |
-| 5   | start | rtc check @ 162     | Inference          | Unchecked |   IU   |
-| 6   | start | rtc check @ 166     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 189     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 189     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 192     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 194     | Inference          | Unchecked |   IU   |
+| 5   | start | rtc check @ 196     | Inference          | Unchecked |   IU   |
+| 6   | start | rtc check @ 200     | Inference          | Unchecked |   IU   |
 | 7   | start |    assert @ finish  | Examiner           | Live      |   EL   |
 | 8   | start |    assert @ finish  | Examiner           | Live      |   EL   |
 | 9   | start |    assert @ finish  | Examiner           | Live      |   EL   |
@@ -1131,14 +1131,14 @@ VCs for procedure_chained_modular_sum :
 File /home/lev/share/blake2s/quadlets/conjunction.vcg
 function Quadlets.Conjunction
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:01
 
-VCs simplified 23-JUN-2021 17:38:25
+VCs simplified 28-SEP-2021 16:35:17
 
 File /home/lev/share/blake2s/quadlets/conjunction.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:01
 
-DPC ZombieScoped 23-JUN-2021  17:38:2
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_conjunction :
  -----------------------------------------------------------------------------
@@ -1151,14 +1151,14 @@ VCs for function_conjunction :
 File /home/lev/share/blake2s/quadlets/exclusive_disjunction.vcg
 function Quadlets.Exclusive_Disjunction
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:01
 
-VCs simplified 23-JUN-2021 17:38:23
+VCs simplified 28-SEP-2021 16:35:16
 
 File /home/lev/share/blake2s/quadlets/exclusive_disjunction.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:01
 
-DPC ZombieScoped 23-JUN-2021  17:38:2
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_exclusive_disjunction :
  -----------------------------------------------------------------------------
@@ -1171,14 +1171,14 @@ VCs for function_exclusive_disjunction :
 File /home/lev/share/blake2s/quadlets/inclusive_disjunction.vcg
 function Quadlets.Inclusive_Disjunction
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:01
 
-VCs simplified 23-JUN-2021 17:38:19
+VCs simplified 28-SEP-2021 16:35:12
 
 File /home/lev/share/blake2s/quadlets/inclusive_disjunction.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:01
 
-DPC ZombieScoped 23-JUN-2021  17:38:1
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_inclusive_disjunction :
  -----------------------------------------------------------------------------
@@ -1191,45 +1191,45 @@ VCs for function_inclusive_disjunction :
 File /home/lev/share/blake2s/quadlets/left_shift.vcg
 function Quadlets.Left_Shift
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:01
 
-VCs simplified 23-JUN-2021 17:38:22
+VCs simplified 28-SEP-2021 16:35:14
 
 File /home/lev/share/blake2s/quadlets/left_shift.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:01
 
-DPC ZombieScoped 23-JUN-2021  17:38:2
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_left_shift :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start |    assert @ 93      | Review             | Live      |   RL   |
-| 2   | 93    | rtc check @ 97      | Inference          | Unchecked |   IU   |
-| 3   | 93    | rtc check @ 97      | Inference          | Unchecked |   IU   |
-| 4   | 93    |    assert @ finish  | Review             | Live      |   RL   |
+| 1   | start |    assert @ 127     | Review             | Live      |   RL   |
+| 2   | 127   | rtc check @ 131     | Inference          | Unchecked |   IU   |
+| 3   | 127   | rtc check @ 131     | Inference          | Unchecked |   IU   |
+| 4   | 127   |    assert @ finish  | Review             | Live      |   RL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/quadlets/modular_difference.vcg
 function Quadlets.Modular_Difference
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:38:20
+VCs simplified 28-SEP-2021 16:35:12
 
 File /home/lev/share/blake2s/quadlets/modular_difference.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:38:1
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_modular_difference :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 177     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 177     | Review             | Unchecked |   RU   |
-| 3   | start | rtc check @ 179     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 211     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 211     | Review             | Unchecked |   RU   |
+| 3   | start | rtc check @ 213     | Inference          | Unchecked |   IU   |
 | 4   | start |    assert @ finish  | Review             | Live      |   RL   |
 | 5   | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
@@ -1238,32 +1238,32 @@ VCs for function_modular_difference :
 File /home/lev/share/blake2s/quadlets/modular_product.vcg
 function Quadlets.Modular_Product
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:38:23
+VCs simplified 28-SEP-2021 16:35:16
 
 File /home/lev/share/blake2s/quadlets/modular_product.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:38:2
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_modular_product :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 193     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 193     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 194     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 194     | Inference          | Unchecked |   IU   |
-| 5   | start | rtc check @ 197     | Inference          | Unchecked |   IU   |
-| 6   | start | rtc check @ 197     | Review             | Unchecked |   RU   |
-| 7   | start | rtc check @ 198     | Inference          | Unchecked |   IU   |
-| 8   | start | rtc check @ 198     | Review             | Unchecked |   RU   |
-| 9   | start | rtc check @ 198     | Inference          | Unchecked |   IU   |
-| 10  | start | rtc check @ 200     | Inference          | Unchecked |   IU   |
-| 11  | start | rtc check @ 200     | Inference          | Unchecked |   IU   |
-| 12  | start | rtc check @ 201     | Review             | Unchecked |   RU   |
-| 13  | start | rtc check @ 201     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 227     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 227     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 228     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 228     | Inference          | Unchecked |   IU   |
+| 5   | start | rtc check @ 231     | Inference          | Unchecked |   IU   |
+| 6   | start | rtc check @ 231     | Review             | Unchecked |   RU   |
+| 7   | start | rtc check @ 232     | Inference          | Unchecked |   IU   |
+| 8   | start | rtc check @ 232     | Review             | Unchecked |   RU   |
+| 9   | start | rtc check @ 232     | Inference          | Unchecked |   IU   |
+| 10  | start | rtc check @ 234     | Inference          | Unchecked |   IU   |
+| 11  | start | rtc check @ 234     | Inference          | Unchecked |   IU   |
+| 12  | start | rtc check @ 235     | Review             | Unchecked |   RU   |
+| 13  | start | rtc check @ 235     | Inference          | Unchecked |   IU   |
 | 14  | start |    assert @ finish  | Review             | Live      |   RL   |
  -----------------------------------------------------------------------------
 
@@ -1271,23 +1271,23 @@ VCs for function_modular_product :
 File /home/lev/share/blake2s/quadlets/modular_sum.vcg
 function Quadlets.Modular_Sum
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:38:18
+VCs simplified 28-SEP-2021 16:35:11
 
 File /home/lev/share/blake2s/quadlets/modular_sum.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:38:1
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_modular_sum :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 136     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 136     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 139     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 141     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 170     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 170     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 173     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 175     | Inference          | Unchecked |   IU   |
 | 5   | start |    assert @ finish  | Review             | Live      |   RL   |
 | 6   | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
@@ -1296,43 +1296,43 @@ VCs for function_modular_sum :
 File /home/lev/share/blake2s/quadlets/negation.vcg
 function Quadlets.Negation
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:01
 
-VCs simplified 23-JUN-2021 17:38:21
+VCs simplified 28-SEP-2021 16:35:14
 
 File /home/lev/share/blake2s/quadlets/negation.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:01
 
-DPC ZombieScoped 23-JUN-2021  17:38:2
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_negation :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start |    assert @ 52      | Inference          | Live      |   IL   |
-| 2   | 52    |    assert @ finish  | Review             | Live      |   RL   |
+| 1   | start |    assert @ 86      | Inference          | Live      |   IL   |
+| 2   | 86    |    assert @ finish  | Review             | Live      |   RL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/quadlets/octet.vcg
 function Quadlets.Octet
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:38:21
+VCs simplified 28-SEP-2021 16:35:13
 
 File /home/lev/share/blake2s/quadlets/octet.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:38:2
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_octet :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 126     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 126     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 126     | Review             | Unchecked |   RU   |
+| 1   | start | rtc check @ 160     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 160     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 160     | Review             | Unchecked |   RU   |
 | 4   | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
@@ -1340,23 +1340,23 @@ VCs for function_octet :
 File /home/lev/share/blake2s/quadlets/right_rotation.vcg
 function Quadlets.Right_Rotation
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:38:19
+VCs simplified 28-SEP-2021 16:35:11
 
 File /home/lev/share/blake2s/quadlets/right_rotation.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:38:2
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_right_rotation :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 115     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 115     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 115     | Review             | Unchecked |   RU   |
-| 4   | start | rtc check @ 115     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 149     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 149     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 149     | Review             | Unchecked |   RU   |
+| 4   | start | rtc check @ 149     | Inference          | Unchecked |   IU   |
 | 5   | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
@@ -1364,22 +1364,22 @@ VCs for function_right_rotation :
 File /home/lev/share/blake2s/quadlets/right_shift.vcg
 function Quadlets.Right_Shift
 
-VCs generated 23-JUN-2021 17:29:19
+VCs generated 28-SEP-2021 16:28:02
 
-VCs simplified 23-JUN-2021 17:38:21
+VCs simplified 28-SEP-2021 16:35:14
 
 File /home/lev/share/blake2s/quadlets/right_shift.dpc
-DPCs generated 23-JUN-2021 17:29:19
+DPCs generated 28-SEP-2021 16:28:02
 
-DPC ZombieScoped 23-JUN-2021  17:38:2
+DPC ZombieScoped 28-SEP-2021  16:35:1
 
 VCs for function_right_shift :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start |    assert @ 105     | Review             | Live      |   RL   |
-| 2   | 105   | rtc check @ 107     | Inference          | Unchecked |   IU   |
-| 3   | 105   |    assert @ finish  | Inference          | Live      |   IL   |
+| 1   | start |    assert @ 139     | Review             | Live      |   RL   |
+| 2   | 139   | rtc check @ 141     | Inference          | Unchecked |   IU   |
+| 3   | 139   |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
 

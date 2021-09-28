@@ -1,35 +1,38 @@
-------------------------------------------------------------------------------
---  Copyright (c) 2021, Lev Kujawski.
---
---  Permission is hereby granted, free of charge, to any person obtaining a
---  copy of this software and associated documentation files (the "Software")
---  to deal in the Software without restriction, including without limitation
---  the rights to use, copy, modify, merge, publish, distribute, sublicense,
---  and sell copies of the Software, and to permit persons to whom the
---  Software is furnished to do so.
---
---  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
---  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
---  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
---  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
---  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
---  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
---  DEALINGS IN THE SOFTWARE.
---
---  SPDX-License-Identifier: MIT-0
---
---  File:          b2stest.adb (Ada Subprogram Body)
---  Language:      SPARK83 [1] subset of Ada (1987) [2]
---  Author:        Lev Kujawski
---  Description:   BLAKE2s [3] for Ada test vector verifier
---
---  References:
---  [1] SPARK Team, SPARK83 - The SPADE Ada83 Kernel, Altran Praxis, 17 Oct.
---      2011.
---  [2] Programming languages - Ada, ISO/IEC 8652:1987, 15 Jun. 1987.
---  [3] M-J. Saarinen and J-P. Aumasson, "The BLAKE2 Cryptographic Hash and
---      Message Authentication Code (MAC)," RFC 7693, Nov. 2015.
-------------------------------------------------------------------------------
+-----------------------------------------------------------------------
+--  Copyright 2021 Lev Kujawski                                      --
+--                                                                   --
+--                  This file is part of B2STEST.                    --
+--                                                                   --
+--     B2STEST is free software: you can redistribute it and/or      --
+--  modify it under the terms of the GNU General Public License as   --
+--  published by the Free Software Foundation, either version 3 of   --
+--       the License, or (at your option) any later version.         --
+--                                                                   --
+--    B2STEST is distributed in the hope that it will be useful,     --
+--  but WITHOUT ANY WARRANTY; without even the implied warranty of   --
+--  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the    --
+--           GNU General Public License for more details.            --
+--                                                                   --
+--              You should have received a copy of the               --
+--          GNU General Public License along with B2STEST.           --
+--           If not, see <https://www.gnu.org/licenses/>.            --
+--                                                                   --
+--  SPDX-License-Identifier: GPL-3.0-or-later                        --
+--                                                                   --
+--  File:          b2stest.adb (Ada Subprogram Body)                 --
+--  Language:      SPARK83 [1] subset of Ada (1987) [2]              --
+--  Author:        Lev Kujawski                                      --
+--  Description:   BLAKE2s [3] for Ada test vector verifier          --
+--                                                                   --
+--  References:                                                      --
+--  [1] SPARK Team, SPARK83 - The SPADE Ada83 Kernel,                --
+--      Altran Praxis, 17 Oct. 2011.                                 --
+--  [2] Programming languages - Ada, ISO/IEC 8652:1987,              --
+--      15 Jun. 1987.                                                --
+--  [3] M-J. Saarinen and J-P. Aumasson, "The BLAKE2 Cryptographic   --
+--      Hash and Message Authentication Code (MAC)", RFC 7693,       --
+--      Nov. 2015.                                                   --
+-----------------------------------------------------------------------
 
 with BLAKE2S;
 
@@ -45,7 +48,7 @@ with SPARK_IO_Standard;
 --#         SPARK_IO,
 --#         SPARK_IO_Standard;
 --# main_program;
-procedure B2STest
+procedure B2STEST
 --# global in     SPARK_IO_Standard.Output;
 --#        in out SPARK_IO.Inputs;
 --#        in out SPARK_IO.Outputs;
@@ -58,28 +61,33 @@ procedure B2STest
 --#                               SPARK_IO.State,
 --#                               SPARK_IO_Standard.Output;
 is
-   function "=" (Left  : in BLAKE2S.Digest_T;
-                 Right : in BLAKE2S.Digest_T) return Boolean
-     renames BLAKE2S."=";
+   function "="
+     (Left  : in BLAKE2S.Digest_T;
+      Right : in BLAKE2S.Digest_T)
+      return Boolean renames BLAKE2S."=";
 
-   function ">" (Left  : in Octets.T;
-                 Right : in Octets.T) return Boolean
-     renames Octets.">";
+   function ">"
+     (Left  : in Octets.T;
+      Right : in Octets.T)
+      return Boolean renames Octets.">";
 
-   function "+" (Left  : in Octets.T;
-                 Right : in Octets.T) return Octets.T
-     renames Octets."+";
+   function "+"
+     (Left  : in Octets.T;
+      Right : in Octets.T)
+      return Octets.T renames Octets."+";
 
-   function "*" (Left  : in Octets.T;
-                 Right : in Octets.T) return Octets.T
-     renames Octets."*";
+   function "*"
+     (Left  : in Octets.T;
+      Right : in Octets.T)
+      return Octets.T renames Octets."*";
 
-   function "=" (Left  : in SPARK_IO.File_Status_T;
-                 Right : in SPARK_IO.File_Status_T) return Boolean
-     renames SPARK_IO."=";
+   function "="
+     (Left  : in SPARK_IO.File_Status_T;
+      Right : in SPARK_IO.File_Status_T)
+      return Boolean renames SPARK_IO."=";
 
-   Tests_Passed : Natural := 0;
-   Tests_Failed : Natural := 0;
+   Tests_Passed : Natural         := 0;
+   Tests_Failed : Natural         := 0;
    File_Name    : constant String := "blake2s.txt";
    File         : SPARK_IO.File_T;
    File_Status  : SPARK_IO.File_Status_T;
@@ -142,16 +150,17 @@ is
       subtype Message_Index_T is Message_Length_T range 1 .. 256;
       subtype Message_T is Octet_Arrays.T (Message_Index_T);
 
-      subtype Key_Octet_Array_T is Octet_Arrays.T (BLAKE2S.Key_Index_T);
+      subtype Key_Octet_Array_T is
+        Octet_Arrays.T (BLAKE2S.Key_Index_T);
 
-      Test_Number    : Positive := 1;
+      Test_Number    : Positive          := 1;
       Line           : Line_T;
       Line_Last      : Natural;
-      Line_Parsed    : Boolean := False;
-      Message        : Message_T := Message_T'(others => 0);
-      Message_Length : Message_Length_T := 0;
-      Key_Prefix     : constant String := "key:" & ASCII.HT;
-      Key            : Key_Octet_Array_T := Key_Octet_Array_T'(others => 0);
+      Line_Parsed    : Boolean           := False;
+      Message        : Message_T         := Message_T'(others => 0);
+      Message_Length : Message_Length_T  := 0;
+      Key_Prefix     : constant String   := "key:" & ASCII.HT;
+      Key : Key_Octet_Array_T := Key_Octet_Array_T'(others => 0);
 
       procedure Read_Hex
         (Source_First  : in     Positive;
@@ -176,7 +185,8 @@ is
          Lower_Hex    : Octets.T;
 
          function Hex_Digit
-           (Digit  : in Character) return Octets.T
+           (Digit : in Character)
+            return Octets.T
          is
             Result : Octets.T;
          begin
@@ -224,8 +234,9 @@ is
          Source_Index := Source_First;
          Target_Index := Positive'First;
 
-         if ((Source_Last - Source_First) + 1) mod 2 = 0 and then
-           ((Source_Last - Source_First) + 1) / 2 <= Target_Length
+         if ((Source_Last - Source_First) + 1) mod 2 = 0
+           and then ((Source_Last - Source_First) + 1) / 2
+             <= Target_Length
          then
 
             while Source_Index < Source_Last loop
@@ -234,10 +245,11 @@ is
                --#   Source_Last <= Line'Last and
                --#   Source_Index < Source_Last and
                --#   Target_Length = Target'Last and
-               --#   Target_Length >= ((Source_Last - Source_First) + 1) / 2
-               --#     and
+               --#   Target_Length
+               --#      >= ((Source_Last - Source_First) + 1) / 2 and
                --#   Target_Index >= Target'First and
-               --#   Target_Index = (Source_Index - Source_First) / 2 + 1;
+               --#   Target_Index
+               --#      = (Source_Index - Source_First) / 2 + 1;
                Upper_Hex := Hex_Digit (Line (Source_Index));
                exit when Upper_Hex > 15;
                Source_Index := Source_Index + 1;
@@ -247,7 +259,7 @@ is
                Source_Index := Source_Index + 1;
 
                Target (Target_Index) := Upper_Hex * 16 + Lower_Hex;
-               Target_Index := Target_Index + 1;
+               Target_Index          := Target_Index + 1;
             end loop;
          end if;
          --# assert Target_Index <= Target_Length + 1;
@@ -256,7 +268,8 @@ is
       end Read_Hex;
 
       function Is_Prefix
-        (Prefix : in String) return Boolean
+        (Prefix : in String)
+         return Boolean
       --# global in Line;
       --# pre Prefix'Length < 10;
       is
@@ -323,8 +336,9 @@ is
 
          if Line_Last > 3 then
             if Is_Prefix ("in:" & ASCII.HT) then
-               Read_Hex (5, Line_Last, Message'Length,
-                         Message, Message_Length);
+               Read_Hex
+                 (5, Line_Last, Message'Length, Message,
+                  Message_Length);
                if Message_Length /= (Line_Last - 4) / 2 then
                   Parsed_Line := False;
                end if;
@@ -334,15 +348,17 @@ is
                   Parsed_Line := False;
                end if;
             elsif Is_Prefix ("hash:" & ASCII.HT) then
-               Read_Hex (7, Line_Last, Expected_Digest'Length,
-                         Expected_Digest, Final);
+               Read_Hex
+                 (7, Line_Last, Expected_Digest'Length,
+                  Expected_Digest, Final);
                if Final = BLAKE2S.Key_Length_Default then
-                  SPARK_IO.Put_String (SPARK_IO_Standard.Output,
-                                       " Test ", 0);
-                  SPARK_IO.Put_Integer (File  => SPARK_IO_Standard.Output,
-                                        Item  => Test_Number,
-                                        Width => 3,
-                                        Base  => 10);
+                  SPARK_IO.Put_String
+                    (SPARK_IO_Standard.Output, " Test ", 0);
+                  SPARK_IO.Put_Integer
+                    (File  => SPARK_IO_Standard.Output,
+                     Item  => Test_Number,
+                     Width => 3,
+                     Base  => 10);
                   BLAKE2S.Hash_Keyed_Flex
                     (Key           => BLAKE2S.Key_Default_T (Key),
                      Key_Length    => BLAKE2S.Key_Length_Default,
@@ -352,13 +368,14 @@ is
                      Digest_Length => BLAKE2S.Digest_Length_Default,
                      Digest        => Message_Digest);
 
-                  if Message_Digest =
-                    BLAKE2S.Digest_Default_T (Expected_Digest)
+                  if Message_Digest
+                    = BLAKE2S.Digest_Default_T (Expected_Digest)
                   then
                      Context := BLAKE2S.Initial_Keyed_Flex
-                       (Digest_Length => BLAKE2S.Digest_Length_Default,
-                        Key           => BLAKE2S.Key_Default_T (Key),
-                        Key_Length    => BLAKE2S.Key_Length_Default);
+                         (Digest_Length =>
+                            BLAKE2S.Digest_Length_Default,
+                          Key        => BLAKE2S.Key_Default_T (Key),
+                          Key_Length => BLAKE2S.Key_Length_Default);
                      BLAKE2S.Incorporate_Flex
                        (Context       => Context,
                         Message       => Message,
@@ -372,8 +389,8 @@ is
                         Digest  => Message_Digest);
                      --# end accept;
 
-                     if Message_Digest =
-                       BLAKE2S.Digest_Default_T (Expected_Digest)
+                     if Message_Digest
+                       = BLAKE2S.Digest_Default_T (Expected_Digest)
                      then
                         Pass;
                      else
@@ -405,17 +422,17 @@ is
       Parsed_File := Line_Parsed;
    end Parse_File;
 begin  --  B2STest
-   SPARK_IO.Put_Line (SPARK_IO_Standard.Output,
-                      "==== BLAKE2s for Ada Tests ====", 0);
+   SPARK_IO.Put_Line
+     (SPARK_IO_Standard.Output, "==== BLAKE2s for Ada Tests ====", 0);
    SPARK_IO.Put_Line
      (SPARK_IO_Standard.Output,
       "NOTE: Expect 257 tests to pass for a conformant build.", 0);
    SPARK_IO.New_Line (SPARK_IO_Standard.Output, 1);
 
    -------  BLAKE2S SELF TEST -------
-   SPARK_IO.Put_String (SPARK_IO_Standard.Output,
-                        "Self-test", 0);
-   --# accept Flow_Message, 22, "Check for errors outside of the SPARK model";
+   SPARK_IO.Put_String (SPARK_IO_Standard.Output, "Self-test", 0);
+   --# accept Flow_Message, 22,
+   --#    "Check for errors outside of the SPARK model";
    case BLAKE2S.Self_Test is
       when BLAKE2S.Success =>
          Pass;
@@ -431,19 +448,24 @@ begin  --  B2STest
 
       if File_Parsed then
          SPARK_IO.New_Line (SPARK_IO_Standard.Output, 1);
-         SPARK_IO.Put_Line (SPARK_IO_Standard.Output,
-                            "==== BLAKE2s for Ada Summary ====", 0);
-         SPARK_IO.Put_String (SPARK_IO_Standard.Output, "Tests passed: ", 0);
-         SPARK_IO.Put_Integer (File  => SPARK_IO_Standard.Output,
-                               Item  => Integer'(Tests_Passed),
-                               Width => 3,
-                               Base  => 10);
+         SPARK_IO.Put_Line
+           (SPARK_IO_Standard.Output,
+            "==== BLAKE2s for Ada Summary ====", 0);
+         SPARK_IO.Put_String
+           (SPARK_IO_Standard.Output, "Tests passed: ", 0);
+         SPARK_IO.Put_Integer
+           (File  => SPARK_IO_Standard.Output,
+            Item  => Integer'(Tests_Passed),
+            Width => 3,
+            Base  => 10);
          SPARK_IO.New_Line (SPARK_IO_Standard.Output, 1);
-         SPARK_IO.Put_String (SPARK_IO_Standard.Output, "Tests failed: ", 0);
-         SPARK_IO.Put_Integer (File  => SPARK_IO_Standard.Output,
-                               Item  => Integer'(Tests_Failed),
-                               Width => 3,
-                               Base  => 10);
+         SPARK_IO.Put_String
+           (SPARK_IO_Standard.Output, "Tests failed: ", 0);
+         SPARK_IO.Put_Integer
+           (File  => SPARK_IO_Standard.Output,
+            Item  => Integer'(Tests_Failed),
+            Width => 3,
+            Base  => 10);
          SPARK_IO.New_Line (SPARK_IO_Standard.Output, 1);
       else
          SPARK_IO.Put_Line
@@ -455,4 +477,4 @@ begin  --  B2STest
         (SPARK_IO_Standard.Output,
          "ERROR: Could not open the file '" & File_Name & "'.", 0);
    end if;
-end B2STest;
+end B2STEST;

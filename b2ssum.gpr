@@ -1,23 +1,29 @@
-------------------------------------------------------------------------------
---  Copyright (c) 2021, Lev Kujawski.
---
---  Permission is hereby granted, free of charge, to any person obtaining a
---  copy of this software and associated documentation files (the "Software")
---  to deal in the Software without restriction, including without limitation
---  the rights to use, copy, modify, merge, publish, distribute, sublicense,
---  and sell copies of the Software, and to permit persons to whom the
---  Software is furnished to do so.
---
---  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
---  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
---  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
---  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
---  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
---  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
---  DEALINGS IN THE SOFTWARE.
---
---  SPDX-License-Identifier: MIT-0
-------------------------------------------------------------------------------
+-----------------------------------------------------------------------
+--  Copyright 2021 Lev Kujawski                                      --
+--                                                                   --
+--   Permission is hereby granted, free of charge, to any person     --
+--  obtaining a copy of this software and associated documentation   --
+--      files (the "Software") to deal in the Software without       --
+--   restriction, including without limitation the rights to use,    --
+--  copy, modify, merge, publish, distribute, sublicense, and sell   --
+--    copies of the Software, and to permit persons to whom the      --
+--                 Software is furnished to do so.                   --
+--                                                                   --
+--  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,  --
+--  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES  --
+--     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND      --
+--   NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT    --
+--   HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,    --
+--   WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING    --
+--  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR    --
+--                 OTHER DEALINGS IN THE SOFTWARE.                   --
+--                                                                   --
+--  SPDX-License-Identifier: MIT-0                                   --
+--                                                                   --
+--  File:          b2ssum.gpr                                        --
+--  Language:      GPRBuild                                          --
+--  Author:        Lev Kujawski                                      --
+-----------------------------------------------------------------------
 
 with "blake2s.gpr";
 
@@ -40,15 +46,16 @@ project B2SSUM is
       External ("B2SSUM_CONTRACTS", "disabled");
 
    type Build_Kind is ("debug", "optimize");
-   Build_Mode : Build_Kind := External ("B2SSUM_BUILD_MODE", "optimize");
+   Build_Mode : Build_Kind :=
+      External ("B2SSUM_BUILD_MODE", "optimize");
 
    Compile_Checks_Switches := ();
    case Compile_Checks is
       when "enabled" =>
          Compile_Checks_Switches :=
-           ("-gnatVa",   --  Enable all validity checks
-            "-gnatwaJ",  --  Enable warnings, minus obsolescent
-            "-gnatwe");  --  Set Warnings as errors
+            ("-gnatVa",      --  Enable all validity checks
+             "-gnatwadltJ",  --  Enable warnings, minus obsolescent
+             "-gnatwe");     --  Treat warnings as errors
       when others => null;
    end case;
 
@@ -57,14 +64,14 @@ project B2SSUM is
       when "enabled" => null;
       when others =>
          Runtime_Checks_Switches :=
-           ("-gnatp");  --  Suppress checks
+            ("-gnatp");  --  Suppress checks
    end case;
 
    Style_Checks_Switches := ();
    case Style_Checks is
       when "enabled" =>
          Style_Checks_Switches :=
-           ("-gnaty3abcefhiklM78nprtux");
+            ("-gnaty3abcefhiklM72nprtux");
       when others => null;
    end case;
 
@@ -72,7 +79,7 @@ project B2SSUM is
    case Contracts_Checks is
       when "enabled" =>
          Contracts_Switches :=
-           ("-gnata");  --  Enable assertions and contracts
+            ("-gnata");  --  Enable assertions and contracts
       when others => null;
    end case;
 
@@ -88,15 +95,15 @@ project B2SSUM is
 
    package Compiler is
       for Default_Switches ("Ada") use
-        Compile_Checks_Switches &
-        Build_Switches &
-        Runtime_Checks_Switches &
-        Style_Checks_Switches &
-        Contracts_Switches;
+         Compile_Checks_Switches &
+         Build_Switches &
+         Runtime_Checks_Switches &
+         Style_Checks_Switches &
+         Contracts_Switches;
    end Compiler;
 
    package Binder is
-      for Switches ("Ada") use ("-Es");  --  Enable symbolic tracebacks
+      for Switches ("Ada") use ("-Es");  --  Symbolic tracebacks
    end Binder;
 
 end B2SSUM;

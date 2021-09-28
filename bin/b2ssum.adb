@@ -1,36 +1,39 @@
-------------------------------------------------------------------------------
---  Copyright (c) 2021, Lev Kujawski.
---
---  Permission is hereby granted, free of charge, to any person obtaining a
---  copy of this software and associated documentation files (the "Software")
---  to deal in the Software without restriction, including without limitation
---  the rights to use, copy, modify, merge, publish, distribute, sublicense,
---  and sell copies of the Software, and to permit persons to whom the
---  Software is furnished to do so.
---
---  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
---  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
---  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
---  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
---  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
---  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
---  DEALINGS IN THE SOFTWARE.
---
---  SPDX-License-Identifier: MIT-0
---
---  File:          b2ssum.adb (Ada Subprogram Body)
---  Language:      Ada (1995) [1]
---  Author:        Lev Kujawski
---  Description:   BLAKE2s [2] file hashing utility
---
---  References:
---  [1] Information technology - Programming languages - Ada,
---      ISO/IEC 8652:1995(E), 15 Feb. 1995.
---  [3] M-J. Saarinen and J-P. Aumasson, "The BLAKE2 Cryptographic Hash and
---      Message Authentication Code (MAC)," RFC 7693, Nov. 2015.
-------------------------------------------------------------------------------
---  NOTE: Unlike the rest of the BLAKE2s for Ada package, b2ssum is written
---        in non-SPARK Ada (1995) so that streaming I/O may be utilized.
+-----------------------------------------------------------------------
+--  Copyright 2021 Lev Kujawski                                      --
+--                                                                   --
+--                   This file is part of B2SSUM.                    --
+--                                                                   --
+--     B2SSUM is free software: you can redistribute it and/or       --
+--  modify it under the terms of the GNU General Public License as   --
+--  published by the Free Software Foundation, either version 3 of   --
+--       the License, or (at your option) any later version.         --
+--                                                                   --
+--    B2SSUM is distributed in the hope that it will be useful,      --
+--  but WITHOUT ANY WARRANTY; without even the implied warranty of   --
+--  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the    --
+--           GNU General Public License for more details.            --
+--                                                                   --
+--              You should have received a copy of the               --
+--          GNU General Public License along with B2SSUM.            --
+--           If not, see <https://www.gnu.org/licenses/>.            --
+--                                                                   --
+--  SPDX-License-Identifier: GPL-3.0-or-later                        --
+--                                                                   --
+--  File:          b2ssum.adb (Ada Subprogram Body)                  --
+--  Language:      Ada (1995) [1]                                    --
+--  Author:        Lev Kujawski                                      --
+--  Description:   BLAKE2s [2] file hash utility                     --
+--                                                                   --
+--  References:                                                      --
+--  [1] Information technology - Programming languages - Ada,        --
+--      ISO/IEC 8652:1995(E), 15 Feb. 1995.                          --
+--  [2] M-J. Saarinen and J-P. Aumasson, "The BLAKE2 Cryptographic   --
+--      Hash and Message Authentication Code (MAC)", RFC 7693,       --
+--      Nov. 2015.                                                   --
+-----------------------------------------------------------------------
+--  NOTE: Unlike the rest of the BLAKE2s for Ada package, B2SSUM is  --
+--        written in non-SPARK Ada (1995) so that streaming I/O may  --
+--        be utilized.                                               --
 --! rule off Exception_Rule
 
 with Ada.Characters.Handling;
@@ -56,7 +59,7 @@ use type Octets.T;
 
 with Octet_Arrays;
 
-procedure B2SSum is
+procedure B2SSUM is
 
    package ACH renames Ada.Characters.Handling;
    package ACL renames Ada.Command_Line;
@@ -71,7 +74,8 @@ procedure B2SSum is
    subtype Hex_Digit_T is Natural range 0 .. 15;
 
    function Character_To_Hex_Digit
-     (Hex_Character : in Character) return Hex_Digit_T
+     (Hex_Character : in Character)
+      return Hex_Digit_T
    is
       Normal : constant Character := ACH.To_Upper (Hex_Character);
       Result : Hex_Digit_T;
@@ -117,7 +121,8 @@ procedure B2SSum is
    end Character_To_Hex_Digit;
 
    function Hex_Digit_To_Character
-     (Hex_Digit : in Hex_Digit_T) return Character
+     (Hex_Digit : in Hex_Digit_T)
+      return Character
    is
       Result    : Character;
    begin
@@ -160,11 +165,14 @@ procedure B2SSum is
    end Hex_Digit_To_Character;
 
    function Hex
-     (Value : in Octets.T) return Hex_T
+     (Value : in Octets.T)
+      return Hex_T
    is
    begin
-      return Hex_T'(1 => Hex_Digit_To_Character (Hex_Digit_T (Value / 16)),
-                    2 => Hex_Digit_To_Character (Hex_Digit_T (Value mod 16)));
+      return
+        Hex_T'
+          (1 => Hex_Digit_To_Character (Hex_Digit_T (Value / 16)),
+           2 => Hex_Digit_To_Character (Hex_Digit_T (Value mod 16)));
    end Hex;
 
    Buffer_Octets : constant := 16384;
@@ -174,8 +182,9 @@ procedure B2SSum is
    subtype SEA_Buffer_Index_T is AST.Stream_Element_Offset
      range 1 .. Buffer_Octets;
 
-   subtype Buffer_T     is Octet_Arrays.T           (Buffer_Index_T);
-   subtype SEA_Buffer_T is AST.Stream_Element_Array (SEA_Buffer_Index_T);
+   subtype Buffer_T is Octet_Arrays.T (Buffer_Index_T);
+   subtype SEA_Buffer_T is
+     AST.Stream_Element_Array (SEA_Buffer_Index_T);
 
    Buffer : SEA_Buffer_T;
    for Buffer'Size use Buffer_Bits;
@@ -202,7 +211,8 @@ procedure B2SSum is
          Context := BLAKE2S.Initial (BLAKE2S.Digest_Length_Default);
          loop
             AST.Read (Stream.all, Buffer, Last);
-            BLAKE2S.Incorporate_Flex (Context, View, First, Natural (Last));
+            BLAKE2S.Incorporate_Flex
+              (Context, View, First, Natural (Last));
             exit when Last < Buffer'Last;
          end loop;
          BLAKE2S.Finalize (Context, Digest);
@@ -253,16 +263,15 @@ procedure B2SSum is
             for I in Positive range Hash'Range loop
                ATI.Get (Hex_1);
                ATI.Get (Hex_2);
-               if
-                 not ACH.Is_Hexadecimal_Digit (Hex_1) or else
-                 not ACH.Is_Hexadecimal_Digit (Hex_2)
+               if not ACH.Is_Hexadecimal_Digit (Hex_1)
+                 or else not ACH.Is_Hexadecimal_Digit (Hex_2)
                then
                   raise Invalid_Hash_List;
                end if;
 
                Hash (I) :=
-                 Octets.T (Character_To_Hex_Digit (Hex_1)) * 16 +
-                 Octets.T (Character_To_Hex_Digit (Hex_2));
+                 Octets.T (Character_To_Hex_Digit (Hex_1)) * 16
+                 + Octets.T (Character_To_Hex_Digit (Hex_2));
             end loop;
 
             ATI.Get (Hex_1);
@@ -277,11 +286,12 @@ procedure B2SSum is
                Unbounded_File_Name : UST.Unbounded_String :=
                  UST.Null_Unbounded_String;
                Partial : String (Partial_Index_T);
-               Last : Natural;
+               Last    : Natural;
             begin
                loop
                   ATI.Get_Line (Partial, Last);
-                  UST.Append (Unbounded_File_Name, Partial (1 .. Last));
+                  UST.Append
+                    (Unbounded_File_Name, Partial (1 .. Last));
                   exit when Last < Partial'Last;
                end loop;
 
@@ -316,8 +326,10 @@ procedure B2SSum is
          exception
             when Invalid_Hash_List =>
                ATI.Put_Line
-                 ("Error on line " & ATI.Positive_Count'Image (ATI.Line) &
-                  ", skipping invalid hash list: " & ACL.Argument (I));
+                 ("Error on line "
+                  & ATI.Positive_Count'Image (ATI.Line)
+                  & ", skipping invalid hash list: "
+                  & ACL.Argument (I));
          end;
       end loop;
    end Verify_Lists;
@@ -327,12 +339,13 @@ begin  --  B2SSum
 
    if ACL.Argument_Count = 0 then
       --  Print usage
-      ATI.Put_Line ("Usage: " & Ada.Command_Line.Command_Name &
-                      " [OPTION]... [FILE]...");
+      ATI.Put_Line
+        ("Usage: " & Ada.Command_Line.Command_Name
+         & " [OPTION]... [FILE]...");
    elsif ACL.Argument (1) = "-c" then
       Verify_Lists;
    else
       Hash_Files;
    end if;
 
-end B2SSum;
+end B2SSUM;

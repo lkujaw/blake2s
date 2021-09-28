@@ -1,42 +1,84 @@
+-----------------------------------------------------------------------
+--  Copyright 2012 Altran Praxis Limited                             --
+--  Copyright 2021 Lev Kujawski                                      --
+--                                                                   --
+--                  This file is part of B2STEST.                    --
+--                                                                   --
+--     B2STEST is free software: you can redistribute it and/or      --
+--  modify it under the terms of the GNU General Public License as   --
+--  published by the Free Software Foundation, either version 3 of   --
+--       the License, or (at your option) any later version.         --
+--                                                                   --
+--    B2STEST is distributed in the hope that it will be useful,     --
+--  but WITHOUT ANY WARRANTY; without even the implied warranty of   --
+--  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the    --
+--           GNU General Public License for more details.            --
+--                                                                   --
+--              You should have received a copy of the               --
+--          GNU General Public License along with B2STEST.           --
+--           If not, see <https://www.gnu.org/licenses/>.            --
+--                                                                   --
+--  SPDX-License-Identifier: GPL-3.0-or-later                        --
+--                                                                   --
+--  File:          spark_io.adb (Ada Package Body)                   --
+--  Language:      SPARK83 [1] subset of Ada (1987) [2]              --
+--  Description:   Ada Text_IO binding for SPARK83                   --
+--                                                                   --
+--  References:                                                      --
+--  [1] SPARK Team, SPARK83 - The SPADE Ada83 Kernel,                --
+--      Altran Praxis, 17 Oct. 2011.                                 --
+--  [2] Programming languages - Ada, ISO/IEC 8652:1987,              --
+--      15 Jun. 1987.                                                --
+-----------------------------------------------------------------------
+
 package body SPARK_IO is
    --# hide SPARK_IO;
 
-   function "=" (Left  : in Text_IO.File_Mode;
-                 Right : in Text_IO.File_Mode) return Boolean
-     renames Text_IO."=";
+   function "="
+     (Left  : in Text_IO.File_Mode;
+      Right : in Text_IO.File_Mode)
+      return Boolean renames Text_IO."=";
 
    package Integer_IO is new Text_IO.Integer_IO (Num => Integer);
 
    function Is_Input_File
-     (File : in File_T) return Boolean
+     (File : in File_T)
+      return Boolean
    is
    begin
-      return File.Kind = Input_Stream or else
-        (File.Kind = Regular_File and then
-           Text_IO.Mode (File.Actual) = Text_IO.In_File);
+      return
+        File.Kind = Input_Stream
+        or else
+        (File.Kind = Regular_File
+         and then Text_IO.Mode (File.Actual) = Text_IO.In_File);
    exception
       when others =>
          return False;
    end Is_Input_File;
 
    function Is_Output_File
-     (File : in File_T) return Boolean
+     (File : in File_T)
+      return Boolean
    is
    begin
-      return File.Kind = Output_Stream or else
-        (File.Kind = Regular_File and then
-           Text_IO.Mode (File.Actual) = Text_IO.Out_File);
+      return
+        File.Kind = Output_Stream
+        or else
+        (File.Kind = Regular_File
+         and then Text_IO.Mode (File.Actual) = Text_IO.Out_File);
    exception
       when others =>
          return False;
    end Is_Output_File;
 
    function End_Of_File
-     (File : in File_T) return Boolean
+     (File : in File_T)
+      return Boolean
    is
    begin
-      return not Is_Input_File (File) or else
-        Text_IO.End_Of_File (File.Actual);
+      return
+        not Is_Input_File (File)
+        or else Text_IO.End_Of_File (File.Actual);
    exception
       when others =>
          return True;
@@ -142,12 +184,13 @@ package body SPARK_IO is
    begin
       case File.Kind is
          when Output_Stream =>
-            Text_IO.New_Line (Text_IO.Standard_Output,
-                              Text_IO.Positive_Count (Spacing));
+            Text_IO.New_Line
+              (Text_IO.Standard_Output,
+               Text_IO.Positive_Count (Spacing));
          when Regular_File =>
             if Text_IO.Mode (File.Actual) = Text_IO.Out_File then
-               Text_IO.New_Line (File.Actual,
-                                 Text_IO.Positive_Count (Spacing));
+               Text_IO.New_Line
+                 (File.Actual, Text_IO.Positive_Count (Spacing));
             end if;
          when Empty =>
             null;
@@ -204,9 +247,11 @@ package body SPARK_IO is
    begin
       if Is_Input_File (File) then
          if File.Kind = Input_Stream then
-            Text_IO.Get_Line (Text_IO.Standard_Input, Item, Line_Stop);
+            Text_IO.Get_Line
+              (Text_IO.Standard_Input, Item, Line_Stop);
          else
-            Text_IO.Get_Line (File.Actual, Item, Line_Stop);
+            Text_IO.Get_Line
+              (File.Actual, Item, Line_Stop);
          end if;
 
          if Line_Stop <= Item'Last then
@@ -230,9 +275,11 @@ package body SPARK_IO is
    begin
       if Is_Output_File (File) then
          if File.Kind = Output_Stream then
-            Text_IO.Put_Line (Text_IO.Standard_Output, Item);
+            Text_IO.Put_Line
+              (Text_IO.Standard_Output, Item);
          else
-            Text_IO.Put_Line (File.Actual, Item);
+            Text_IO.Put_Line
+              (File.Actual, Item);
          end if;
       end if;
    end Put_Line;
@@ -264,9 +311,11 @@ package body SPARK_IO is
    begin
       if Is_Output_File (File) then
          if File.Kind = Output_Stream then
-            Integer_IO.Put (Text_IO.Standard_Output, Item, Width, Base);
+            Integer_IO.Put
+              (Text_IO.Standard_Output, Item, Width, Base);
          else
-            Integer_IO.Put (File.Actual, Item, Width, Base);
+            Integer_IO.Put
+              (File.Actual, Item, Width, Base);
          end if;
       end if;
    exception

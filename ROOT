@@ -1,4 +1,4 @@
-session "ada-blake2s" = "HOL-SPARK" +
+session "blake2s" = "HOL-SPARK" +
   options [document = false]
   theories
     "quadlets"

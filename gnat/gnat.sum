@@ -38,28 +38,28 @@ Summary Dead Path files (.sdp)
 in the directory:
 /home/lev/share/blake2s/gnat
 
-Summary produced: 23-JUN-2021 17:45:06.52
+Summary produced: 28-SEP-2021 16:38:47.37
 
 File /home/lev/share/blake2s/gnat/quadlets/chained_modular_sum.vcg
 procedure Quadlets.Chained_Modular_Sum
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:10
 
-VCs simplified 23-JUN-2021 17:44:16
+VCs simplified 28-SEP-2021 16:38:11
 
 File /home/lev/share/blake2s/gnat/quadlets/chained_modular_sum.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:10
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for procedure_chained_modular_sum :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 128     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 128     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 132     | Inference          | Unchecked |   IU   |
-| 4   | start | rtc check @ 134     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 162     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 162     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 166     | Inference          | Unchecked |   IU   |
+| 4   | start | rtc check @ 168     | Inference          | Unchecked |   IU   |
 | 5   | start |    assert @ finish  | Examiner           | Live      |   EL   |
 | 6   | start |    assert @ finish  | Examiner           | Live      |   EL   |
 | 7   | start |    assert @ finish  | Examiner           | Live      |   EL   |
@@ -69,14 +69,14 @@ VCs for procedure_chained_modular_sum :
 File /home/lev/share/blake2s/gnat/quadlets/conjunction.vcg
 function Quadlets.Conjunction
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:09
 
-VCs simplified 23-JUN-2021 17:44:18
+VCs simplified 28-SEP-2021 16:38:13
 
 File /home/lev/share/blake2s/gnat/quadlets/conjunction.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:09
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for function_conjunction :
  -----------------------------------------------------------------------------
@@ -89,14 +89,14 @@ VCs for function_conjunction :
 File /home/lev/share/blake2s/gnat/quadlets/exclusive_disjunction.vcg
 function Quadlets.Exclusive_Disjunction
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:09
 
-VCs simplified 23-JUN-2021 17:44:18
+VCs simplified 28-SEP-2021 16:38:12
 
 File /home/lev/share/blake2s/gnat/quadlets/exclusive_disjunction.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:09
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for function_exclusive_disjunction :
  -----------------------------------------------------------------------------
@@ -109,14 +109,14 @@ VCs for function_exclusive_disjunction :
 File /home/lev/share/blake2s/gnat/quadlets/inclusive_disjunction.vcg
 function Quadlets.Inclusive_Disjunction
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:09
 
-VCs simplified 23-JUN-2021 17:44:16
+VCs simplified 28-SEP-2021 16:38:10
 
 File /home/lev/share/blake2s/gnat/quadlets/inclusive_disjunction.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:09
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for function_inclusive_disjunction :
  -----------------------------------------------------------------------------
@@ -129,21 +129,21 @@ VCs for function_inclusive_disjunction :
 File /home/lev/share/blake2s/gnat/quadlets/left_shift.vcg
 function Quadlets.Left_Shift
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:09
 
-VCs simplified 23-JUN-2021 17:44:18
+VCs simplified 28-SEP-2021 16:38:12
 
 File /home/lev/share/blake2s/gnat/quadlets/left_shift.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:09
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for function_left_shift :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 78      | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 78      | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 112     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 112     | Inference          | Unchecked |   IU   |
 | 3   | start |    assert @ finish  | Review             | Live      |   RL   |
  -----------------------------------------------------------------------------
 
@@ -151,20 +151,20 @@ VCs for function_left_shift :
 File /home/lev/share/blake2s/gnat/quadlets/modular_difference.vcg
 function Quadlets.Modular_Difference
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:10
 
-VCs simplified 23-JUN-2021 17:44:16
+VCs simplified 28-SEP-2021 16:38:11
 
 File /home/lev/share/blake2s/gnat/quadlets/modular_difference.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:10
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for function_modular_difference :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 145     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 179     | Inference          | Unchecked |   IU   |
 | 2   | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
@@ -172,20 +172,20 @@ VCs for function_modular_difference :
 File /home/lev/share/blake2s/gnat/quadlets/modular_product.vcg
 function Quadlets.Modular_Product
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:10
 
-VCs simplified 23-JUN-2021 17:44:18
+VCs simplified 28-SEP-2021 16:38:12
 
 File /home/lev/share/blake2s/gnat/quadlets/modular_product.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:10
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for function_modular_product :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 154     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 188     | Inference          | Unchecked |   IU   |
 | 2   | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
@@ -193,20 +193,20 @@ VCs for function_modular_product :
 File /home/lev/share/blake2s/gnat/quadlets/modular_sum.vcg
 function Quadlets.Modular_Sum
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:10
 
-VCs simplified 23-JUN-2021 17:44:15
+VCs simplified 28-SEP-2021 16:38:10
 
 File /home/lev/share/blake2s/gnat/quadlets/modular_sum.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:10
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for function_modular_sum :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 117     | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 151     | Inference          | Unchecked |   IU   |
 | 2   | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
@@ -214,43 +214,43 @@ VCs for function_modular_sum :
 File /home/lev/share/blake2s/gnat/quadlets/negation.vcg
 function Quadlets.Negation
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:09
 
-VCs simplified 23-JUN-2021 17:44:17
+VCs simplified 28-SEP-2021 16:38:11
 
 File /home/lev/share/blake2s/gnat/quadlets/negation.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:09
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for function_negation :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start |    assert @ 37      | Inference          | Live      |   IL   |
-| 2   | 37    |    assert @ finish  | Review             | Live      |   RL   |
+| 1   | start |    assert @ 71      | Inference          | Live      |   IL   |
+| 2   | 71    |    assert @ finish  | Review             | Live      |   RL   |
  -----------------------------------------------------------------------------
 
 
 File /home/lev/share/blake2s/gnat/quadlets/octet.vcg
 function Quadlets.Octet
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:09
 
-VCs simplified 23-JUN-2021 17:44:17
+VCs simplified 28-SEP-2021 16:38:11
 
 File /home/lev/share/blake2s/gnat/quadlets/octet.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:09
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for function_octet :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 108     | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 108     | Inference          | Unchecked |   IU   |
-| 3   | start | rtc check @ 108     | Review             | Unchecked |   RU   |
+| 1   | start | rtc check @ 142     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 142     | Inference          | Unchecked |   IU   |
+| 3   | start | rtc check @ 142     | Review             | Unchecked |   RU   |
 | 4   | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
@@ -258,21 +258,21 @@ VCs for function_octet :
 File /home/lev/share/blake2s/gnat/quadlets/right_rotation.vcg
 function Quadlets.Right_Rotation
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:09
 
-VCs simplified 23-JUN-2021 17:44:15
+VCs simplified 28-SEP-2021 16:38:10
 
 File /home/lev/share/blake2s/gnat/quadlets/right_rotation.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:09
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for function_right_rotation :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 98      | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 98      | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 132     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 132     | Inference          | Unchecked |   IU   |
 | 3   | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
@@ -280,21 +280,21 @@ VCs for function_right_rotation :
 File /home/lev/share/blake2s/gnat/quadlets/right_shift.vcg
 function Quadlets.Right_Shift
 
-VCs generated 23-JUN-2021 17:44:15
+VCs generated 28-SEP-2021 16:38:09
 
-VCs simplified 23-JUN-2021 17:44:17
+VCs simplified 28-SEP-2021 16:38:12
 
 File /home/lev/share/blake2s/gnat/quadlets/right_shift.dpc
-DPCs generated 23-JUN-2021 17:44:15
+DPCs generated 28-SEP-2021 16:38:09
 
-DPC ZombieScoped 23-JUN-2021  17:44:1
+DPC ZombieScoped 28-SEP-2021  16:38:1
 
 VCs for function_right_shift :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start | rtc check @ 88      | Inference          | Unchecked |   IU   |
-| 2   | start | rtc check @ 88      | Inference          | Unchecked |   IU   |
+| 1   | start | rtc check @ 122     | Inference          | Unchecked |   IU   |
+| 2   | start | rtc check @ 122     | Inference          | Unchecked |   IU   |
 | 3   | start |    assert @ finish  | Inference          | Live      |   IL   |
  -----------------------------------------------------------------------------
 
