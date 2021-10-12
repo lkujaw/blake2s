@@ -20,23 +20,40 @@ jobs:
     - name: Install Dependencies
       run: >
         sudo apt-get update &&
-        sudo apt-get install adacontrol gnat libdb5.3-dev
+        sudo apt-get install adacontrol gnat gprbuild libdb5.3-dev
 
     - name: Build AST NMAKE
-      run: >
-        git clone https://github.com/lkujaw/ast.git &&
-        cd ast && ./bin/package flat make
+      run: |
+        git clone https://github.com/lkujaw/ast.git
+        pushd ast
+        ./bin/package flat make
+        rm -f ./bin/ar
+        popd
 
     - name: Report (AdaControl)
       run: |
         export PATH="${PWD}/ast/bin:$PATH"
         nmake adactl
-        cd gnat && nmake adactl && nmake clobber
+        pushd gnat
+        nmake adactl
+        nmake clobber
+        popd
 
     - name: Build
       run: |
         export PATH="${PWD}/ast/bin:$PATH"
-        cd gnat && nmake
+        pushd gnat
+        nmake
+        nmake clobber
+        popd
+        gprbuild -v -p blake2s.gpr \
+                 -XBLAKE2S_COMPILE_CHECKS=enabled \
+                 -XBLAKE2S_STYLE_CHECKS=enabled
+        gprclean -p blake2s.gpr
+        gprbuild -v -p b2ssum.gpr \
+                 -XB2SSUM_COMPILE_CHECKS=enabled \
+                 -XB2SSUM_STYLE_CHECKS=enabled
+        gprclean -p b2ssum.gpr
 
     - name: Test
       run: |

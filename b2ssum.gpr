@@ -29,7 +29,7 @@ with "blake2s.gpr";
 
 project B2SSUM is
 
-   for Source_Dirs use ("bin");
+   for Source_Dirs use ("b2ssum");
    for Object_Dir use "gnat/obj";
    for Exec_Dir use "gnat/bin";
    for Create_Missing_Dirs use "True";
@@ -71,7 +71,7 @@ project B2SSUM is
    case Style_Checks is
       when "enabled" =>
          Style_Checks_Switches :=
-            ("-gnaty3abcefhiklM72nprtux");
+            ("-gnaty3abcefhiklM72noprstux");
       when others => null;
    end case;
 

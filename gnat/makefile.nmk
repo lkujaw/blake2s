@@ -28,6 +28,8 @@
 PKGROOT = ..
 include $(PKGROOT)/blake2s.nmk
 
+GNATDIR = $(PKGROOT)/gnat
+
 .CLOBBER. += bin lib obj quadlets test.out \
 	$(PWD:L=*.(adt|ali|dpc|fdl|lst|o|rep|rls|sdp|siv|slg|sli|vcg|zlg|stderr|stdout))
 

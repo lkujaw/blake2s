@@ -75,12 +75,12 @@ ideal.
 Licensing terms and important warranty information for the BLAKE2s
 library may be found within the file named [license.txt][3].
 
-`SPDX-License-Identifier: MIT-0`
-
 Separate from the BLAKE2s library, the B2SSUM and B2STEST executables
 are distributed under the terms of the GNU General Public License,
-version 3.0; see the file [bin/copying.txt][4] for licensing terms
-and important warranty information.
+version 3.0; see the file [copying.txt][4] for licensing terms and
+important warranty information.
+
+`SPDX-License-Identifier: MIT-0`
 
 ## Acknowledgments
 
@@ -92,7 +92,7 @@ tremendously helpful [free software][8].
 [1]: https://www.blake2.net/
 [2]: https://sr.ht/~lev/ast/
 [3]: license.txt
-[4]: bin/copying.txt
+[4]: b2ssum/copying.txt
 [5]: https://libre.adacore.com/
 [6]: https://isabelle.in.tum.de/
 [7]: https://www.adalog.fr/en/adacontrol.html

@@ -75,6 +75,46 @@ procedure B2SSUM is
 
    function Character_To_Hex_Digit
      (Hex_Character : in Character)
+     return Hex_Digit_T;
+
+   procedure Hash_File
+     (File_Name : in String);
+
+   procedure Hash_Files;
+
+   function Hex
+     (Value : in Octets.T)
+      return Hex_T;
+
+   function Hex_Digit_To_Character
+     (Hex_Digit : in Hex_Digit_T)
+      return Character;
+
+   procedure Verify_Lists;
+
+   Buffer_Octets : constant := 16384;
+   Buffer_Bits   : constant := Buffer_Octets * Octets.Bits;
+
+   subtype Buffer_Index_T is Positive range 1 .. Buffer_Octets;
+   subtype SEA_Buffer_Index_T is AST.Stream_Element_Offset
+     range 1 .. Buffer_Octets;
+
+   subtype Buffer_T is Octet_Arrays.T (Buffer_Index_T);
+   subtype SEA_Buffer_T is
+     AST.Stream_Element_Array (SEA_Buffer_Index_T);
+
+   Buffer : SEA_Buffer_T;
+   for Buffer'Size use Buffer_Bits;
+   View : Buffer_T;
+   for View'Address use Buffer'Address;
+   for View'Size use Buffer_Bits;
+
+   Invalid_Hash_List : exception;
+
+   Digest : BLAKE2S.Digest_Default_T;
+
+   function Character_To_Hex_Digit
+     (Hex_Character : in Character)
       return Hex_Digit_T
    is
       Normal : constant Character := ACH.To_Upper (Hex_Character);
@@ -120,6 +160,77 @@ procedure B2SSUM is
       return Result;
    end Character_To_Hex_Digit;
 
+   procedure Hash_File
+     (File_Name : in String)
+   is
+      procedure Hash_Stream;
+
+      File      : ASI.File_Type;
+      Stream    : ASI.Stream_Access;
+      First     : constant Positive := Positive (Buffer'First);
+
+      procedure Hash_Stream
+      is
+         Context : BLAKE2S.T;
+         Last    : AST.Stream_Element_Offset;
+      begin
+         Context := BLAKE2S.Initial (BLAKE2S.Digest_Length_Default);
+         loop
+            AST.Read (Stream.all, Buffer, Last);
+            BLAKE2S.Incorporate_Flex
+              (Context, View, First, Natural (Last));
+            exit when Last < Buffer'Last;
+         end loop;
+         BLAKE2S.Finalize (Context, Digest);
+      end Hash_Stream;
+
+   begin  --  Hash_File
+      if File_Name = "-" then
+         Stream := ASI.Stream_Access (ATS.Stream (ATI.Standard_Input));
+         Hash_Stream;
+      else
+         ASI.Open (File, ASI.In_File, File_Name);
+         Stream := ASI.Stream (File);
+         Hash_Stream;
+         ASI.Close (File);
+      end if;
+   end Hash_File;
+
+   procedure Hash_Files
+   is
+      procedure Print_Hash
+        (File_Name : in String);
+
+      procedure Print_Hash
+        (File_Name : in String)
+      is
+      begin
+         for J in Digest'Range loop
+            ATI.Put (Item => Hex (Digest (J)));
+         end loop;
+         ATI.Put ("  ");
+         ATI.Put (File_Name);
+         ATI.New_Line;
+      end Print_Hash;
+
+   begin  --  Hash_Files
+      for I in Positive range 1 .. ACL.Argument_Count loop
+         Hash_File (ACL.Argument (I));
+         Print_Hash (ACL.Argument (I));
+      end loop;
+   end Hash_Files;
+
+   function Hex
+     (Value : in Octets.T)
+      return Hex_T
+   is
+   begin
+      return
+        Hex_T'
+          (1 => Hex_Digit_To_Character (Hex_Digit_T (Value / 16)),
+           2 => Hex_Digit_To_Character (Hex_Digit_T (Value mod 16)));
+   end Hex;
+
    function Hex_Digit_To_Character
      (Hex_Digit : in Hex_Digit_T)
       return Character
@@ -164,93 +275,10 @@ procedure B2SSUM is
       return Result;
    end Hex_Digit_To_Character;
 
-   function Hex
-     (Value : in Octets.T)
-      return Hex_T
-   is
-   begin
-      return
-        Hex_T'
-          (1 => Hex_Digit_To_Character (Hex_Digit_T (Value / 16)),
-           2 => Hex_Digit_To_Character (Hex_Digit_T (Value mod 16)));
-   end Hex;
-
-   Buffer_Octets : constant := 16384;
-   Buffer_Bits   : constant := Buffer_Octets * Octets.Bits;
-
-   subtype Buffer_Index_T is Positive range 1 .. Buffer_Octets;
-   subtype SEA_Buffer_Index_T is AST.Stream_Element_Offset
-     range 1 .. Buffer_Octets;
-
-   subtype Buffer_T is Octet_Arrays.T (Buffer_Index_T);
-   subtype SEA_Buffer_T is
-     AST.Stream_Element_Array (SEA_Buffer_Index_T);
-
-   Buffer : SEA_Buffer_T;
-   for Buffer'Size use Buffer_Bits;
-   View : Buffer_T;
-   for View'Address use Buffer'Address;
-   for View'Size use Buffer_Bits;
-
-   Invalid_Hash_List : exception;
-
-   Digest : BLAKE2S.Digest_Default_T;
-
-   procedure Hash_File
-     (File_Name : in String)
-   is
-      File      : ASI.File_Type;
-      Stream    : ASI.Stream_Access;
-      First     : constant Positive := Positive (Buffer'First);
-
-      procedure Hash_Stream
-      is
-         Context : BLAKE2S.T;
-         Last    : AST.Stream_Element_Offset;
-      begin
-         Context := BLAKE2S.Initial (BLAKE2S.Digest_Length_Default);
-         loop
-            AST.Read (Stream.all, Buffer, Last);
-            BLAKE2S.Incorporate_Flex
-              (Context, View, First, Natural (Last));
-            exit when Last < Buffer'Last;
-         end loop;
-         BLAKE2S.Finalize (Context, Digest);
-      end Hash_Stream;
-   begin  --  Hash_File
-      if File_Name = "-" then
-         Stream := ASI.Stream_Access (ATS.Stream (ATI.Standard_Input));
-         Hash_Stream;
-      else
-         ASI.Open (File, ASI.In_File, File_Name);
-         Stream := ASI.Stream (File);
-         Hash_Stream;
-         ASI.Close (File);
-      end if;
-   end Hash_File;
-
-   procedure Hash_Files
-   is
-      procedure Print_Hash
-        (File_Name : in String)
-      is
-      begin
-         for J in Digest'Range loop
-            ATI.Put (Item => Hex (Digest (J)));
-         end loop;
-         ATI.Put ("  ");
-         ATI.Put (File_Name);
-         ATI.New_Line;
-      end Print_Hash;
-   begin  --  Hash_Files
-      for I in Positive range 1 .. ACL.Argument_Count loop
-         Hash_File (ACL.Argument (I));
-         Print_Hash (ACL.Argument (I));
-      end loop;
-   end Hash_Files;
-
    procedure Verify_Lists
    is
+      procedure Verify_List;
+
       List_File : ATI.File_Type;
 
       procedure Verify_List
@@ -310,6 +338,7 @@ procedure B2SSUM is
             end;
          end loop;
       end Verify_List;
+
    begin  --  Verify_Lists
       for I in Positive range 2 .. ACL.Argument_Count loop
          declare

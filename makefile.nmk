@@ -40,7 +40,7 @@ blake2s.sum : .FORCE spark.smf
 
 adactl : .VIRTUAL .FORCE $(PKGROOT)/blake2sn.aru
 	$(RM) -f *.a *.ali *.o
-	for i in bin/*.adb; do
+	for i in b2ssum/*.adb b2stest/*.adb; do
 		gnatmake -I$(PKGROOT)/common -I$(PKGROOT)/generic -gnatk8 -gnatct -q ${i}
 		adactl -e -x -f $(*) -r \
 			$$(echo ${i} | sed -e 's:.*/::' -e 's:.ad[bs]:.adt:')
@@ -49,7 +49,7 @@ adactl : .VIRTUAL .FORCE $(PKGROOT)/blake2sn.aru
 
 adactl.old : .VIRTUAL .FORCE $(PKGROOT)/blake2so.aru
 	$(RM) -f *.a *.ali *.o
-	for i in bin/*.adb; do
+	for i in b2ssum/*.adb b2stest/*.adb; do
 		gnatmake -I$(PKGROOT)/common -I$(PKGROOT)/generic -gnatk8 -gnatct -q ${i}
 		adactl -e -x -f $(*) -r \
 			$$(echo ${i} | sed -e 's:.*/::' -e 's:.ad[bs]:.adt:')

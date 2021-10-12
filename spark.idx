@@ -4,7 +4,7 @@ Octets            specification is in common/octets.ads
 Octet_Arrays      specification is in common/octearra.ads
 Quadlets          specification is in generic/quadlets.ads
 Quadlets          body          is in generic/quadlets.adb
-SPARK_IO          specification is in bin/spark_io.ads
-SPARK_IO          body          is in bin/spark_io.adb
-SPARK_IO_Standard specification is in bin/spaiosta.ads
-SPARK_IO_Standard body          is in bin/spaiosta.adb
+SPARK_IO          specification is in b2stest/spark_io.ads
+SPARK_IO          body          is in b2stest/spark_io.adb
+SPARK_IO_Standard specification is in b2stest/spaiosta.ads
+SPARK_IO_Standard body          is in b2stest/spaiosta.adb

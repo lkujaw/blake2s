@@ -30,10 +30,9 @@ include pkg-ada.mk
 ADAFLAGS = -O3 -gnatN
 ADAFLAGS.LINT = -gnaty3abcefhiklM72nprtux -gnatwadltJ
 ADAKRUNCH = 8
-GNATDIR = $(PKGROOT)/gnat
 
 VERSION :COMMAND:
 	$(SILENT) $(GREP) Library_Version $(PKGROOT)/blake2s.gpr | \
 		cut -f2 -d '"'
 
-.SOURCE : $$(PKGROOT)/bin $$(PKGROOT)/common
+.SOURCE : $$(PKGROOT)/common $$(PKGROOT)/b2ssum $$(PKGROOT)/b2stest

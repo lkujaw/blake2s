@@ -4,7 +4,7 @@ generic/quadlets.ads
 generic/quadlets.adb
 common/blake2s.ads
 common/blake2s.adb
-bin/spark_io.ads
-bin/spaiosta.ads
-bin/spaiosta.adb
-bin/b2stest.adb
+b2stest/spark_io.ads
+b2stest/spaiosta.ads
+b2stest/spaiosta.adb
+b2stest/b2stest.adb
